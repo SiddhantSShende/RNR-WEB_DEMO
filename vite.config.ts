@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/RNR-WEBSITE_DEMO', 
+  base: '/RNR-WEB_DEMO/', 
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
