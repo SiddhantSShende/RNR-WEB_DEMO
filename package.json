@@ -3,12 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/siddhantsshende/RNR-WEB_DEMO",
+  "homepage": "https://github.com/SiddhantSShende/RNR-WEB_DEMO",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build && npm run deploy"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
