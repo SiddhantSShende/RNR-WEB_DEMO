@@ -258,7 +258,7 @@ const ProfessionalServices: React.FC = () => {
                           {service.description}
                         </p>
                         <Link 
-                          to="/compliance"
+                          to="/about"
                           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-none py-2 px-6 rounded-full font-semibold cursor-pointer transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-1 uppercase tracking-wider text-sm inline-block text-center"
                         >
                           {service.buttonText}

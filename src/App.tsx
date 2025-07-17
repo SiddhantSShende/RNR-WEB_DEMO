@@ -942,7 +942,7 @@ function App() {
               ? 'border-slate-700 text-slate-400' 
               : 'border-blue-100 text-slate-600'
           }`}>
-            <p>&copy; 2025 CyberShield Pro. All rights reserved. Securing your digital future.</p>
+            <p>&copy; 2025 RNR Consulting. All rights reserved. Securing your digital future.</p>
           </div>
         </div>
       </footer>

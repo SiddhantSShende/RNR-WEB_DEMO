@@ -421,7 +421,11 @@ const AboutUsPage3D: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
+        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
+    }`}>
       {/* Three.js Canvas */}
       <div ref={mountRef} className="fixed inset-0 z-0" />
       
@@ -434,8 +438,8 @@ const AboutUsPage3D: React.FC = () => {
               onClick={handleGoBack}
               className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
                 isDarkMode 
-                  ? 'bg-slate-800/90 border-slate-600 text-slate-200 hover:bg-slate-700/90 hover:border-slate-500' 
-                  : 'bg-white/90 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
+                  ? 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600' 
+                  : 'bg-white/90 border-sky-200 text-blue-600 hover:bg-white/95 hover:border-sky-300'
               }`}
             >
               <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
@@ -444,13 +448,17 @@ const AboutUsPage3D: React.FC = () => {
             
             <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
               isDarkMode 
-                ? 'bg-slate-800/90 border-slate-600' 
-                : 'bg-white/90 border-blue-200'
+                ? 'bg-slate-800/90 border-slate-700' 
+                : 'bg-white/90 border-sky-200'
             }`}>
-              <div className="p-2 bg-blue-100 rounded-lg">
+              <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
                 <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+                isDarkMode 
+                  ? 'from-blue-400 to-blue-300' 
+                  : 'from-blue-600 to-blue-800'
+              }`}>
                 RNR Consulting
               </span>
             </div>
@@ -465,32 +473,44 @@ const AboutUsPage3D: React.FC = () => {
               <div className="flex items-center justify-center mb-8">
                 <div className={`p-6 backdrop-blur-md border rounded-3xl shadow-lg ${
                   isDarkMode 
-                    ? 'bg-slate-800/85 border-slate-600' 
-                    : 'bg-white/85 border-blue-200'
+                    ? 'bg-slate-800/95 border-slate-700' 
+                    : 'bg-white/95 border-sky-200'
                 }`}>
-                  <Users className="h-16 w-16 text-blue-600" />
+                  <Users className={`h-16 w-16 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
                 </div>
               </div>
-              <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 bg-clip-text text-transparent leading-tight">
+              <h1 className={`text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r bg-clip-text text-transparent leading-tight ${
+                isDarkMode 
+                  ? 'from-blue-400 via-blue-300 to-indigo-300' 
+                  : 'from-blue-600 via-blue-700 to-indigo-700'
+              }`}>
                 About Us
               </h1>
-              <p className="text-2xl md:text-3xl text-slate-600 mb-12 leading-relaxed max-w-5xl mx-auto">
+              <p className={`text-2xl md:text-3xl mb-12 leading-relaxed max-w-5xl mx-auto ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 We are pioneers in cybersecurity innovation, combining cutting-edge technology with deep industry expertise 
                 to protect organizations from evolving digital threats.
               </p>
             </div>
 
             {/* Vision, Mission, Goals */}
-            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-xl mb-20 hover:shadow-2xl transition-all duration-300 ${
               isDarkMode 
-                ? 'bg-slate-800/85 border-slate-600' 
-                : 'bg-white/85 border-blue-200'
-            }`}>
+                ? 'bg-slate-800/95 border-slate-700' 
+                : 'bg-white/95 border-sky-200'
+            }`}
+              style={{
+                boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
+              }}
+            >
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Our Foundation
                 </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                <p className={`text-lg max-w-3xl mx-auto ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   The core principles that drive our mission and shape our commitment to cybersecurity excellence.
                 </p>
               </div>
@@ -501,10 +521,14 @@ const AboutUsPage3D: React.FC = () => {
                     <div className={`p-6 bg-gradient-to-r ${item.color} rounded-2xl mb-6 text-white w-fit mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       {item.icon}
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 text-slate-800 group-hover:text-blue-700 transition-colors">
+                    <h3 className={`text-2xl font-bold mb-4 group-hover:text-blue-700 transition-colors ${
+                      isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
+                    <p className={`leading-relaxed group-hover:text-slate-700 transition-colors ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       {item.description}
                     </p>
                   </div>
@@ -513,34 +537,58 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Who We Are - Expandable Sections */}
-            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-xl mb-20 hover:shadow-2xl transition-all duration-300 ${
               isDarkMode 
-                ? 'bg-slate-800/85 border-slate-600' 
-                : 'bg-white/85 border-blue-200'
-            }`}>
+                ? 'bg-slate-800/95 border-slate-700' 
+                : 'bg-white/95 border-sky-200'
+            }`}
+              style={{
+                boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
+              }}
+            >
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Discover RNR Consulting
                 </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                <p className={`text-lg max-w-3xl mx-auto ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Learn more about our approach, methodology, and commitment to cybersecurity excellence.
                 </p>
               </div>
               
               <div className="space-y-4">
                 {expandableSections.map((section) => (
-                  <div key={section.id} className="border border-blue-100 rounded-2xl overflow-hidden">
+                  <div key={section.id} className={`border rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-102 ${
+                    isDarkMode 
+                      ? 'border-slate-600 bg-slate-700/50' 
+                      : 'border-sky-200 bg-white'
+                  }`}
+                    style={{
+                      boxShadow: '0 10px 40px rgba(135, 206, 235, 0.2), 0 0 20px rgba(135, 206, 235, 0.05)',
+                    }}
+                  >
                     <button
                       onClick={() => toggleSection(section.id)}
-                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 transition-all duration-300"
+                      className={`w-full flex items-center justify-between p-6 transition-all duration-300 ${
+                        isDarkMode 
+                          ? 'bg-gradient-to-r from-slate-700/80 to-slate-600/80 hover:from-slate-600/80 hover:to-slate-500/80' 
+                          : 'bg-gradient-to-r from-sky-50 to-indigo-50 hover:from-sky-100 hover:to-indigo-100'
+                      }`}
                     >
                       <div className="flex items-center space-x-4">
-                        <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full text-blue-600 font-bold text-lg">
+                        <div className={`flex items-center justify-center w-12 h-12 rounded-full font-bold text-lg shadow-lg ${
+                          isDarkMode 
+                            ? 'bg-gradient-to-br from-slate-600 to-slate-500 text-blue-400' 
+                            : 'bg-gradient-to-br from-sky-100 to-sky-200 text-blue-600'
+                        }`}>
                           {String(section.id).padStart(2, '0')}
                         </div>
-                        <h3 className="text-xl font-semibold text-slate-800">{section.title}</h3>
+                        <h3 className={`text-xl font-semibold ${
+                          isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                        }`}>{section.title}</h3>
                       </div>
-                      <div className="text-blue-600">
+                      <div className={isDarkMode ? 'text-blue-400' : 'text-blue-600'}>
                         {expandedSection === section.id ? (
                           <ChevronUp className="h-6 w-6" />
                         ) : (
@@ -556,10 +604,12 @@ const AboutUsPage3D: React.FC = () => {
                     } overflow-hidden`}>
                       <div className={`p-6 border-t ${
                         isDarkMode 
-                          ? 'bg-slate-700 border-slate-600' 
-                          : 'bg-white border-blue-100'
+                          ? 'bg-gradient-to-br from-slate-700/50 to-slate-600/50 border-slate-600' 
+                          : 'bg-gradient-to-br from-sky-50 to-sky-100 border-sky-100'
                       }`}>
-                        <p className="text-slate-600 leading-relaxed">
+                        <p className={`leading-relaxed ${
+                          isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                        }`}>
                           {section.content}
                         </p>
                       </div>
@@ -570,44 +620,70 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Company Stats */}
-            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-xl mb-20 hover:shadow-2xl transition-all duration-300 ${
               isDarkMode 
-                ? 'bg-slate-800/85 border-slate-600' 
-                : 'bg-white/85 border-blue-200'
-            }`}>
+                ? 'bg-slate-800/95 border-slate-700' 
+                : 'bg-white/95 border-sky-200'
+            }`}
+              style={{
+                boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
+              }}
+            >
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Our Impact
                 </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                <p className={`text-lg max-w-3xl mx-auto ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Numbers that reflect our commitment to cybersecurity excellence and client success.
                 </p>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {companyStats.map((stat, index) => (
-                  <div key={index} className="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <div className="flex justify-center mb-6 text-blue-600">
+                  <div key={index} className={`text-center p-8 rounded-2xl border hover:shadow-xl transition-all duration-300 hover:scale-105 ${
+                    isDarkMode 
+                      ? 'bg-gradient-to-br from-slate-700/80 to-slate-600/80 border-slate-600' 
+                      : 'bg-gradient-to-br from-sky-50 to-indigo-50 border-sky-200'
+                  }`}
+                    style={{
+                      boxShadow: '0 10px 40px rgba(135, 206, 235, 0.2), 0 0 20px rgba(135, 206, 235, 0.05)',
+                    }}
+                  >
+                    <div className={`flex justify-center mb-6 ${
+                      isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                    }`}>
                       {stat.icon}
                     </div>
-                    <div className="text-4xl font-bold text-blue-700 mb-3">{stat.number}</div>
-                    <div className="text-slate-600 font-medium">{stat.label}</div>
+                    <div className={`text-4xl font-bold mb-3 ${
+                      isDarkMode ? 'text-blue-300' : 'text-blue-700'
+                    }`}>{stat.number}</div>
+                    <div className={`font-medium ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Core Competencies */}
-            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-xl mb-20 hover:shadow-2xl transition-all duration-300 ${
               isDarkMode 
-                ? 'bg-slate-800/85 border-slate-600' 
-                : 'bg-white/85 border-blue-200'
-            }`}>
+                ? 'bg-slate-800/95 border-slate-700' 
+                : 'bg-white/95 border-sky-200'
+            }`}
+              style={{
+                boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
+              }}
+            >
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Core Competencies
                 </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                <p className={`text-lg max-w-3xl mx-auto ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Our expertise spans the entire cybersecurity landscape, from foundational security architecture 
                   to advanced threat hunting and incident response.
                 </p>
@@ -616,13 +692,21 @@ const AboutUsPage3D: React.FC = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {competencies.map((competency, index) => (
                   <div key={index} className="text-center group">
-                    <div className="p-6 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl mb-4 text-blue-600 w-fit mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className={`p-6 rounded-2xl mb-4 w-fit mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                      isDarkMode 
+                        ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                        : 'bg-gradient-to-br from-sky-100 to-indigo-100 text-blue-600'
+                    }`}>
                       {competency.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-slate-800 group-hover:text-blue-700 transition-colors">
+                    <h3 className={`text-xl font-semibold mb-3 group-hover:text-blue-700 transition-colors ${
+                      isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       {competency.title}
                     </h3>
-                    <p className="text-slate-600 group-hover:text-slate-700 transition-colors">
+                    <p className={`group-hover:text-slate-700 transition-colors ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       {competency.description}
                     </p>
                   </div>
@@ -631,11 +715,21 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-white/85 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg text-center">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-xl text-center hover:shadow-2xl transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-slate-800/95 border-slate-700' 
+                : 'bg-white/95 border-sky-200'
+            }`}
+              style={{
+                boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
+              }}
+            >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                 Ready to Secure Your Future?
               </h2>
-              <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className={`text-xl mb-8 max-w-3xl mx-auto leading-relaxed ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 Join hundreds of organizations that trust RNR Consulting to protect their most valuable digital assets. 
                 Let's build a more secure tomorrow together.
               </p>
@@ -643,7 +737,11 @@ const AboutUsPage3D: React.FC = () => {
                 <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-xl font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
                   Schedule Consultation
                 </button>
-                <button className="px-8 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105">
+                <button className={`px-8 py-4 border-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-700/50 border-blue-400 text-blue-400 hover:bg-slate-600/50' 
+                    : 'bg-white border-blue-600 text-blue-600 hover:bg-blue-50'
+                }`}>
                   View Our Services
                 </button>
               </div>
