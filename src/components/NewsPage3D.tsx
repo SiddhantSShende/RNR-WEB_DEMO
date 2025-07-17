@@ -399,29 +399,29 @@ const NewsPage3D: React.FC = () => {
       />
       
       {/* Navigation */}
-      <nav className="fixed top-4 left-4 right-4 z-20">
-        <div className="flex justify-between items-center">
+      <nav className="fixed top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 z-20">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
           <button
             onClick={() => window.history.back()}
-            className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
+            className={`flex items-center space-x-2 backdrop-blur-md border px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group w-full sm:w-auto justify-center sm:justify-start ${
               isDarkMode 
                 ? 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600' 
                 : 'bg-white/90 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
             }`}
           >
-            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
-            <span>Back to Home</span>
+            <ArrowLeft className="h-4 sm:h-5 w-4 sm:w-5 group-hover:-translate-x-1 transition-transform duration-300" />
+            <span className="text-sm sm:text-base">Back to Home</span>
           </button>
           
-          <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
+          <div className={`flex items-center space-x-2 sm:space-x-3 backdrop-blur-md border rounded-xl px-3 sm:px-4 py-2 shadow-lg ${
             isDarkMode 
               ? 'bg-slate-800/90 border-slate-700' 
               : 'bg-white/90 border-blue-200'
           }`}>
-            <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
-              <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+            <div className={`p-1 sm:p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
+              <img src="/rnr-logo.png" alt="RNR Consulting" className="h-4 sm:h-6 w-4 sm:w-6" />
             </div>
-            <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+            <span className={`text-sm sm:text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
               isDarkMode 
                 ? 'from-blue-400 to-blue-300' 
                 : 'from-blue-600 to-blue-800'
@@ -433,23 +433,23 @@ const NewsPage3D: React.FC = () => {
       </nav>
 
       {/* Content */}
-      <div className="relative z-10 pt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-10 pt-20 sm:pt-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-16">
           {/* Header */}
-          <div className="text-center mb-20">
-            <div className="flex justify-center mb-8">            <div className={`p-6 backdrop-blur-md border rounded-3xl shadow-lg ${
+          <div className="text-center mb-12 sm:mb-20">
+            <div className="flex justify-center mb-6 sm:mb-8">            <div className={`p-4 sm:p-6 backdrop-blur-md border rounded-2xl sm:rounded-3xl shadow-lg ${
               isDarkMode 
                 ? 'bg-slate-800/90 border-slate-700' 
                 : 'bg-white/90 border-blue-200'
             }`}>
-                <BookOpen className={`h-16 w-16 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <BookOpen className={`h-10 sm:h-16 w-10 sm:w-16 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800 bg-clip-text text-transparent px-2">
               News & Insights
             </h1>
-            <div className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed mb-12 ${
+            <div className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 px-4 ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
               Stay informed with the latest cybersecurity trends, threat intelligence, and industry insights 
@@ -457,44 +457,44 @@ const NewsPage3D: React.FC = () => {
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+            <div className="grid grid-cols-3 gap-2 sm:gap-8 max-w-2xl mx-auto px-2">
+              <div className={`text-center p-3 sm:p-6 backdrop-blur-sm rounded-xl sm:rounded-2xl border shadow-lg ${
                 isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-200'
               }`}>
-                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>50+</div>
-                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Expert Articles</div>
+                <div className={`text-xl sm:text-3xl font-bold mb-1 sm:mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>50+</div>
+                <div className={`text-xs sm:text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Expert Articles</div>
               </div>
-              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+              <div className={`text-center p-3 sm:p-6 backdrop-blur-sm rounded-xl sm:rounded-2xl border shadow-lg ${
                 isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-200'
               }`}>
-                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>10K+</div>
-                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Monthly Readers</div>
+                <div className={`text-xl sm:text-3xl font-bold mb-1 sm:mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>10K+</div>
+                <div className={`text-xs sm:text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Monthly Readers</div>
               </div>
-              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+              <div className={`text-center p-3 sm:p-6 backdrop-blur-sm rounded-xl sm:rounded-2xl border shadow-lg ${
                 isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-200'
               }`}>
-                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>Daily</div>
-                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Updates</div>
+                <div className={`text-xl sm:text-3xl font-bold mb-1 sm:mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>Daily</div>
+                <div className={`text-xs sm:text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Updates</div>
               </div>
             </div>
           </div>
 
           {/* Categories Filter Section */}
-          <div className="mb-16">
-            <div className={`backdrop-blur-md border rounded-2xl p-8 shadow-lg ${
+          <div className="mb-12 sm:mb-16">
+            <div className={`backdrop-blur-md border rounded-xl sm:rounded-2xl p-4 sm:p-8 shadow-lg ${
               isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
             }`}>
-              <div className="text-center mb-8">
-                <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Browse by Category</h2>
-                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Select a category to filter articles</p>
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className={`text-xl sm:text-2xl font-bold mb-2 sm:mb-4 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Browse by Category</h2>
+                <p className={`text-sm sm:text-base ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Select a category to filter articles</p>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
                 {categories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
-                    className={`flex flex-col items-center space-y-3 p-6 rounded-xl transition-all duration-300 ${
+                    className={`flex flex-col items-center space-y-2 sm:space-y-3 p-3 sm:p-6 rounded-lg sm:rounded-xl transition-all duration-300 ${
                       selectedCategory === category.id
                         ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg scale-105'
                         : isDarkMode
@@ -502,7 +502,7 @@ const NewsPage3D: React.FC = () => {
                           : 'bg-slate-50 text-slate-700 hover:bg-slate-100 hover:scale-105 border border-slate-200'
                     }`}
                   >
-                    <div className={`p-3 rounded-xl ${
+                    <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl ${
                       selectedCategory === category.id 
                         ? 'bg-white/20' 
                         : isDarkMode
@@ -511,19 +511,19 @@ const NewsPage3D: React.FC = () => {
                     }`}>
                       {React.cloneElement(category.icon, {
                         className: selectedCategory === category.id 
-                          ? 'h-6 w-6 text-white' 
+                          ? 'h-4 w-4 sm:h-6 sm:w-6 text-white' 
                           : isDarkMode
-                            ? 'h-6 w-6 text-blue-400'
-                            : 'h-6 w-6 text-blue-600'
+                            ? 'h-4 w-4 sm:h-6 sm:w-6 text-blue-400'
+                            : 'h-4 w-4 sm:h-6 sm:w-6 text-blue-600'
                       })}
                     </div>
-                    <span className="text-sm font-medium text-center">{category.name}</span>
+                    <span className="text-xs sm:text-sm font-medium text-center leading-tight">{category.name}</span>
                   </button>
                 ))}
               </div>
               
               {selectedCategory !== 'all' && (
-                <div className="text-center mt-6">
+                <div className="text-center mt-4 sm:mt-6">
                   <button
                     onClick={() => setSelectedCategory('all')}
                     className={`transition-colors text-sm font-medium ${
@@ -540,10 +540,10 @@ const NewsPage3D: React.FC = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="mb-16">
-            <div className="max-w-2xl mx-auto">
+          <div className="mb-12 sm:mb-16">
+            <div className="max-w-2xl mx-auto px-2">
               <div className="relative">
-                <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+                <Search className={`absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 ${
                   isDarkMode ? 'text-slate-400' : 'text-slate-500'
                 }`} />
                 <input
@@ -551,7 +551,7 @@ const NewsPage3D: React.FC = () => {
                   placeholder="Search articles, topics, or tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className={`w-full pl-12 pr-4 py-4 backdrop-blur-md border rounded-2xl focus:ring-2 outline-none transition-all shadow-lg text-lg ${
+                  className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 backdrop-blur-md border rounded-xl sm:rounded-2xl focus:ring-2 outline-none transition-all shadow-lg text-sm sm:text-lg ${
                     isDarkMode 
                       ? 'bg-slate-800/90 border-slate-700 text-slate-200 focus:border-blue-400 focus:ring-blue-400/20 placeholder-slate-400'
                       : 'bg-white/90 border-blue-200 text-slate-700 focus:border-blue-500 focus:ring-blue-500/20 placeholder-slate-500'
@@ -563,46 +563,46 @@ const NewsPage3D: React.FC = () => {
 
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
-            <div className="mb-20">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="p-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-white" />
+            <div className="mb-16 sm:mb-20">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-6 sm:mb-8 px-2">
+                <div className="p-1.5 sm:p-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg">
+                  <TrendingUp className="h-4 sm:h-6 w-4 sm:w-6 text-white" />
                 </div>
-                <h2 className={`text-3xl font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Featured Articles</h2>
+                <h2 className={`text-2xl sm:text-3xl font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Featured Articles</h2>
               </div>
               
-              <div className="grid lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
                 {featuredPosts.map((post) => (
-                  <div key={post.id} className={`group backdrop-blur-md border rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] h-full flex flex-col ${
+                  <div key={post.id} className={`group backdrop-blur-md border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] h-full flex flex-col ${
                     isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
                   }`}>
                     <div className="relative">
-                      <div className="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                        <BookOpen className="h-16 w-16 text-white opacity-30" />
+                      <div className="h-32 sm:h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <BookOpen className="h-8 sm:h-16 w-8 sm:w-16 text-white opacity-30" />
                       </div>
-                      <div className="absolute top-6 left-6">
-                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                      <div className="absolute top-3 sm:top-6 left-3 sm:left-6">
+                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">
                           ⭐ Featured
                         </span>
                       </div>
-                      <div className="absolute bottom-6 right-6">
-                        <div className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6">
+                        <div className="bg-white/20 backdrop-blur-sm text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                           {categories.find(c => c.id === post.category)?.name}
                         </div>
                       </div>
                     </div>
                     
-                    <div className="p-6 flex-1 flex flex-col">
+                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
                       {/* Date and Time Row */}
-                      <div className={`flex items-center justify-between mb-4 pb-3 border-b ${
+                      <div className={`flex items-center justify-between mb-3 sm:mb-4 pb-2 sm:pb-3 border-b ${
                         isDarkMode ? 'border-slate-600' : 'border-slate-200'
                       }`}>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2 sm:space-x-3">
                           <div className={`flex items-center space-x-1 ${
                             isDarkMode ? 'text-slate-400' : 'text-slate-500'
                           }`}>
-                            <Calendar className="h-4 w-4" />
-                            <span className="text-sm font-medium">{new Date(post.date).toLocaleDateString('en-US', { 
+                            <Calendar className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{new Date(post.date).toLocaleDateString('en-US', { 
                               month: 'short', 
                               day: 'numeric',
                               year: 'numeric'
@@ -611,25 +611,25 @@ const NewsPage3D: React.FC = () => {
                           <div className={`flex items-center space-x-1 ${
                             isDarkMode ? 'text-slate-400' : 'text-slate-500'
                           }`}>
-                            <Clock className="h-4 w-4" />
-                            <span className="text-sm font-medium">{post.readTime}</span>
+                            <Clock className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{post.readTime}</span>
                           </div>
                         </div>
-                        <div className={`flex items-center space-x-3 ${
+                        <div className={`flex items-center space-x-2 sm:space-x-3 ${
                           isDarkMode ? 'text-slate-400' : 'text-slate-500'
                         }`}>
                           <div className="flex items-center space-x-1 hover:text-red-500 transition-colors cursor-pointer">
-                            <Heart className="h-4 w-4" />
-                            <span className="text-sm font-medium">{post.likes}</span>
+                            <Heart className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{post.likes}</span>
                           </div>
                           <div className="flex items-center space-x-1 hover:text-blue-500 transition-colors cursor-pointer">
-                            <MessageCircle className="h-4 w-4" />
-                            <span className="text-sm font-medium">{post.comments}</span>
+                            <MessageCircle className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{post.comments}</span>
                           </div>
                         </div>
                       </div>
                       
-                      <h3 className={`text-xl font-bold mb-3 transition-colors leading-tight line-clamp-2 ${
+                      <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 transition-colors leading-tight line-clamp-2 ${
                         isDarkMode 
                           ? 'text-slate-200 group-hover:text-blue-400' 
                           : 'text-slate-800 group-hover:text-blue-700'
@@ -637,20 +637,20 @@ const NewsPage3D: React.FC = () => {
                         {post.title}
                       </h3>
                       
-                      <p className={`mb-4 leading-relaxed text-sm line-clamp-3 flex-1 ${
+                      <p className={`mb-3 sm:mb-4 leading-relaxed text-sm line-clamp-3 flex-1 ${
                         isDarkMode ? 'text-slate-300' : 'text-slate-600'
                       }`}>
                         {post.excerpt}
                       </p>
                       
                       {/* Author and Tags Row */}
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
                         <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-sm">
-                            <User className="h-4 w-4 text-white" />
+                          <div className="w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-sm">
+                            <User className="h-3 sm:h-4 w-3 sm:w-4 text-white" />
                           </div>
                           <div>
-                            <span className={`text-sm font-bold ${
+                            <span className={`text-xs sm:text-sm font-bold ${
                               isDarkMode ? 'text-slate-200' : 'text-slate-800'
                             }`}>{post.author.split(' ')[0]}</span>
                             <p className={`text-xs ${
@@ -675,9 +675,9 @@ const NewsPage3D: React.FC = () => {
                         </div>
                       </div>
                       
-                      <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 px-4 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg group">
+                      <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg group text-sm sm:text-base">
                         <span>Read More</span>
-                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="h-3 sm:h-4 w-3 sm:w-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   </div>
@@ -687,10 +687,10 @@ const NewsPage3D: React.FC = () => {
           )}
 
           {/* All Posts */}
-          <div className="mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className={`text-3xl font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Latest Articles</h2>
-              <div className={`px-4 py-2 rounded-full text-sm font-medium ${
+          <div className="mb-16 sm:mb-20">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4 px-2">
+              <h2 className={`text-2xl sm:text-3xl font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Latest Articles</h2>
+              <div className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium ${
                 isDarkMode ? 'bg-slate-700 text-slate-300' : 'bg-blue-100 text-blue-800'
               }`}>
                 Showing {filteredPosts.length} of {blogPosts.length} articles
@@ -698,20 +698,20 @@ const NewsPage3D: React.FC = () => {
             </div>
             
             {filteredPosts.length === 0 ? (
-              <div className="text-center py-20">
-                <div className="flex items-center justify-center mb-8">
-                  <div className={`p-6 rounded-3xl ${
+              <div className="text-center py-12 sm:py-20 px-4">
+                <div className="flex items-center justify-center mb-6 sm:mb-8">
+                  <div className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl ${
                     isDarkMode ? 'bg-slate-800' : 'bg-slate-100'
                   }`}>
-                    <Search className={`h-12 w-12 ${
+                    <Search className={`h-8 sm:h-12 w-8 sm:w-12 ${
                       isDarkMode ? 'text-slate-400' : 'text-slate-400'
                     }`} />
                   </div>
                 </div>
-                <h3 className={`text-2xl font-bold mb-4 ${
+                <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 ${
                   isDarkMode ? 'text-slate-300' : 'text-slate-700'
                 }`}>No articles found</h3>
-                <p className={`mb-8 text-lg ${
+                <p className={`mb-6 sm:mb-8 text-base sm:text-lg ${
                   isDarkMode ? 'text-slate-400' : 'text-slate-500'
                 }`}>
                   Try adjusting your search terms or filter criteria
@@ -721,37 +721,37 @@ const NewsPage3D: React.FC = () => {
                     setSearchQuery('');
                     setSelectedCategory('all');
                   }}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-2xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg text-sm sm:text-base"
                 >
                   Clear All Filters
                 </button>
               </div>
             ) : (
-              <div className="grid lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                 {filteredPosts.map((post) => (
-                  <div key={post.id} className={`group backdrop-blur-md border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] h-full flex flex-col ${
+                  <div key={post.id} className={`group backdrop-blur-md border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] h-full flex flex-col ${
                     isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
                   }`}>
-                    <div className="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center relative">
-                      <BookOpen className="h-16 w-16 text-white opacity-30" />
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <div className="h-32 sm:h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center relative">
+                      <BookOpen className="h-8 sm:h-16 w-8 sm:w-16 text-white opacity-30" />
+                      <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                        <span className="bg-white/20 backdrop-blur-sm text-white px-2 sm:px-3 py-1 rounded-full text-xs font-medium">
                           {categories.find(c => c.id === post.category)?.name}
                         </span>
                       </div>
                     </div>
                     
-                    <div className="p-6 flex-1 flex flex-col">
+                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
                       {/* Date and Time Row */}
-                      <div className={`flex items-center justify-between mb-4 pb-3 border-b ${
+                      <div className={`flex items-center justify-between mb-3 sm:mb-4 pb-2 sm:pb-3 border-b ${
                         isDarkMode ? 'border-slate-600' : 'border-slate-200'
                       }`}>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2 sm:space-x-3">
                           <div className={`flex items-center space-x-1 ${
                             isDarkMode ? 'text-slate-400' : 'text-slate-500'
                           }`}>
-                            <Calendar className="h-4 w-4" />
-                            <span className="text-sm font-medium">{new Date(post.date).toLocaleDateString('en-US', { 
+                            <Calendar className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{new Date(post.date).toLocaleDateString('en-US', { 
                               month: 'short', 
                               day: 'numeric',
                               year: 'numeric'
@@ -760,26 +760,26 @@ const NewsPage3D: React.FC = () => {
                           <div className={`flex items-center space-x-1 ${
                             isDarkMode ? 'text-slate-400' : 'text-slate-500'
                           }`}>
-                            <Clock className="h-4 w-4" />
-                            <span className="text-sm font-medium">{post.readTime}</span>
+                            <Clock className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{post.readTime}</span>
                           </div>
                         </div>
                         
-                        <div className={`flex items-center space-x-3 ${
+                        <div className={`flex items-center space-x-2 sm:space-x-3 ${
                           isDarkMode ? 'text-slate-400' : 'text-slate-500'
                         }`}>
                           <div className="flex items-center space-x-1 hover:text-red-500 transition-colors cursor-pointer">
-                            <Heart className="h-4 w-4" />
-                            <span className="text-sm font-medium">{post.likes}</span>
+                            <Heart className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{post.likes}</span>
                           </div>
                           <div className="flex items-center space-x-1 hover:text-blue-500 transition-colors cursor-pointer">
-                            <MessageCircle className="h-4 w-4" />
-                            <span className="text-sm font-medium">{post.comments}</span>
+                            <MessageCircle className="h-3 sm:h-4 w-3 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-medium">{post.comments}</span>
                           </div>
                         </div>
                       </div>
                       
-                      <h3 className={`text-xl font-bold mb-3 transition-colors leading-tight line-clamp-2 ${
+                      <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 transition-colors leading-tight line-clamp-2 ${
                         isDarkMode 
                           ? 'text-slate-200 group-hover:text-blue-400' 
                           : 'text-slate-800 group-hover:text-blue-700'
@@ -787,20 +787,20 @@ const NewsPage3D: React.FC = () => {
                         {post.title}
                       </h3>
                       
-                      <p className={`mb-4 leading-relaxed text-sm line-clamp-3 flex-1 ${
+                      <p className={`mb-3 sm:mb-4 leading-relaxed text-sm line-clamp-3 flex-1 ${
                         isDarkMode ? 'text-slate-300' : 'text-slate-600'
                       }`}>
                         {post.excerpt}
                       </p>
                       
                       {/* Author and Tags Row */}
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
                         <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-sm">
-                            <User className="h-4 w-4 text-white" />
+                          <div className="w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-sm">
+                            <User className="h-3 sm:h-4 w-3 sm:w-4 text-white" />
                           </div>
                           <div>
-                            <span className={`text-sm font-bold ${
+                            <span className={`text-xs sm:text-sm font-bold ${
                               isDarkMode ? 'text-slate-200' : 'text-slate-800'
                             }`}>{post.author.split(' ')[0]}</span>
                             <p className={`text-xs ${
@@ -834,9 +834,9 @@ const NewsPage3D: React.FC = () => {
                         </div>
                       </div>
                       
-                      <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 px-4 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg group">
+                      <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg group text-sm sm:text-base">
                         <span>Read More</span>
-                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="h-3 sm:h-4 w-3 sm:w-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   </div>
@@ -846,7 +846,7 @@ const NewsPage3D: React.FC = () => {
           </div>
 
           {/* Newsletter Signup */}
-          <div className={`border-2 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden ${
+          <div className={`border-2 rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center shadow-2xl relative overflow-hidden ${
             isDarkMode 
               ? 'bg-slate-800/90 border-slate-700' 
               : 'bg-white/90 border-blue-200'
@@ -857,40 +857,40 @@ const NewsPage3D: React.FC = () => {
               }`}></div>
             </div>
             <div className="relative z-10">
-              <div className="flex items-center justify-center mb-8">
-                <div className={`p-6 backdrop-blur-sm rounded-3xl shadow-lg border ${
+              <div className="flex items-center justify-center mb-6 sm:mb-8">
+                <div className={`p-4 sm:p-6 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-lg border ${
                   isDarkMode 
                     ? 'bg-slate-700/80 border-slate-600' 
                     : 'bg-blue-50 border-blue-200'
                 }`}>
-                  <Mail className={`h-12 w-12 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                  <Mail className={`h-8 sm:h-12 w-8 sm:w-12 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
                 </div>
               </div>
               
-              <h3 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>
+              <h3 className={`text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>
                 Stay Ahead of Threats
               </h3>
-              <p className={`text-xl mb-10 max-w-3xl mx-auto leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+              <p className={`text-base sm:text-xl mb-6 sm:mb-10 max-w-3xl mx-auto leading-relaxed px-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                 Subscribe to our newsletter and get the latest cybersecurity insights, threat intelligence, 
                 and industry news delivered directly to your inbox.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-lg mx-auto mb-4 sm:mb-6 px-2">
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className={`flex-1 px-6 py-4 border rounded-2xl focus:ring-2 outline-none transition-all text-lg ${
+                  className={`flex-1 px-4 sm:px-6 py-3 sm:py-4 border rounded-xl sm:rounded-2xl focus:ring-2 outline-none transition-all text-sm sm:text-lg ${
                     isDarkMode 
                       ? 'bg-slate-700/80 border-slate-600 text-slate-200 placeholder-slate-400 focus:border-blue-400 focus:ring-blue-400/20' 
                       : 'bg-slate-50 border-slate-200 text-slate-700 placeholder-slate-500 focus:border-blue-500 focus:ring-blue-500/20'
                   }`}
                 />
-                <button className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg hover:shadow-xl whitespace-nowrap">
+                <button className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg hover:shadow-xl whitespace-nowrap">
                   Subscribe Now
                 </button>
               </div>
               
-              <p className={`font-medium ${
+              <p className={`text-sm sm:text-base font-medium ${
                 isDarkMode ? 'text-slate-400' : 'text-slate-500'
               }`}>
                 Join 10,000+ cybersecurity professionals. Unsubscribe anytime.
