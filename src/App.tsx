@@ -120,7 +120,7 @@ function App() {
                         </div>
                       </div>
                     </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                    <Link to="/careers" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -336,7 +336,7 @@ function App() {
                       <span>Incident Response</span>
                     </div>
                   </Link>
-                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                  <Link to="/careers" className={`block py-2 text-sm transition-colors ${
                     isDarkMode 
                       ? 'text-slate-300 hover:text-blue-400' 
                       : 'text-slate-700 hover:text-blue-600'
