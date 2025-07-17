@@ -16,8 +16,10 @@ import {
   ChevronUp,
   Code
 } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const AboutUsPage3D: React.FC = () => {
+  const { isDarkMode } = useTheme();
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -430,13 +432,21 @@ const AboutUsPage3D: React.FC = () => {
           <div className="flex justify-between items-center">
             <button
               onClick={handleGoBack}
-              className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border border-blue-200 text-blue-700 px-6 py-3 rounded-xl font-medium hover:bg-white hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl group"
+              className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
+                isDarkMode 
+                  ? 'bg-slate-800/90 border-slate-600 text-slate-200 hover:bg-slate-700/90 hover:border-slate-500' 
+                  : 'bg-white/90 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
+              }`}
             >
               <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
               <span>Back to Home</span>
             </button>
             
-            <div className="flex items-center space-x-3 bg-white/90 backdrop-blur-md border border-blue-200 rounded-xl px-4 py-2 shadow-lg">
+            <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-600' 
+                : 'bg-white/90 border-blue-200'
+            }`}>
               <div className="p-2 bg-blue-100 rounded-lg">
                 <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
               </div>
@@ -453,7 +463,11 @@ const AboutUsPage3D: React.FC = () => {
             {/* Header */}
             <div className="text-center mb-20">
               <div className="flex items-center justify-center mb-8">
-                <div className="p-6 bg-white/85 backdrop-blur-md border border-blue-200 rounded-3xl shadow-lg">
+                <div className={`p-6 backdrop-blur-md border rounded-3xl shadow-lg ${
+                  isDarkMode 
+                    ? 'bg-slate-800/85 border-slate-600' 
+                    : 'bg-white/85 border-blue-200'
+                }`}>
                   <Users className="h-16 w-16 text-blue-600" />
                 </div>
               </div>
@@ -467,7 +481,11 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Vision, Mission, Goals */}
-            <div className="bg-white/85 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg mb-20">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+              isDarkMode 
+                ? 'bg-slate-800/85 border-slate-600' 
+                : 'bg-white/85 border-blue-200'
+            }`}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Our Foundation
@@ -495,7 +513,11 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Who We Are - Expandable Sections */}
-            <div className="bg-white/85 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg mb-20">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+              isDarkMode 
+                ? 'bg-slate-800/85 border-slate-600' 
+                : 'bg-white/85 border-blue-200'
+            }`}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Discover RNR Consulting
@@ -532,7 +554,11 @@ const AboutUsPage3D: React.FC = () => {
                         ? 'max-h-96 opacity-100' 
                         : 'max-h-0 opacity-0'
                     } overflow-hidden`}>
-                      <div className="p-6 bg-white border-t border-blue-100">
+                      <div className={`p-6 border-t ${
+                        isDarkMode 
+                          ? 'bg-slate-700 border-slate-600' 
+                          : 'bg-white border-blue-100'
+                      }`}>
                         <p className="text-slate-600 leading-relaxed">
                           {section.content}
                         </p>
@@ -544,7 +570,11 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Company Stats */}
-            <div className="bg-white/85 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg mb-20">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+              isDarkMode 
+                ? 'bg-slate-800/85 border-slate-600' 
+                : 'bg-white/85 border-blue-200'
+            }`}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Our Impact
@@ -568,7 +598,11 @@ const AboutUsPage3D: React.FC = () => {
             </div>
 
             {/* Core Competencies */}
-            <div className="bg-white/85 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg mb-20">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg mb-20 ${
+              isDarkMode 
+                ? 'bg-slate-800/85 border-slate-600' 
+                : 'bg-white/85 border-blue-200'
+            }`}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Core Competencies

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface Service {
   title: string;
@@ -100,6 +101,7 @@ const services: Service[] = [
 ];
 
 const ProfessionalServices: React.FC = () => {
+  const { isDarkMode } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -194,7 +196,11 @@ const ProfessionalServices: React.FC = () => {
 
       <section 
         ref={sectionRef}
-        className="relative bg-gradient-to-br from-white via-blue-50/30 to-blue-100/30"
+        className={`relative ${
+          isDarkMode 
+            ? 'bg-gradient-to-br from-slate-900 via-slate-800/30 to-slate-700/30' 
+            : 'bg-gradient-to-br from-white via-blue-50/30 to-blue-100/30'
+        }`}
         style={{ height: `${totalSlides * 100}vh` }} // Make section tall enough for all slides
       >
         <div className="sticky top-0 h-screen overflow-hidden">
@@ -203,11 +209,19 @@ const ProfessionalServices: React.FC = () => {
             <h2 className="text-2xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
               The Value We Provide
             </h2>
-            <div className="flex items-center justify-center space-x-2 text-slate-600 text-xs">
+            <div className={`flex items-center justify-center space-x-2 text-xs ${
+              isDarkMode ? 'text-slate-400' : 'text-slate-600'
+            }`}>
               <span>Keep scrolling to explore our services</span>
-              <div className="w-1 h-1 bg-slate-400 rounded-full animate-pulse"></div>
-              <div className="w-1 h-1 bg-slate-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-1 h-1 bg-slate-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className={`w-1 h-1 rounded-full animate-pulse ${
+                isDarkMode ? 'bg-slate-500' : 'bg-slate-400'
+              }`}></div>
+              <div className={`w-1 h-1 rounded-full animate-pulse ${
+                isDarkMode ? 'bg-slate-500' : 'bg-slate-400'
+              }`} style={{ animationDelay: '0.5s' }}></div>
+              <div className={`w-1 h-1 rounded-full animate-pulse ${
+                isDarkMode ? 'bg-slate-500' : 'bg-slate-400'
+              }`} style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
 
@@ -225,26 +239,41 @@ const ProfessionalServices: React.FC = () => {
                   className="w-full h-full flex items-center justify-center p-4"
                   style={{ width: `${100 / totalSlides}%` }}
                 >
-                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-8 w-full max-w-4xl text-center shadow-xl border border-blue-100/50 transform transition-all duration-600 hover:scale-105 hover:shadow-2xl">
+                  <div className={`backdrop-blur-md rounded-xl p-8 w-full max-w-4xl text-center shadow-xl border transform transition-all duration-600 hover:scale-105 hover:shadow-2xl ${
+                    isDarkMode 
+                      ? 'bg-slate-800/95 border-slate-700/50' 
+                      : 'bg-white/95 border-blue-100/50'
+                  }`}>
                     <div className="grid md:grid-cols-3 gap-6 items-center">
                       {/* Left: Title and Description */}
                       <div className="md:col-span-2 text-left">
-                        <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+                        <h3 className={`text-2xl font-semibold mb-4 ${
+                          isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                        }`}>
                           {service.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed mb-4 text-base">
+                        <p className={`leading-relaxed mb-4 text-base ${
+                          isDarkMode ? 'text-slate-300' : 'text-gray-600'
+                        }`}>
                           {service.description}
                         </p>
-                        <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-none py-2 px-6 rounded-full font-semibold cursor-pointer transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-1 uppercase tracking-wider text-sm">
+                        <Link 
+                          to="/compliance"
+                          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-none py-2 px-6 rounded-full font-semibold cursor-pointer transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-1 uppercase tracking-wider text-sm inline-block text-center"
+                        >
                           {service.buttonText}
-                        </button>
+                        </Link>
                       </div>
                       
                       {/* Right: Features */}
                       <div className="text-left">
-                        <h4 className="text-lg font-semibold text-gray-800 mb-3">Key Features</h4>
+                        <h4 className={`text-lg font-semibold mb-3 ${
+                          isDarkMode ? 'text-slate-200' : 'text-gray-800'
+                        }`}>Key Features</h4>
                         {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="text-gray-700 mb-2 text-sm leading-relaxed">
+                          <div key={featureIndex} className={`mb-2 text-sm leading-relaxed ${
+                            isDarkMode ? 'text-slate-300' : 'text-gray-700'
+                          }`}>
                             • {feature}
                           </div>
                         ))}
@@ -257,11 +286,6 @@ const ProfessionalServices: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Scroll indicator */}
-      <div className="fixed bottom-8 right-8 z-50 bg-white/95 backdrop-blur-md p-3 rounded-full shadow-lg border border-blue-100/50 text-blue-500 text-xl w-12 h-12 flex items-center justify-center">
-        <ChevronRight />
-      </div>
 
       {/* Progress bar */}
       <div 

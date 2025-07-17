@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Lock, Eye, Zap, Users, Award, Mail, Phone, MapPin, ChevronRight, Star, Search, ChevronDown, Moon, Sun } from 'lucide-react';
+import { Shield, Lock, Eye, Zap, Users, Award, Mail, Phone, MapPin, ChevronRight, Star, Search, ChevronDown, Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from './contexts/ThemeContext';
 import ParticleAnimation from './components/ParticleAnimation';
 import AnimatedContainer from './components/AnimatedContainer';
@@ -8,6 +8,8 @@ import ProfessionalServices from './components/ProfessionalServices';
 
 function App() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
@@ -24,6 +26,7 @@ function App() {
       }`}>
         <div className="px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
+            {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
               <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
                 isDarkMode ? 'bg-slate-700' : 'bg-white'
@@ -41,12 +44,6 @@ function App() {
             
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6">
-              <a href="#home" className={`font-medium transition-colors duration-300 ${
-                isDarkMode 
-                  ? 'text-slate-300 hover:text-blue-400' 
-                  : 'text-slate-700 hover:text-blue-600'
-              }`}>Home</a>
-              
               {/* Services Dropdown */}
               <div 
                 className="relative"
@@ -71,7 +68,7 @@ function App() {
                     : 'bg-white/90 border-white/30 shadow-blue-500/10'
                 }`}>
                   <div className="py-2">
-                    <a href="#threat-detection" className={`block px-4 py-3 transition-colors ${
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -83,8 +80,8 @@ function App() {
                           <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>AI-powered monitoring</div>
                         </div>
                       </div>
-                    </a>
-                    <a href="#data-encryption" className={`block px-4 py-3 transition-colors ${
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -96,8 +93,8 @@ function App() {
                           <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Military-grade security</div>
                         </div>
                       </div>
-                    </a>
-                    <a href="#security-audits" className={`block px-4 py-3 transition-colors ${
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -109,8 +106,8 @@ function App() {
                           <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Comprehensive assessments</div>
                         </div>
                       </div>
-                    </a>
-                    <a href="#incident-response" className={`block px-4 py-3 transition-colors ${
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -122,8 +119,8 @@ function App() {
                           <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>24/7 rapid response</div>
                         </div>
                       </div>
-                    </a>
-                    <a href="#security-training" className={`block px-4 py-3 transition-colors ${
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -135,8 +132,8 @@ function App() {
                           <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Employee education</div>
                         </div>
                       </div>
-                    </a>
-                    <a href="#compliance" className={`block px-4 py-3 transition-colors ${
+                    </Link>
+                    <Link to="/compliance" className={`block px-4 py-3 transition-colors ${
                       isDarkMode 
                         ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -148,41 +145,83 @@ function App() {
                           <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Regulatory standards</div>
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
               
-              <Link to="/compliance" className={`font-medium transition-colors duration-300 ${
-                isDarkMode 
-                  ? 'text-slate-300 hover:text-blue-400' 
-                  : 'text-slate-700 hover:text-blue-600'
-              }`}>Compliance</Link>
-              <Link to="/philosophy" className={`font-medium transition-colors duration-300 ${
-                isDarkMode 
-                  ? 'text-slate-300 hover:text-blue-400' 
-                  : 'text-slate-700 hover:text-blue-600'
-              }`}>Our Philosophy</Link>
-              <Link to="/about" className={`font-medium transition-colors duration-300 ${
-                isDarkMode 
-                  ? 'text-slate-300 hover:text-blue-400' 
-                  : 'text-slate-700 hover:text-blue-600'
-              }`}>About Us</Link>
-              <Link to="/team" className={`font-medium transition-colors duration-300 ${
-                isDarkMode 
-                  ? 'text-slate-300 hover:text-blue-400' 
-                  : 'text-slate-700 hover:text-blue-600'
-              }`}>Our Team</Link>
+              {/* About Us Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsAboutOpen(true)}
+                onMouseLeave={() => setIsAboutOpen(false)}
+              >
+                <button className={`flex items-center font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}>
+                  About Us
+                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isAboutOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {/* About Us Dropdown Menu */}
+                <div className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-md border rounded-xl shadow-lg transition-all duration-200 ${
+                  isAboutOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                } ${
+                  isDarkMode 
+                    ? 'bg-slate-800/90 border-slate-700/30 shadow-blue-900/10' 
+                    : 'bg-white/90 border-white/30 shadow-blue-500/10'
+                }`}>
+                  <div className="py-2">
+                    <Link to="/philosophy" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Award className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Our Philosophy</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Our core values & approach</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/team" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Users className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Our Team</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Meet our experts</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/news" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Eye className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">News & Blogs</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Latest insights & updates</div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
               <Link to="/careers" className={`font-medium transition-colors duration-300 ${
                 isDarkMode 
                   ? 'text-slate-300 hover:text-blue-400' 
                   : 'text-slate-700 hover:text-blue-600'
               }`}>Careers</Link>
-              <Link to="/news" className={`font-medium transition-colors duration-300 ${
-                isDarkMode 
-                  ? 'text-slate-300 hover:text-blue-400' 
-                  : 'text-slate-700 hover:text-blue-600'
-              }`}>News & Blogs</Link>
               <Link 
                 to="/contact"
                 className={`font-medium transition-all duration-300 hover:scale-105 transform ${
@@ -195,12 +234,12 @@ function App() {
               </Link>
             </div>
             
-            {/* Theme Toggle and Search */}
+            {/* Mobile and Desktop Actions */}
             <div className="flex items-center space-x-3">
               {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
-                className={`p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                className={`p-2 sm:p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
                   isDarkMode 
                     ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
                     : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
@@ -208,20 +247,188 @@ function App() {
                 aria-label="Toggle theme"
               >
                 {isDarkMode ? (
-                  <Sun className="h-5 w-5" />
+                  <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
                 ) : (
-                  <Moon className="h-5 w-5" />
+                  <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
                 )}
               </button>
               
-              {/* Search Button */}
-              <button className={`p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+              {/* Search Button - Hidden on small screens */}
+              <button className={`hidden sm:block p-2 sm:p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
                 isDarkMode 
                   ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
                   : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
               }`}>
-                <Search className="h-5 w-5" />
+                <Search className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
+
+              {/* Mobile Hamburger Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`lg:hidden p-2 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                  isDarkMode 
+                    ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                    : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+                }`}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className={`lg:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen 
+              ? 'max-h-screen opacity-100 visible' 
+              : 'max-h-0 opacity-0 invisible overflow-hidden'
+          }`}>
+            <div className="border-t border-slate-700/30 pt-4 pb-4 space-y-4">
+              {/* Services Section */}
+              <div className="space-y-2">
+                <div className={`font-semibold text-sm uppercase tracking-wide ${
+                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}>
+                  Services
+                </div>
+                <div className="pl-4 space-y-2">
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Shield className="h-4 w-4" />
+                      <span>Threat Detection</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Lock className="h-4 w-4" />
+                      <span>Data Encryption</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Eye className="h-4 w-4" />
+                      <span>Security Audits</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Zap className="h-4 w-4" />
+                      <span>Incident Response</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Users className="h-4 w-4" />
+                      <span>Security Training</span>
+                    </div>
+                  </Link>
+                  <Link to="/compliance" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Award className="h-4 w-4" />
+                      <span>Compliance</span>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* About Us Section */}
+              <div className="space-y-2">
+                <div className={`font-semibold text-sm uppercase tracking-wide ${
+                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}>
+                  About Us
+                </div>
+                <div className="pl-4 space-y-2">
+                  <Link to="/philosophy" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Award className="h-4 w-4" />
+                      <span>Our Philosophy</span>
+                    </div>
+                  </Link>
+                  <Link to="/team" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Users className="h-4 w-4" />
+                      <span>Our Team</span>
+                    </div>
+                  </Link>
+                  <Link to="/news" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Eye className="h-4 w-4" />
+                      <span>News & Blogs</span>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Main Navigation */}
+              <div className="space-y-2 border-t border-slate-700/30 pt-4">
+                <Link to="/careers" className={`block py-2 font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`} onClick={() => setIsMobileMenuOpen(false)}>
+                  Careers
+                </Link>
+                <Link to="/contact" className={`block py-2 font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`} onClick={() => setIsMobileMenuOpen(false)}>
+                  Contact Us
+                </Link>
+              </div>
+
+              {/* Mobile Search */}
+              <div className="border-t border-slate-700/30 pt-4">
+                <button className={`w-full flex items-center justify-center space-x-2 py-3 backdrop-blur-sm border rounded-xl transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80' 
+                    : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white'
+                }`}>
+                  <Search className="h-4 w-4" />
+                  <span className="text-sm font-medium">Search</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -263,16 +470,22 @@ function App() {
               </AnimatedContainer>
               <AnimatedContainer animation="slideUp" delay={400} duration={600}>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg shadow-blue-500/25 animate-glow">
+                  <Link 
+                    to="/contact"
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg shadow-blue-500/25 animate-glow"
+                  >
                     Start Protection <ChevronRight className="ml-2 h-5 w-5" />
-                  </button>
-                  <button className={`backdrop-blur-sm border-2 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
-                    isDarkMode 
-                      ? 'bg-slate-800/80 border-slate-600 text-blue-400 hover:bg-slate-700/80 hover:border-slate-500' 
-                      : 'bg-white/80 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
-                  }`}>
+                  </Link>
+                  <Link 
+                    to="/philosophy"
+                    className={`backdrop-blur-sm border-2 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
+                      isDarkMode 
+                        ? 'bg-slate-800/80 border-slate-600 text-blue-400 hover:bg-slate-700/80 hover:border-slate-500' 
+                        : 'bg-white/80 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
+                    }`}
+                  >
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </AnimatedContainer>
             </AnimatedContainer>
@@ -435,10 +648,16 @@ function App() {
                     key={index}
                     animation="bounceIn"
                     delay={index * 150}
-                    className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-blue-100 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105"
+                    className={`backdrop-blur-sm p-6 rounded-2xl border text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 ${
+                      isDarkMode 
+                        ? 'bg-slate-800/80 border-slate-700/50' 
+                        : 'bg-white/80 border-blue-100'
+                    }`}
                   >
                     <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                    <div className="text-slate-600 font-medium">{stat.label}</div>
+                    <div className={`font-medium ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>{stat.label}</div>
                   </AnimatedContainer>
                 ))}
               </div>

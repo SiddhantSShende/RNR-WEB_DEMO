@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
+import { useTheme } from '../contexts/ThemeContext';
 import {
   Briefcase,
   TrendingUp,
@@ -52,7 +53,7 @@ const careers = [
       'Excellent analytical and problem-solving skills',
       'Excellent written and verbal communication skills',
     ],
-    icon: <Shield className="h-6 w-6" />, color: 'bg-white',
+    icon: <Shield className="h-6 w-6" />, color: 'bg-slate-800',
   },
   {
     title: 'VAPT (Vulnerability Assessment and Penetration Testing) Analyst',
@@ -75,7 +76,7 @@ const careers = [
       'Excellent analytical and problem-solving skills',
       'Excellent written and verbal communication skills',
     ],
-    icon: <Code className="h-6 w-6" />, color: 'bg-white',
+    icon: <Code className="h-6 w-6" />, color: 'bg-slate-800',
   },
   {
     title: 'Cybersecurity Consultant',
@@ -98,7 +99,7 @@ const careers = [
       'Strong leadership and client communication skills',
       'Experience with compliance frameworks (ISO 27001, SOC 2, NIST)',
     ],
-    icon: <Brain className="h-6 w-6" />, color: 'bg-white',
+    icon: <Brain className="h-6 w-6" />, color: 'bg-slate-800',
   },
   {
     title: 'SOC (Security Operations Center) Analyst',
@@ -121,7 +122,7 @@ const careers = [
       'Strong analytical and attention to detail',
       'Ability to work in rotating shifts including nights and weekends',
     ],
-    icon: <Eye className="h-6 w-6" />, color: 'bg-white',
+    icon: <Eye className="h-6 w-6" />, color: 'bg-slate-800',
   },
   {
     title: 'Cloud Security Engineer',
@@ -144,7 +145,7 @@ const careers = [
       'Experience with container security and DevSecOps practices',
       'Proficiency in scripting languages (Python, PowerShell, Bash)',
     ],
-    icon: <Zap className="h-6 w-6" />, color: 'bg-white',
+    icon: <Zap className="h-6 w-6" />, color: 'bg-slate-800',
   },
   {
     title: 'Cybersecurity Intern',
@@ -167,13 +168,14 @@ const careers = [
       'Good communication and teamwork skills',
       'Any relevant certifications (Security+, Network+ a plus)',
     ],
-    icon: <Users className="h-6 w-6" />, color: 'bg-white',
+    icon: <Users className="h-6 w-6" />, color: 'bg-slate-800',
   },
 ];
 
 
 
 const CareersPage3D: React.FC = () => {
+  const { isDarkMode } = useTheme();
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -502,19 +504,19 @@ const CareersPage3D: React.FC = () => {
       icon: <TrendingUp className="h-8 w-8" />,
       title: "Growth",
       description: "Believe. Develop. Follow Growth Mindset.",
-      color: "bg-white"
+      color: "bg-slate-800"
     },
     {
       icon: <Eye className="h-8 w-8" />,
       title: "Transparency", 
       description: "Transparent approach across the channels",
-      color: "bg-white"
+      color: "bg-slate-800"
     },
     {
       icon: <Users className="h-8 w-8" />,
       title: "Zero Hierarchy",
       description: "Open communication and ease of access.",
-      color: "bg-white"
+      color: "bg-slate-800"
     }
   ];
 
@@ -629,7 +631,11 @@ const CareersPage3D: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
+        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
+    }`}>
       {/* Three.js Canvas */}
       <div ref={mountRef} className="fixed inset-0 z-0" />
       
@@ -640,17 +646,29 @@ const CareersPage3D: React.FC = () => {
           <div className="flex justify-between items-center">
             <button
               onClick={handleGoBack}
-              className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border border-blue-200 text-blue-700 px-6 py-3 rounded-xl font-medium hover:bg-white hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl group"
+              className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
+                isDarkMode 
+                  ? 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600' 
+                  : 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600'
+              }`}
             >
               <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
               <span>Back to Home</span>
             </button>
             
-            <div className="flex items-center space-x-3 bg-white/90 backdrop-blur-md border border-blue-200 rounded-xl px-4 py-2 shadow-lg">
-              <div className="p-2 bg-blue-100 rounded-lg">
+            <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-700' 
+                : 'bg-slate-800/90 border-slate-700'
+            }`}>
+              <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
                 <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+                isDarkMode 
+                  ? 'from-blue-400 to-blue-300' 
+                  : 'from-blue-600 to-blue-800'
+              }`}>
                 RNR Consulting
               </span>
             </div>
@@ -663,14 +681,24 @@ const CareersPage3D: React.FC = () => {
             {/* Header */}
             <div className="text-center mb-16">
               <div className="flex items-center justify-center mb-8">
-                <div className="p-6 bg-white/90 backdrop-blur-md border border-blue-200 rounded-3xl shadow-lg">
-                  <Briefcase className="h-16 w-16 text-blue-600" />
+                <div className={`p-6 backdrop-blur-md border rounded-3xl shadow-lg ${
+                  isDarkMode 
+                    ? 'bg-slate-800/90 border-slate-700' 
+                    : 'bg-white/90 border-blue-200'
+                }`}>
+                  <Briefcase className={`h-16 w-16 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
                 </div>
               </div>
-              <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 bg-clip-text text-transparent leading-tight">
+              <h1 className={`text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r bg-clip-text text-transparent leading-tight ${
+                isDarkMode 
+                  ? 'from-blue-400 via-blue-300 to-indigo-300' 
+                  : 'from-blue-600 via-blue-700 to-indigo-700'
+              }`}>
                 Join Our Mission
               </h1>
-              <p className="text-2xl md:text-3xl text-slate-600 mb-12 leading-relaxed max-w-4xl mx-auto">
+              <p className={`text-2xl md:text-3xl mb-12 leading-relaxed max-w-4xl mx-auto ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 Build the future of cybersecurity with us. Join a team of passionate professionals 
                 dedicated to protecting the digital world through innovation and excellence.
               </p>
@@ -678,13 +706,19 @@ const CareersPage3D: React.FC = () => {
 
             {/* Our Culture Section */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Our Culture</h2>
-                <p className="text-xl text-slate-600 mb-8">
+                <p className={`text-xl mb-8 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   The secret to retaining employees on board for extended periods of time is our office culture.
                 </p>
               </div>
@@ -695,16 +729,28 @@ const CareersPage3D: React.FC = () => {
                   {companyValues.map((value, index) => (
                     <div
                       key={index}
-                      className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 text-center group hover:scale-105 hover:border-sky-300"
+                      className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 text-center group hover:scale-105 ${
+                        isDarkMode 
+                          ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                          : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                      }`}
                       style={{
                         boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                       }}
                     >
-                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                        isDarkMode 
+                          ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                          : 'bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600'
+                      }`}>
                         {value.icon}
                       </div>
-                      <h4 className="text-2xl font-bold mb-4 text-slate-800">{value.title}</h4>
-                      <p className="text-slate-600 leading-relaxed">{value.description}</p>
+                      <h4 className={`text-2xl font-bold mb-4 ${
+                        isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                      }`}>{value.title}</h4>
+                      <p className={`leading-relaxed ${
+                        isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                      }`}>{value.description}</p>
                     </div>
                   ))}
                 </div>
@@ -713,16 +759,24 @@ const CareersPage3D: React.FC = () => {
 
             {/* Careers for Interns & Freshers Section */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Careers for Interns & Freshers</h2>
-                <p className="text-xl text-slate-600 mb-4">
+                <p className={`text-xl mb-4 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   The initial step in your professional life is to find suitable employment.
                 </p>
-                <p className="text-xl text-slate-600">
+                <p className={`text-xl ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Are you an Intern, Fresher or someone with a job gap, we are here to offer you an opportunity to work for our firm.
                 </p>
               </div>
@@ -731,18 +785,30 @@ const CareersPage3D: React.FC = () => {
                 {workEnvironmentFeatures.map((feature, index) => (
                   <div
                     key={index}
-                    className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                    className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                      isDarkMode 
+                        ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                        : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                    }`}
                     style={{
                       boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                     }}
                   >
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600 mb-6 shadow-lg">
+                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6 shadow-lg ${
+                      isDarkMode 
+                        ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                        : 'bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600'
+                    }`}>
                       {feature.icon}
                     </div>
-                    <h4 className="text-xl font-bold mb-4 text-slate-800">
+                    <h4 className={`text-xl font-bold mb-4 ${
+                      isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       {feature.title}
                     </h4>
-                    <p className="leading-relaxed text-slate-600">
+                    <p className={`leading-relaxed ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       {feature.description}
                     </p>
                   </div>
@@ -752,13 +818,19 @@ const CareersPage3D: React.FC = () => {
 
             {/* Perks and Benefits Section */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Perks & Benefits</h2>
-                <p className="text-xl text-slate-600">
+                <p className={`text-xl ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   We believe in taking care of our team with comprehensive benefits and exciting perks that support your personal and professional growth.
                 </p>
               </div>
@@ -767,7 +839,11 @@ const CareersPage3D: React.FC = () => {
                 {perksAndBenefits.map((perk, index) => (
                   <div
                     key={index}
-                    className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                    className={`backdrop-blur-md border rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                      isDarkMode 
+                        ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                        : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                    }`}
                     style={{
                       boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                     }}
@@ -775,10 +851,14 @@ const CareersPage3D: React.FC = () => {
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${perk.color} ${perk.iconColor} mb-4 shadow-lg`}>
                       {perk.icon}
                     </div>
-                    <h4 className="text-lg font-bold mb-3 text-slate-800">
+                    <h4 className={`text-lg font-bold mb-3 ${
+                      isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       {perk.title}
                     </h4>
-                    <p className="text-sm leading-relaxed text-slate-600">
+                    <p className={`text-sm leading-relaxed ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       {perk.description}
                     </p>
                   </div>
@@ -788,13 +868,19 @@ const CareersPage3D: React.FC = () => {
 
             {/* Company Information - Expandable Sections */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-8 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">About RNR Consulting</h2>
-                <p className="text-xl text-slate-600">
+                <p className={`text-xl ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Learn more about our company, values, and what makes us a great place to work.
                 </p>
               </div>
@@ -803,7 +889,11 @@ const CareersPage3D: React.FC = () => {
                 {expandableSections.map((section) => (
                   <div
                     key={section.id}
-                    className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-102 hover:border-sky-300"
+                    className={`backdrop-blur-md border rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-102 ${
+                      isDarkMode 
+                        ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                        : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                    }`}
                     style={{
                       boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                     }}
@@ -813,10 +903,16 @@ const CareersPage3D: React.FC = () => {
                       onClick={() => toggleSection(section.id)}
                     >
                       <div className="flex items-center space-x-4">
-                        <div className="p-3 bg-gradient-to-br from-sky-100 to-sky-200 rounded-xl text-sky-600 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <div className={`p-3 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                          isDarkMode 
+                            ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                            : 'bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600'
+                        }`}>
                           {section.icon}
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-800 group-hover:text-sky-700 transition-colors duration-300">
+                        <h3 className={`text-2xl font-bold group-hover:text-sky-700 transition-colors duration-300 ${
+                          isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                        }`}>
                           {section.title}
                         </h3>
                       </div>
@@ -831,8 +927,14 @@ const CareersPage3D: React.FC = () => {
                     
                     {expandedSection === section.id && (
                       <div className="px-8 pb-8">
-                        <div className="bg-gradient-to-br from-sky-50 to-sky-100 rounded-2xl p-6 shadow-inner">
-                          <p className="text-slate-700 text-lg leading-relaxed">
+                        <div className={`rounded-2xl p-6 shadow-inner ${
+                          isDarkMode 
+                            ? 'bg-gradient-to-br from-slate-700/50 to-slate-600/50' 
+                            : 'bg-gradient-to-br from-sky-50 to-sky-100'
+                        }`}>
+                          <p className={`text-lg leading-relaxed ${
+                            isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                          }`}>
                             {section.content}
                           </p>
                         </div>
@@ -845,28 +947,46 @@ const CareersPage3D: React.FC = () => {
 
             {/* Career Development & Growth Path */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Career Development</h2>
-                <p className="text-xl text-slate-600">
+                <p className={`text-xl ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Your growth is our priority. Discover the structured career paths and development opportunities that await you at RNR.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 mb-6 shadow-lg">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 shadow-lg ${
+                    isDarkMode 
+                      ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                      : 'bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600'
+                  }`}>
                     <GraduationCap className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-slate-800">Professional Certifications</h3>
-                  <ul className="space-y-3 text-slate-600">
+                  <h3 className={`text-2xl font-bold mb-4 ${
+                    isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                  }`}>Professional Certifications</h3>
+                  <ul className={`space-y-3 ${
+                    isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     <li className="flex items-start space-x-2">
                       <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                       <span>100% certification exam fee reimbursement</span>
@@ -886,16 +1006,28 @@ const CareersPage3D: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-100 to-green-200 text-green-600 mb-6 shadow-lg">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 shadow-lg ${
+                    isDarkMode 
+                      ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-green-400' 
+                      : 'bg-gradient-to-br from-green-100 to-green-200 text-green-600'
+                  }`}>
                     <TrendingUp className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-slate-800">Career Progression</h3>
-                  <ul className="space-y-3 text-slate-600">
+                  <h3 className={`text-2xl font-bold mb-4 ${
+                    isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                  }`}>Career Progression</h3>
+                  <ul className={`space-y-3 ${
+                    isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     <li className="flex items-start space-x-2">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                       <span>Clear promotion pathways and timelines</span>
@@ -915,16 +1047,28 @@ const CareersPage3D: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-200 text-purple-600 mb-6 shadow-lg">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 shadow-lg ${
+                    isDarkMode 
+                      ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-purple-400' 
+                      : 'bg-gradient-to-br from-purple-100 to-purple-200 text-purple-600'
+                  }`}>
                     <Users className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-slate-800">Mentorship Program</h3>
-                  <ul className="space-y-3 text-slate-600">
+                  <h3 className={`text-2xl font-bold mb-4 ${
+                    isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                  }`}>Mentorship Program</h3>
+                  <ul className={`space-y-3 ${
+                    isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     <li className="flex items-start space-x-2">
                       <CheckCircle className="h-5 w-5 text-purple-600 mt-0.5 flex-shrink-0" />
                       <span>Assigned senior mentor for each new hire</span>
@@ -944,16 +1088,28 @@ const CareersPage3D: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-200 text-orange-600 mb-6 shadow-lg">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 shadow-lg ${
+                    isDarkMode 
+                      ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-orange-400' 
+                      : 'bg-gradient-to-br from-orange-100 to-orange-200 text-orange-600'
+                  }`}>
                     <Target className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-slate-800">Skills Development</h3>
-                  <ul className="space-y-3 text-slate-600">
+                  <h3 className={`text-2xl font-bold mb-4 ${
+                    isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                  }`}>Skills Development</h3>
+                  <ul className={`space-y-3 ${
+                    isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     <li className="flex items-start space-x-2">
                       <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
                       <span>Annual learning and development budget</span>
@@ -977,19 +1133,29 @@ const CareersPage3D: React.FC = () => {
 
             {/* Employee Stories & Testimonials */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-12 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">What Our Team Says</h2>
-                <p className="text-xl text-slate-600">
+                <p className={`text-xl ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Hear from our employees about their experiences and growth at RNR Consulting.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
@@ -999,8 +1165,8 @@ const CareersPage3D: React.FC = () => {
                       S
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-800">Sarah Chen</h4>
-                      <p className="text-slate-600 text-sm">Senior Security Analyst</p>
+                      <h4 className={`font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Sarah Chen</h4>
+                      <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Senior Security Analyst</p>
                     </div>
                   </div>
                   <div className="flex mb-4">
@@ -1008,12 +1174,16 @@ const CareersPage3D: React.FC = () => {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-slate-600 leading-relaxed italic">
+                  <p className={`leading-relaxed italic ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                     "RNR has been instrumental in my career growth. The mentorship program and continuous learning opportunities have helped me advance from junior to senior level in just 3 years."
                   </p>
                 </div>
 
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
@@ -1023,8 +1193,8 @@ const CareersPage3D: React.FC = () => {
                       M
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-800">Marcus Johnson</h4>
-                      <p className="text-slate-600 text-sm">VAPT Lead</p>
+                      <h4 className={`font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Marcus Johnson</h4>
+                      <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>VAPT Lead</p>
                     </div>
                   </div>
                   <div className="flex mb-4">
@@ -1032,12 +1202,16 @@ const CareersPage3D: React.FC = () => {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-slate-600 leading-relaxed italic">
+                  <p className={`leading-relaxed italic ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                     "The work-life balance at RNR is exceptional. Remote work flexibility and unlimited PTO have allowed me to maintain a healthy balance while working on cutting-edge security projects."
                   </p>
                 </div>
 
-                <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-sky-300"
+                <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                    : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                }`}
                   style={{
                     boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                   }}
@@ -1047,8 +1221,8 @@ const CareersPage3D: React.FC = () => {
                       A
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-800">Aisha Patel</h4>
-                      <p className="text-slate-600 text-sm">Cloud Security Engineer</p>
+                      <h4 className={`font-bold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Aisha Patel</h4>
+                      <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Cloud Security Engineer</p>
                     </div>
                   </div>
                   <div className="flex mb-4">
@@ -1056,7 +1230,7 @@ const CareersPage3D: React.FC = () => {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-slate-600 leading-relaxed italic">
+                  <p className={`leading-relaxed italic ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                     "Starting as an intern and now leading cloud security projects - RNR truly invests in their people. The training budget and conference opportunities are incredible."
                   </p>
                 </div>
@@ -1065,13 +1239,19 @@ const CareersPage3D: React.FC = () => {
 
             {/* Open Positions */}
             <div className="mb-16">
-              <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-8 shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
+              <div className={`backdrop-blur-md border rounded-3xl p-8 shadow-xl mb-8 hover:shadow-2xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800/95 border-slate-700' 
+                  : 'bg-white/95 border-sky-200'
+              }`}
                 style={{
                   boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                 }}
               >
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Open Positions</h2>
-                <p className="text-xl text-slate-600">
+                <p className={`text-xl ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Explore exciting career opportunities and join our cybersecurity team.
                 </p>
               </div>
@@ -1080,7 +1260,11 @@ const CareersPage3D: React.FC = () => {
                 {careers.map((job, index) => (
                   <div
                     key={index}
-                    className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-102 hover:border-sky-300"
+                    className={`backdrop-blur-md border rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-102 ${
+                      isDarkMode 
+                        ? 'bg-slate-800/95 border-slate-700 hover:border-slate-600' 
+                        : 'bg-white/95 border-sky-200 hover:border-sky-300'
+                    }`}
                     style={{
                       boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
                     }}
@@ -1091,65 +1275,99 @@ const CareersPage3D: React.FC = () => {
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex items-start space-x-4">
-                          <div className="p-3 rounded-xl bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600 shadow-lg">
+                          <div className={`p-3 rounded-xl shadow-lg ${
+                            isDarkMode 
+                              ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                              : 'bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600'
+                          }`}>
                             {job.icon}
                           </div>
                           <div className="flex-1">
-                            <h3 className="text-2xl font-bold mb-2 text-slate-800">{job.title}</h3>
+                            <h3 className={`text-2xl font-bold mb-2 ${
+                              isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                            }`}>{job.title}</h3>
                             <div className="flex flex-wrap items-center gap-4 mb-3">
-                              <span className="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm">
+                              <span className={`px-3 py-1 rounded-full text-sm font-medium shadow-sm ${
+                                isDarkMode 
+                                  ? 'bg-blue-900/50 text-blue-300' 
+                                  : 'bg-sky-100 text-sky-700'
+                              }`}>
                                 {job.level}
                               </span>
-                              <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm">
+                              <span className={`px-3 py-1 rounded-full text-sm font-medium shadow-sm ${
+                                isDarkMode 
+                                  ? 'bg-green-900/50 text-green-300' 
+                                  : 'bg-emerald-100 text-emerald-700'
+                              }`}>
                                 {job.type}
                               </span>
-                              <span className="bg-violet-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm">
+                              <span className={`px-3 py-1 rounded-full text-sm font-medium shadow-sm ${
+                                isDarkMode 
+                                  ? 'bg-purple-900/50 text-purple-300' 
+                                  : 'bg-violet-100 text-violet-700'
+                              }`}>
                                 {job.location}
                               </span>
                             </div>
-                            <p className="text-slate-600 leading-relaxed text-lg">
+                            <p className={`leading-relaxed text-lg ${
+                              isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                            }`}>
                               {job.summary}
                             </p>
                           </div>
                         </div>
                         <div className="ml-4">
                           {expandedJobIndex === index ? (
-                            <ChevronUp className="h-6 w-6 text-sky-600" />
+                            <ChevronUp className={`h-6 w-6 ${isDarkMode ? 'text-blue-400' : 'text-sky-600'}`} />
                           ) : (
-                            <ChevronDown className="h-6 w-6 text-sky-600" />
+                            <ChevronDown className={`h-6 w-6 ${isDarkMode ? 'text-blue-400' : 'text-sky-600'}`} />
                           )}
                         </div>
                       </div>
                     </div>
 
                     {expandedJobIndex === index && (
-                      <div className="border-t border-sky-100 p-8 bg-gradient-to-br from-sky-50 to-sky-100">
+                      <div className={`border-t p-8 ${
+                        isDarkMode 
+                          ? 'border-slate-600 bg-gradient-to-br from-slate-700/50 to-slate-600/50' 
+                          : 'border-sky-100 bg-gradient-to-br from-sky-50 to-sky-100'
+                      }`}>
                         <div className="grid md:grid-cols-2 gap-8">
                           <div>
-                            <h4 className="text-xl font-bold mb-4 text-slate-800">Responsibilities:</h4>
+                            <h4 className={`text-xl font-bold mb-4 ${
+                              isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                            }`}>Responsibilities:</h4>
                             <ul className="space-y-2">
                               {job.responsibilities.map((responsibility, respIndex) => (
                                 <li key={respIndex} className="flex items-start space-x-2">
-                                  <CheckCircle className="h-5 w-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                                  <span className="text-slate-600">{responsibility}</span>
+                                  <CheckCircle className={`h-5 w-5 mt-0.5 flex-shrink-0 ${
+                                    isDarkMode ? 'text-emerald-400' : 'text-emerald-600'
+                                  }`} />
+                                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-600'}>{responsibility}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <h4 className="text-xl font-bold mb-4 text-slate-800">Qualifications:</h4>
+                            <h4 className={`text-xl font-bold mb-4 ${
+                              isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                            }`}>Qualifications:</h4>
                             <ul className="space-y-2">
                               {job.qualifications.map((qualification, qualIndex) => (
                                 <li key={qualIndex} className="flex items-start space-x-2">
-                                  <CheckCircle className="h-5 w-5 text-sky-600 mt-0.5 flex-shrink-0" />
-                                  <span className="text-slate-600">{qualification}</span>
+                                  <CheckCircle className={`h-5 w-5 mt-0.5 flex-shrink-0 ${
+                                    isDarkMode ? 'text-blue-400' : 'text-sky-600'
+                                  }`} />
+                                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-600'}>{qualification}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
                         </div>
                         <div className="mt-8 text-center">
-                          <p className="text-lg text-slate-700 mb-4">
+                          <p className={`text-lg mb-4 ${
+                            isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                          }`}>
                             If you are a highly motivated and experienced professional with a passion for protecting information assets, we encourage you to apply.
                           </p>
                           <button className="bg-gradient-to-r from-sky-500 to-sky-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-sky-600 hover:to-sky-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-sky-500/25 flex items-center space-x-2 mx-auto">
@@ -1165,16 +1383,26 @@ const CareersPage3D: React.FC = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-white/95 backdrop-blur-md border border-sky-200 rounded-3xl p-12 shadow-xl text-center hover:shadow-2xl transition-all duration-300"
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-xl text-center hover:shadow-2xl transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-slate-800/95 border-slate-700' 
+                : 'bg-white/95 border-sky-200'
+            }`}
               style={{
                 boxShadow: '0 10px 40px rgba(135, 206, 235, 0.3), 0 0 20px rgba(135, 206, 235, 0.1)',
               }}
             >
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600 mx-auto mb-6 shadow-lg">
+              <div className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl mx-auto mb-6 shadow-lg ${
+                isDarkMode 
+                  ? 'bg-gradient-to-br from-slate-700 to-slate-600 text-blue-400' 
+                  : 'bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600'
+              }`}>
                 <Building2 className="h-10 w-10" />
               </div>
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Ready to Shape the Future?</h2>
-              <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className={`text-xl mb-8 max-w-3xl mx-auto leading-relaxed ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 Join RNR Consulting and be part of a team that's defining the next generation of cybersecurity solutions.
                 Your expertise will help protect organizations worldwide from evolving digital threats.
               </p>

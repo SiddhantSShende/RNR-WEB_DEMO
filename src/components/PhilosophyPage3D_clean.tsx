@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
 import { Shield, Users, Target, Eye, Heart, Award, ArrowLeft, Lightbulb, CheckCircle, Globe, Zap, Star, Lock, Search, ChevronDown } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const PhilosophyPage3D: React.FC = () => {
+  const { isDarkMode } = useTheme();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -314,7 +316,11 @@ const PhilosophyPage3D: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' 
+        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
+    }`}>
       {/* Three.js Background */}
       <div 
         ref={mountRef} 
@@ -323,7 +329,11 @@ const PhilosophyPage3D: React.FC = () => {
       />
       
       {/* Navigation */}
-      <nav className="relative z-10 bg-white/80 backdrop-blur-md border-b border-blue-200 shadow-sm">
+      <nav className={`relative z-10 backdrop-blur-md border-b shadow-sm ${
+        isDarkMode 
+          ? 'bg-slate-800/80 border-slate-700' 
+          : 'bg-white/80 border-slate-200'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
@@ -336,35 +346,55 @@ const PhilosophyPage3D: React.FC = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+              <Link to="/" className={`transition-colors font-medium ${
+                isDarkMode ? 'text-slate-300 hover:text-blue-400' : 'text-slate-600 hover:text-blue-600'
+              }`}>
                 Home
               </Link>
               <div className="relative">
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="flex items-center space-x-1 text-slate-700 hover:text-blue-600 transition-colors font-medium"
+                  className={`flex items-center space-x-1 transition-colors font-medium ${
+                    isDarkMode ? 'text-slate-300 hover:text-blue-400' : 'text-slate-600 hover:text-blue-600'
+                  }`}
                 >
                   <span>Services</span>
                   <ChevronDown className="h-4 w-4" />
                 </button>
                 {isServicesOpen && (
-                  <div className="absolute top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-blue-100 py-2 z-50">
-                    <Link to="/compliance" className="block px-4 py-2 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                  <div className={`absolute top-full mt-2 w-48 rounded-xl shadow-xl border py-2 z-50 ${
+                    isDarkMode 
+                      ? 'bg-slate-800 border-slate-700' 
+                      : 'bg-white border-slate-200'
+                  }`}>
+                    <Link to="/compliance" className={`block px-4 py-2 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:bg-slate-700 hover:text-blue-400' 
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-blue-600'
+                    }`}>
                       Compliance
                     </Link>
-                    <Link to="/contact" className="block px-4 py-2 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <Link to="/contact" className={`block px-4 py-2 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:bg-slate-700 hover:text-blue-400' 
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-blue-600'
+                    }`}>
                       Contact
                     </Link>
                   </div>
                 )}
               </div>
-              <Link to="/philosophy" className="text-blue-600 font-semibold">
+              <Link to="/philosophy" className={`font-semibold ${
+                isDarkMode ? 'text-blue-400' : 'text-blue-600'
+              }`}>
                 Philosophy
               </Link>
             </div>
             
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-slate-600 hover:text-blue-600 transition-colors">
+              <button className={`p-2 transition-colors ${
+                isDarkMode ? 'text-slate-400 hover:text-blue-400' : 'text-slate-500 hover:text-blue-600'
+              }`}>
                 <Search className="h-5 w-5" />
               </button>
               <Link 
@@ -386,7 +416,9 @@ const PhilosophyPage3D: React.FC = () => {
             <div className="text-center">
               <Link 
                 to="/" 
-                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors mb-8 group"
+                className={`inline-flex items-center space-x-2 transition-colors mb-8 group ${
+                  isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'
+                }`}
               >
                 <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="font-medium">Back to Home</span>
@@ -395,19 +427,27 @@ const PhilosophyPage3D: React.FC = () => {
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 bg-clip-text text-transparent">
                 Our Philosophy
               </h1>
-              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 Guided by principles of integrity, excellence, and innovation, we shape the future of cybersecurity 
                 through values-driven solutions that protect what matters most.
               </p>
             </div>
 
             {/* Philosophy Pillars */}
-            <div className="bg-white/90 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-700' 
+                : 'bg-white/90 border-blue-200'
+            }`}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Our Guiding Principles
                 </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                <p className={`text-lg max-w-3xl mx-auto ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   These four pillars represent the foundation of our approach to cybersecurity consulting and the values that drive our commitment to excellence.
                 </p>
               </div>
@@ -415,14 +455,26 @@ const PhilosophyPage3D: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-12">
                 {philosophyPillars.map((pillar, index) => (
                   <div key={index} className="group">
-                    <div className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <div className={`p-8 rounded-2xl border hover:shadow-xl transition-all duration-300 hover:scale-105 ${
+                      isDarkMode 
+                        ? 'bg-gradient-to-br from-slate-700 to-slate-800 border-slate-600' 
+                        : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'
+                    }`}>
                       <div className={`p-4 bg-gradient-to-r ${pillar.color} rounded-2xl w-fit mb-6 text-white shadow-lg`}>
                         {pillar.icon}
                       </div>
-                      <h3 className="text-2xl font-bold mb-4 text-slate-800 group-hover:text-blue-700 transition-colors">
+                      <h3 className={`text-2xl font-bold mb-4 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-200 group-hover:text-blue-400' 
+                          : 'text-slate-800 group-hover:text-blue-600'
+                      }`}>
                         {pillar.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
+                      <p className={`leading-relaxed transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 group-hover:text-slate-200' 
+                          : 'text-slate-600 group-hover:text-slate-700'
+                      }`}>
                         {pillar.description}
                       </p>
                     </div>
@@ -432,12 +484,18 @@ const PhilosophyPage3D: React.FC = () => {
             </div>
 
             {/* Core Values */}
-            <div className="bg-white/90 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-700' 
+                : 'bg-white/90 border-blue-200'
+            }`}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                   Core Values
                 </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                <p className={`text-lg max-w-3xl mx-auto ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Our core values are not just words on a page—they are the fundamental beliefs that guide our actions, 
                   decisions, and relationships every single day.
                 </p>
@@ -446,13 +504,25 @@ const PhilosophyPage3D: React.FC = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {coreValues.map((value, index) => (
                   <div key={index} className="text-center group">
-                    <div className="p-6 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl mb-4 text-blue-600 w-fit mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className={`p-6 rounded-2xl mb-4 w-fit mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                      isDarkMode 
+                        ? 'bg-gradient-to-br from-slate-700 to-slate-800 text-blue-400' 
+                        : 'bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-600'
+                    }`}>
                       {value.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-slate-800 group-hover:text-blue-700 transition-colors">
+                    <h3 className={`text-xl font-semibold mb-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-200 group-hover:text-blue-400' 
+                        : 'text-slate-800 group-hover:text-blue-700'
+                    }`}>
                       {value.title}
                     </h3>
-                    <p className="text-slate-600 group-hover:text-slate-700 transition-colors">
+                    <p className={`transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 group-hover:text-slate-200' 
+                        : 'text-slate-600 group-hover:text-slate-700'
+                    }`}>
                       {value.description}
                     </p>
                   </div>
@@ -461,7 +531,11 @@ const PhilosophyPage3D: React.FC = () => {
             </div>
 
             {/* Vision Statement */}
-            <div className="bg-white/90 backdrop-blur-md border border-blue-200 rounded-3xl p-12 shadow-lg text-center">
+            <div className={`backdrop-blur-md border rounded-3xl p-12 shadow-lg text-center ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-700' 
+                : 'bg-white/90 border-blue-200'
+            }`}>
               <div className="flex items-center justify-center mb-8">
                 <div className="p-4 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl">
                   <Eye className="h-12 w-12 text-white" />
@@ -470,7 +544,9 @@ const PhilosophyPage3D: React.FC = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                 Our Vision
               </h2>
-              <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+              <p className={`text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 To be the global leader in cybersecurity innovation, setting new standards for digital protection 
                 and enabling a secure digital transformation for businesses worldwide.
               </p>
@@ -480,9 +556,15 @@ const PhilosophyPage3D: React.FC = () => {
                   { number: "Global", label: "Market Reach" },
                   { number: "Innovation", label: "Core Focus" }
                 ].map((item, index) => (
-                  <div key={index} className="p-6 bg-blue-50 rounded-2xl">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">{item.number}</div>
-                    <div className="text-slate-600 font-medium">{item.label}</div>
+                  <div key={index} className={`p-6 rounded-2xl ${
+                    isDarkMode ? 'bg-slate-700/60' : 'bg-blue-50'
+                  }`}>
+                    <div className={`text-2xl font-bold mb-2 ${
+                      isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                    }`}>{item.number}</div>
+                    <div className={`font-medium ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>{item.label}</div>
                   </div>
                 ))}
               </div>

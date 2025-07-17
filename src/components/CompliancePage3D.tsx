@@ -578,10 +578,18 @@ const CompliancePage3D: React.FC = () => {
                 Contact us today for a comprehensive compliance assessment.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button className={`px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${
+                  isDarkMode 
+                    ? 'bg-slate-800/90 text-blue-400 hover:bg-slate-700/90' 
+                    : 'bg-white text-blue-600 hover:bg-blue-50'
+                }`}>
                   Schedule Consultation
                 </button>
-                <button className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className={`backdrop-blur-sm border-2 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg ${
+                  isDarkMode 
+                    ? 'bg-slate-800/20 border-slate-400 text-slate-200 hover:bg-slate-700/30' 
+                    : 'bg-white/20 border-white text-white hover:bg-white/30'
+                }`}>
                   Download Compliance Guide
                 </button>
               </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { 
   Users, 
@@ -10,20 +11,7 @@ import {
   Star,
   Mail,
   Linkedin,
-  Github,
-  ExternalLink,
-  MapPin,
-  Calendar,
-  Coffee,
-  Code,
-  Zap,
   Lock,
-  Eye,
-  CheckCircle,
-  ChevronRight,
-  Heart,
-  Trophy,
-  Target,
   Briefcase,
   Building,
   Globe,
@@ -445,7 +433,11 @@ const TeamPage3D: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+    <div className={`min-h-screen transition-colors duration-300 relative overflow-hidden ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
+        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
+    }`}>
       {/* Three.js Background */}
       <div 
         ref={mountRef} 
@@ -458,17 +450,29 @@ const TeamPage3D: React.FC = () => {
         <div className="flex justify-between items-center">
           <button
             onClick={() => window.history.back()}
-            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border border-blue-200 text-blue-700 px-6 py-3 rounded-xl font-medium hover:bg-white hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600' 
+                : 'bg-white/90 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
+            }`}
           >
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
             <span>Back to Home</span>
           </button>
           
-          <div className="flex items-center space-x-3 bg-white/90 backdrop-blur-md border border-blue-200 rounded-xl px-4 py-2 shadow-lg">
-            <div className="p-2 bg-blue-100 rounded-lg">
+          <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
+            isDarkMode 
+              ? 'bg-slate-800/90 border-slate-700' 
+              : 'bg-white/90 border-blue-200'
+          }`}>
+            <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
               <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+              isDarkMode 
+                ? 'from-blue-400 to-blue-300' 
+                : 'from-blue-600 to-blue-800'
+            }`}>
               RNR Consulting
             </span>
           </div>
@@ -481,36 +485,50 @@ const TeamPage3D: React.FC = () => {
           {/* Header */}
           <div className="text-center mb-20">
             <div className="flex justify-center mb-8">
-              <div className="p-6 bg-white/90 backdrop-blur-md border border-blue-200 rounded-3xl shadow-lg">
-                <Users className="h-16 w-16 text-blue-600" />
+              <div className={`p-6 backdrop-blur-md border rounded-3xl shadow-lg ${
+                isDarkMode 
+                  ? 'bg-slate-800/90 border-slate-700' 
+                  : 'bg-white/90 border-blue-200'
+              }`}>
+                <Users className={`h-16 w-16 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
               </div>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800 bg-clip-text text-transparent">
               Our Expert Team
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-12">
+            <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed mb-12 ${
+              isDarkMode ? 'text-slate-300' : 'text-slate-600'
+            }`}>
               Meet our world-class cybersecurity professionals who bring decades of combined experience 
               in protecting organizations from evolving digital threats.
             </p>
             
             {/* Team Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">9</div>
-                <div className="text-sm text-slate-600 font-medium">Core Team Members</div>
+              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+                isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-100'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>9</div>
+                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Core Team Members</div>
               </div>
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">100+</div>
-                <div className="text-sm text-slate-600 font-medium">Years Combined Experience</div>
+              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+                isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-100'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>100+</div>
+                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Years Combined Experience</div>
               </div>
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
-                <div className="text-sm text-slate-600 font-medium">Industry Certifications</div>
+              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+                isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-100'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>50+</div>
+                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Industry Certifications</div>
               </div>
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">1000+</div>
-                <div className="text-sm text-slate-600 font-medium">Clients Protected</div>
+              <div className={`text-center p-6 backdrop-blur-sm rounded-2xl border shadow-lg ${
+                isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white/80 border-blue-100'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>1000+</div>
+                <div className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Clients Protected</div>
               </div>
             </div>
           </div>
@@ -520,7 +538,9 @@ const TeamPage3D: React.FC = () => {
             {teamMembers.map((member, index) => (
               <div 
                 key={member.id} 
-                className="group bg-white/90 backdrop-blur-md border border-blue-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
+                className={`group backdrop-blur-md border rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] ${
+                  isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
+                }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Profile Header */}
@@ -544,26 +564,34 @@ const TeamPage3D: React.FC = () => {
                 <div className="p-6">
                   {/* Name and Role */}
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-slate-800 mb-2 group-hover:text-blue-700 transition-colors">
+                    <h3 className={`text-2xl font-bold mb-2 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-200 group-hover:text-blue-400' 
+                        : 'text-slate-800 group-hover:text-blue-700'
+                    }`}>
                       {member.name}
                     </h3>
-                    <p className="text-blue-600 font-semibold text-lg mb-1">{member.role}</p>
-                    <p className="text-slate-500 text-sm">{member.education}</p>
+                    <p className={`font-semibold text-lg mb-1 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>{member.role}</p>
+                    <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>{member.education}</p>
                   </div>
 
                   {/* Bio */}
-                  <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+                  <p className={`mb-4 text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                     {member.bio}
                   </p>
 
                   {/* Expertise Tags */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-slate-700 mb-2">Core Expertise</h4>
+                    <h4 className={`text-sm font-semibold mb-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>Core Expertise</h4>
                     <div className="flex flex-wrap gap-1">
                       {member.expertise.map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium"
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            isDarkMode
+                              ? 'bg-slate-700 text-blue-400'
+                              : 'bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800'
+                          }`}
                         >
                           {skill}
                         </span>
@@ -573,12 +601,16 @@ const TeamPage3D: React.FC = () => {
 
                   {/* Specialties */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-slate-700 mb-2">Specialties</h4>
+                    <h4 className={`text-sm font-semibold mb-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>Specialties</h4>
                     <div className="flex flex-wrap gap-1">
                       {member.specialties.map((specialty, specIndex) => (
                         <span
                           key={specIndex}
-                          className="bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium"
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            isDarkMode
+                              ? 'bg-slate-600 text-indigo-400'
+                              : 'bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-800'
+                          }`}
                         >
                           {specialty}
                         </span>
@@ -588,26 +620,40 @@ const TeamPage3D: React.FC = () => {
 
                   {/* Achievements */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-slate-700 mb-2">Key Achievements</h4>
+                    <h4 className={`text-sm font-semibold mb-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>Key Achievements</h4>
                     <div className="space-y-1">
                       {member.achievements.map((achievement, achIndex) => (
                         <div key={achIndex} className="flex items-center space-x-2">
                           <Star className="h-3 w-3 text-yellow-500 fill-current" />
-                          <span className="text-xs text-slate-600">{achievement}</span>
+                          <span className={`text-xs ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{achievement}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Social Links */}
-                  <div className="flex justify-center space-x-4 pt-4 border-t border-slate-200">
-                    <button className="p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors">
+                  <div className={`flex justify-center space-x-4 pt-4 border-t ${
+                    isDarkMode ? 'border-slate-600' : 'border-slate-200'
+                  }`}>
+                    <button className={`p-2 rounded-lg transition-colors ${
+                      isDarkMode 
+                        ? 'bg-slate-700 hover:bg-slate-600 text-blue-400' 
+                        : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
+                    }`}>
                       <Mail className="h-4 w-4" />
                     </button>
-                    <button className="p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors">
+                    <button className={`p-2 rounded-lg transition-colors ${
+                      isDarkMode 
+                        ? 'bg-slate-700 hover:bg-slate-600 text-blue-400' 
+                        : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
+                    }`}>
                       <Linkedin className="h-4 w-4" />
                     </button>
-                    <button className="p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors">
+                    <button className={`p-2 rounded-lg transition-colors ${
+                      isDarkMode 
+                        ? 'bg-slate-700 hover:bg-slate-600 text-blue-400' 
+                        : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
+                    }`}>
                       <Twitter className="h-4 w-4" />
                     </button>
                   </div>
@@ -619,8 +665,8 @@ const TeamPage3D: React.FC = () => {
           {/* Team Departments */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-800 mb-4">Organizational Structure</h2>
-              <p className="text-slate-600 text-lg">Our team is organized into specialized departments for maximum efficiency</p>
+              <h2 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Organizational Structure</h2>
+              <p className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Our team is organized into specialized departments for maximum efficiency</p>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -664,22 +710,28 @@ const TeamPage3D: React.FC = () => {
               ].map((dept, index) => (
                 <div
                   key={index}
-                  className="bg-white/90 backdrop-blur-md border border-blue-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group"
+                  className={`backdrop-blur-md border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group ${
+                    isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
+                  }`}
                 >
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="p-3 bg-blue-50 rounded-xl text-blue-600 group-hover:bg-blue-100 transition-colors">
+                    <div className={`p-3 rounded-xl transition-colors ${
+                      isDarkMode 
+                        ? 'bg-slate-700 text-blue-400 group-hover:bg-slate-600' 
+                        : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'
+                    }`}>
                       {dept.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-800">{dept.name}</h3>
-                      <p className="text-slate-600 text-sm">{dept.description}</p>
+                      <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>{dept.name}</h3>
+                      <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{dept.description}</p>
                     </div>
                   </div>
                   <div className="space-y-2">
                     {dept.members.map((member, memberIndex) => (
                       <div key={memberIndex} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span className="text-sm text-slate-700">{member}</span>
+                        <div className={`w-2 h-2 rounded-full ${isDarkMode ? 'bg-blue-400' : 'bg-blue-500'}`}></div>
+                        <span className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>{member}</span>
                       </div>
                     ))}
                   </div>
@@ -689,29 +741,45 @@ const TeamPage3D: React.FC = () => {
           </div>
 
           {/* Contact CTA */}
-          <div className="bg-white border-2 border-blue-100 rounded-3xl p-12 text-center shadow-2xl">
+          <div className={`border-2 rounded-3xl p-12 text-center shadow-2xl ${
+            isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white border-blue-100'
+          }`}>
             <div className="max-w-3xl mx-auto">
               <div className="flex justify-center mb-8">
-                <div className="p-6 bg-blue-50 rounded-3xl shadow-lg border border-blue-100">
-                  <Briefcase className="h-12 w-12 text-blue-600" />
+                <div className={`p-6 rounded-3xl shadow-lg border ${
+                  isDarkMode 
+                    ? 'bg-slate-700 border-slate-600' 
+                    : 'bg-blue-50 border-blue-100'
+                }`}>
+                  <Briefcase className={`h-12 w-12 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
                 </div>
               </div>
               
-              <h3 className="text-4xl font-bold mb-6 text-slate-800">
+              <h3 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>
                 Ready to Work with Our Team?
               </h3>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+              <p className={`text-xl mb-8 leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                 Our experts are ready to help secure your organization. Get in touch to discuss 
                 your cybersecurity needs and learn how we can protect your digital assets.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <Link 
+                  to="/contact"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg hover:shadow-xl text-center"
+                >
                   Schedule Consultation
-                </button>
-                <button className="bg-white border-2 border-blue-200 text-blue-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl">
+                </Link>
+                <Link 
+                  to="/compliance"
+                  className={`border-2 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-200 shadow-lg hover:shadow-xl text-center ${
+                    isDarkMode 
+                      ? 'bg-slate-700/50 border-slate-600 text-slate-200 hover:bg-slate-600/50' 
+                      : 'bg-white border-blue-200 text-blue-600 hover:bg-blue-50'
+                  }`}
+                >
                   View Services
-                </button>
+                </Link>
               </div>
             </div>
           </div>
