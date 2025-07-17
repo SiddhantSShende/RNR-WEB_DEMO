@@ -649,7 +649,7 @@ const CareersPage3D: React.FC = () => {
               className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
                 isDarkMode 
                   ? 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600' 
-                  : 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600'
+                  : 'bg-white/90 border-sky-200 text-blue-600 hover:bg-white/95 hover:border-sky-300'
               }`}
             >
               <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
@@ -659,7 +659,7 @@ const CareersPage3D: React.FC = () => {
             <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
               isDarkMode 
                 ? 'bg-slate-800/90 border-slate-700' 
-                : 'bg-slate-800/90 border-slate-700'
+                : 'bg-white/90 border-sky-200'
             }`}>
               <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
                 <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
