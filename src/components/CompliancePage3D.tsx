@@ -1,15 +1,24 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
-import { Shield, ArrowLeft, Award, FileText, Lock, CheckCircle, Building, CreditCard, Database, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  Shield, Award, FileText, Lock, CheckCircle, Building, CreditCard, Database, Globe,
+  Menu, X, Search, Sun, Moon, ChevronDown, Users, Eye, Zap
+} from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const CompliancePage3D: React.FC = () => {
-  const { isDarkMode } = useTheme();
+  const { isDarkMode, toggleTheme } = useTheme();
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationRef = useRef<number | null>(null);
+
+  // Navigation state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -314,10 +323,6 @@ const CompliancePage3D: React.FC = () => {
     };
   }, []);
 
-  const handleGoBack = () => {
-    window.history.back();
-  };
-
   const complianceStandards = [
     {
       icon: <FileText className="h-12 w-12" />,
@@ -395,36 +400,427 @@ const CompliancePage3D: React.FC = () => {
       
       {/* Content Overlay */}
       <div className="relative z-10 min-h-screen">
-        {/* Navigation */}
-        <nav className="fixed top-4 left-4 right-4 z-20">
-          <div className="flex justify-between items-center">
-            <button
-              onClick={handleGoBack}
-              className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl group ${
-                isDarkMode 
-                  ? 'bg-slate-800/90 border-slate-700 text-blue-400 hover:bg-slate-700/90 hover:border-slate-600' 
-                  : 'bg-white/90 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
-              }`}
-            >
-              <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-300" />
-              <span>Back to Home</span>
-            </button>
-            
-            <div className={`flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2 shadow-lg ${
-              isDarkMode 
-                ? 'bg-slate-800/90 border-slate-700' 
-                : 'bg-white/90 border-blue-200'
-            }`}>
-              <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-blue-100'}`}>
-                <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+        {/* Main Navigation Bar */}
+        <nav className={`fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-7xl backdrop-blur-md border rounded-2xl z-50 shadow-lg transition-colors duration-300 ${
+          isDarkMode 
+            ? 'bg-slate-800/20 border-slate-700/30 shadow-blue-900/10' 
+            : 'bg-white/20 border-white/30 shadow-blue-500/10'
+        }`}>
+          <div className="px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              {/* Logo and Brand */}
+              <div className="flex items-center space-x-3">
+                <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
+                  isDarkMode ? 'bg-slate-700' : 'bg-white'
+                }`}>
+                  <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+                </div>
+                <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'from-blue-400 to-blue-300' 
+                    : 'from-blue-600 to-blue-800'
+                }`}>
+                  RNR Consulting
+                </span>
               </div>
-              <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
-                isDarkMode 
-                  ? 'from-blue-400 to-blue-300' 
-                  : 'from-blue-600 to-blue-800'
-              }`}>
-                RNR Consulting
-              </span>
+              
+              {/* Desktop Navigation */}
+              <div className="hidden lg:flex items-center space-x-6">
+                {/* Home Link */}
+                <Link to="/" className={`font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}>Home</Link>
+                
+                {/* Services Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  <button className={`flex items-center font-medium transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`}>
+                    Services
+                    <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Dropdown Menu */}
+                  <div className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-md border rounded-xl shadow-lg transition-all duration-200 ${
+                    isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                  } ${
+                    isDarkMode 
+                      ? 'bg-slate-800/90 border-slate-700/30 shadow-blue-900/10' 
+                      : 'bg-white/90 border-white/30 shadow-blue-500/10'
+                  }`}>
+                    <div className="py-2">
+                      <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Shield className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Threat Detection</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>AI-powered monitoring</div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Lock className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Data Encryption</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Military-grade security</div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Eye className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Security Audits</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Comprehensive assessments</div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Zap className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Incident Response</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>24/7 rapid response</div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="/careers" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Users className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Security Training</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Employee education</div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="/compliance" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Award className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Compliance</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Regulatory standards</div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* About Us Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setIsAboutOpen(true)}
+                  onMouseLeave={() => setIsAboutOpen(false)}
+                >
+                  <button className={`flex items-center font-medium transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`}>
+                    About Us
+                    <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isAboutOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* About Us Dropdown Menu */}
+                  <div className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-md border rounded-xl shadow-lg transition-all duration-200 ${
+                    isAboutOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                  } ${
+                    isDarkMode 
+                      ? 'bg-slate-800/90 border-slate-700/30 shadow-blue-900/10' 
+                      : 'bg-white/90 border-white/30 shadow-blue-500/10'
+                  }`}>
+                    <div className="py-2">
+                      <Link to="/philosophy" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Award className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Our Philosophy</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Our core values & approach</div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="/team" className={`block px-4 py-3 transition-colors ${
+                        isDarkMode 
+                          ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                      }`}>
+                        <div className="flex items-center space-x-3">
+                          <Users className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">Our Team</div>
+                            <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Meet our experts</div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* News & Blogs Link */}
+                <Link to="/news" className={`font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}>News & Blogs</Link>
+                
+                <Link to="/careers" className={`font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}>Careers</Link>
+                <Link 
+                  to="/contact"
+                  className={`font-medium transition-all duration-300 hover:scale-105 transform ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`}
+                >
+                  Contact Us
+                </Link>
+              </div>
+              
+              {/* Mobile and Desktop Actions */}
+              <div className="flex items-center space-x-3">
+                {/* Theme Toggle Button */}
+                <button
+                  onClick={toggleTheme}
+                  className={`p-2 sm:p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                    isDarkMode 
+                      ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                      : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+                  }`}
+                  aria-label="Toggle theme"
+                >
+                  {isDarkMode ? (
+                    <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
+                  ) : (
+                    <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  )}
+                </button>
+                
+                {/* Search Button - Hidden on small screens */}
+                <button className={`hidden sm:block p-2 sm:p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                  isDarkMode 
+                    ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                    : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+                }`}>
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5" />
+                </button>
+
+                {/* Mobile Hamburger Menu Button */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className={`lg:hidden p-2 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                    isDarkMode 
+                      ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                      : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+                  }`}
+                  aria-label="Toggle mobile menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="h-5 w-5" />
+                  ) : (
+                    <Menu className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className={`lg:hidden transition-all duration-300 ease-in-out ${
+              isMobileMenuOpen 
+                ? 'max-h-screen opacity-100 visible' 
+                : 'max-h-0 opacity-0 invisible overflow-hidden'
+            }`}>
+              <div className="border-t border-slate-700/30 pt-4 pb-4 space-y-4">
+                {/* Home Link */}
+                <div className="space-y-2">
+                  <Link to="/" className={`block py-2 font-medium transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    Home
+                  </Link>
+                </div>
+                
+                {/* Services Section */}
+                <div className="space-y-2">
+                  <div className={`font-semibold text-sm uppercase tracking-wide ${
+                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                  }`}>
+                    Services
+                  </div>
+                  <div className="pl-4 space-y-2">
+                    <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Shield className="h-4 w-4" />
+                        <span>Threat Detection</span>
+                      </div>
+                    </Link>
+                    <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Lock className="h-4 w-4" />
+                        <span>Data Encryption</span>
+                      </div>
+                    </Link>
+                    <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Eye className="h-4 w-4" />
+                        <span>Security Audits</span>
+                      </div>
+                    </Link>
+                    <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Zap className="h-4 w-4" />
+                        <span>Incident Response</span>
+                      </div>
+                    </Link>
+                    <Link to="/careers" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Users className="h-4 w-4" />
+                        <span>Security Training</span>
+                      </div>
+                    </Link>
+                    <Link to="/compliance" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Award className="h-4 w-4" />
+                        <span>Compliance</span>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* About Us Section */}
+                <div className="space-y-2">
+                  <div className={`font-semibold text-sm uppercase tracking-wide ${
+                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                  }`}>
+                    About Us
+                  </div>
+                  <div className="pl-4 space-y-2">
+                    <Link to="/philosophy" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Award className="h-4 w-4" />
+                        <span>Our Philosophy</span>
+                      </div>
+                    </Link>
+                    <Link to="/team" className={`block py-2 text-sm transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400' 
+                        : 'text-slate-700 hover:text-blue-600'
+                    }`} onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="flex items-center space-x-2">
+                        <Users className="h-4 w-4" />
+                        <span>Our Team</span>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Main Navigation */}
+                <div className="space-y-2 border-t border-slate-700/30 pt-4">
+                  <Link to="/news" className={`block py-2 font-medium transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    News & Blogs
+                  </Link>
+                  <Link to="/careers" className={`block py-2 font-medium transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    Careers
+                  </Link>
+                  <Link to="/contact" className={`block py-2 font-medium transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    Contact Us
+                  </Link>
+                </div>
+
+                {/* Mobile Search */}
+                <div className="border-t border-slate-700/30 pt-4">
+                  <button className={`w-full flex items-center justify-center space-x-2 py-3 backdrop-blur-sm border rounded-xl transition-all duration-300 ${
+                    isDarkMode 
+                      ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80' 
+                      : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white'
+                  }`}>
+                    <Search className="h-4 w-4" />
+                    <span className="text-sm font-medium">Search</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </nav>
