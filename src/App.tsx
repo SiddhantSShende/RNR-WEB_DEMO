@@ -477,7 +477,7 @@ function App() {
                     Start Protection <ChevronRight className="ml-2 h-5 w-5" />
                   </Link>
                   <Link 
-                    to="/philosophy"
+                    to="/about"
                     className={`backdrop-blur-sm border-2 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
                       isDarkMode 
                         ? 'bg-slate-800/80 border-slate-600 text-blue-400 hover:bg-slate-700/80 hover:border-slate-500' 

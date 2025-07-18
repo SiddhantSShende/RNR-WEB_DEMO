@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
+import { Link } from 'react-router-dom';
 import { 
   Users, 
   Award, 
@@ -734,16 +735,22 @@ const AboutUsPage3D: React.FC = () => {
                 Let's build a more secure tomorrow together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-xl font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Link 
+                  to="/contact"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-xl font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105 inline-block text-center"
+                >
                   Schedule Consultation
-                </button>
-                <button className={`px-8 py-4 border-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
-                  isDarkMode 
-                    ? 'bg-slate-700/50 border-blue-400 text-blue-400 hover:bg-slate-600/50' 
-                    : 'bg-white border-blue-600 text-blue-600 hover:bg-blue-50'
-                }`}>
+                </Link>
+                <Link 
+                  to="/compliance"
+                  className={`px-8 py-4 border-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105 inline-block text-center ${
+                    isDarkMode 
+                      ? 'bg-slate-700/50 border-blue-400 text-blue-400 hover:bg-slate-600/50' 
+                      : 'bg-white border-blue-600 text-blue-600 hover:bg-blue-50'
+                  }`}
+                >
                   View Our Services
-                </button>
+                </Link>
               </div>
             </div>
           </div>
