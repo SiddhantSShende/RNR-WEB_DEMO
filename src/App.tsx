@@ -10,6 +10,7 @@ function App() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const { isDarkMode, toggleTheme } = useTheme();
 
   // Prevent background scroll when dropdown or mobile menu is open
@@ -68,7 +69,10 @@ function App() {
               <div 
                 className="relative"
                 onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
+                onMouseLeave={() => {
+                  setIsServicesOpen(false);
+                  setActiveSubMenu(null);
+                }}
               >
                 <button className={`flex items-center font-medium transition-colors duration-300 ${
                   isDarkMode 
@@ -79,167 +83,431 @@ function App() {
                   <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
-                {/* Dropdown Menu */}
-                <div className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-md border rounded-xl shadow-lg transition-all duration-200 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-transparent ${
+                {/* Horizontal Mega Menu */}
+                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-screen max-w-6xl backdrop-blur-md border rounded-xl shadow-lg transition-all duration-300 ${
                   isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                 } ${
                   isDarkMode 
-                    ? 'bg-slate-800/90 border-slate-700/30 shadow-blue-900/10' 
-                    : 'bg-white/90 border-white/30 shadow-blue-500/10'
+                    ? 'bg-slate-800/95 border-slate-700/30 shadow-blue-900/20' 
+                    : 'bg-white/95 border-white/30 shadow-blue-500/20'
                 }`}
-                style={{
-                  scrollbarWidth: 'thin',
-                  scrollbarColor: isDarkMode ? '#3b82f6 transparent' : '#2563eb transparent'
-                }}
                 >
-                  <div className="py-2"
-                    onWheel={(e) => {
-                      e.stopPropagation();
-                    }}
-                  >
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Shield className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Governance, Risk & Compliance (GRC)</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Risk management framework</div>
+                  <div className="p-6">
+                    {/* Main Services Grid */}
+                    <div className="grid grid-cols-5 gap-6 mb-6">
+                      {/* Row 1 */}
+                      <Link to="/services/grc">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'grc' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('grc')}
+                        >
+                          <Shield className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            GRC
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Risk management
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/services/tprm">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'tprm' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('tprm')}
+                        >
+                          <Users className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            TPRM
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Vendor risk
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/services/bcms">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'bcms' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('bcms')}
+                        >
+                          <Shield className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            BCMS
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Business continuity
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/services/application-security">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'appsec' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('appsec')}
+                        >
+                          <Lock className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            App Security
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Secure code
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/services/cloud-security">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'cloud' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('cloud')}
+                        >
+                          <Shield className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Cloud Security
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Cloud protection
+                          </p>
+                        </div>
+                      </Link>
+
+                      {/* Row 2 */}
+                      <Link to="/services/mobile-security">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'mobile' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('mobile')}
+                        >
+                          <Lock className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Mobile Security
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Mobile apps
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/services/training">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'training' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('training')}
+                        >
+                          <Users className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Training
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Security education
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/services/infrastructure">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'infrastructure' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('infrastructure')}
+                        >
+                          <Shield className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Infrastructure
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Network security
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/contact">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'raas' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('raas')}
+                        >
+                          <Users className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            RaaS
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Managed resources
+                          </p>
+                        </div>
+                      </Link>
+
+                      <Link to="/contact">
+                        <div 
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                            activeSubMenu === 'vciso' 
+                              ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                              : isDarkMode ? 'hover:bg-slate-700/50' : 'hover:bg-gray-50'
+                          } border border-transparent`}
+                          onMouseEnter={() => setActiveSubMenu('vciso')}
+                        >
+                          <Award className="h-8 w-8 text-blue-500 mb-2" />
+                          <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                            V-CISO
+                          </h3>
+                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+                            Virtual CISO
+                          </p>
+                        </div>
+                      </Link>
+                    </div>
+
+                    {/* Sub-services Section */}
+                    {activeSubMenu && (
+                      <div className={`border-t pt-4 ${isDarkMode ? 'border-slate-700/50' : 'border-gray-200'}`}>
+                        <h4 className={`font-semibold mb-3 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                          {activeSubMenu === 'grc' && 'GRC Services'}
+                          {activeSubMenu === 'tprm' && 'TPRM Services'}
+                          {activeSubMenu === 'bcms' && 'BCMS Services'}
+                          {activeSubMenu === 'appsec' && 'Application Security Services'}
+                          {activeSubMenu === 'cloud' && 'Cloud Security Services'}
+                          {activeSubMenu === 'mobile' && 'Mobile Security Services'}
+                          {activeSubMenu === 'training' && 'Training Services'}
+                          {activeSubMenu === 'infrastructure' && 'Infrastructure Services'}
+                          {activeSubMenu === 'raas' && 'Resource Services'}
+                          {activeSubMenu === 'vciso' && 'V-CISO Services'}
+                        </h4>
+                        <div className="grid grid-cols-4 gap-4">
+                          {/* Dynamic sub-services based on activeSubMenu */}
+                          {activeSubMenu === 'grc' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Risk Assessment</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Comprehensive risk analysis</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Compliance Management</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Regulatory compliance</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Policy Development</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security policy creation</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Audit Support</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Audit preparation & support</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'tprm' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Vendor Assessment</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Third-party security evaluation</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Risk Monitoring</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Continuous vendor monitoring</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Contract Security</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security clauses & terms</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Due Diligence</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Vendor security reviews</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'bcms' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Business Impact Analysis</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Critical process identification</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Recovery Planning</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Disaster recovery strategies</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Crisis Management</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Incident response planning</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Testing & Validation</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>BC plan testing</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'appsec' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Code Review</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Static code analysis</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Penetration Testing</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Application pen testing</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">SAST/DAST</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Automated security testing</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">DevSecOps</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security in CI/CD</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'cloud' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Cloud Architecture</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Secure cloud design</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Data Protection</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Encryption & access control</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Compliance</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Cloud regulatory standards</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Migration Security</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Secure cloud migration</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'mobile' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">App Security Testing</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Mobile penetration testing</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Code Analysis</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Mobile app code review</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Data Protection</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Mobile data security</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Device Management</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>MDM/EMM solutions</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'training' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Security Awareness</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Employee education programs</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Phishing Simulations</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Email security training</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Technical Training</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Specialized security skills</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Certification Prep</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Professional certifications</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'infrastructure' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Network Security</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Firewall & IDS/IPS</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Endpoint Protection</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Device security management</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Server Hardening</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>System security configuration</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Monitoring & SIEM</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security monitoring</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'raas' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Security Specialists</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Expert consultants on-demand</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Project Teams</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Dedicated security teams</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Staff Augmentation</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Temporary security staff</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Managed Services</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Ongoing security management</div>
+                              </Link>
+                            </>
+                          )}
+                          {activeSubMenu === 'vciso' && (
+                            <>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Strategic Planning</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security strategy development</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Board Reporting</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Executive security reporting</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Program Management</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security program oversight</div>
+                              </Link>
+                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                                <div className="font-medium text-sm">Budget Planning</div>
+                                <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Security investment planning</div>
+                              </Link>
+                            </>
+                          )}
                         </div>
                       </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Users className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Third-Party Risk Management (TPRM) Services</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Vendor risk assessment</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Shield className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Business Continuity Management System (BCMS) Services</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Business resilience planning</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Lock className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Application Security</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Secure code development</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Shield className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Cloud Security</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Cloud infrastructure protection</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Lock className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Mobile App Security</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Mobile application protection</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Users className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Training and Awareness</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Security education programs</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Shield className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Infrastructure Security Services</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Network & system protection</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Users className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Resource as a Services</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Managed security resources</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Award className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">V-CISO</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Virtual CISO services</div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link to="/compliance" className={`block px-4 py-3 transition-colors ${
-                      isDarkMode 
-                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
-                    }`}>
-                      <div className="flex items-center space-x-3">
-                        <Award className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">Compliance</div>
-                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Regulatory standards</div>
-                        </div>
-                      </div>
-                    </Link>
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,0 +1,530 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Sphere } from '@react-three/drei';
+import * as THREE from 'three';
+import { Shield, Settings, Building, Users, CheckCircle, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+
+// Animated background component
+function AnimatedBackground() {
+  return (
+    <Canvas className="absolute inset-0 -z-10">
+      <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      
+      {/* Animated spheres */}
+      {[...Array(20)].map((_, i) => (
+        <Sphere
+          key={i}
+          position={[
+            (Math.random() - 0.5) * 20,
+            (Math.random() - 0.5) * 20,
+            (Math.random() - 0.5) * 20
+          ]}
+          scale={Math.random() * 0.5 + 0.1}
+        >
+          <meshStandardMaterial
+            color={new THREE.Color().setHSL(0.6, 0.7, 0.5 + Math.random() * 0.3)}
+            transparent
+            opacity={0.6}
+          />
+        </Sphere>
+      ))}
+    </Canvas>
+  );
+}
+
+const ProgramDesignImplementation: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+    service: 'TPRM Program Design & Implementation'
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const services = [
+    {
+      title: 'TPRM Framework Development',
+      description: 'Design and establish comprehensive third-party risk management frameworks',
+      features: [
+        'Framework architecture design',
+        'Risk taxonomy development',
+        'Process workflow design',
+        'Integration with existing systems'
+      ]
+    },
+    {
+      title: 'Program Implementation Strategy',
+      description: 'Strategic implementation planning and execution for TPRM programs',
+      features: [
+        'Implementation roadmap development',
+        'Resource planning and allocation',
+        'Change management support',
+        'Stakeholder engagement'
+      ]
+    },
+    {
+      title: 'Policy & Procedure Development',
+      description: 'Creation of comprehensive TPRM policies and operational procedures',
+      features: [
+        'TPRM policy documentation',
+        'Standard operating procedures',
+        'Risk appetite statements',
+        'Escalation procedures'
+      ]
+    },
+    {
+      title: 'Governance Structure Setup',
+      description: 'Establishment of TPRM governance structures and oversight mechanisms',
+      features: [
+        'Governance committee formation',
+        'Roles and responsibilities definition',
+        'Decision-making frameworks',
+        'Reporting mechanisms'
+      ]
+    },
+    {
+      title: 'Risk Classification Models',
+      description: 'Development of risk classification and tiering models for third parties',
+      features: [
+        'Risk categorization frameworks',
+        'Criticality assessment models',
+        'Risk scoring methodologies',
+        'Tier-based assessment approaches'
+      ]
+    },
+    {
+      title: 'Program Maturity Assessment',
+      description: 'Assessment of existing TPRM program maturity and improvement planning',
+      features: [
+        'Maturity level evaluation',
+        'Gap analysis and identification',
+        'Improvement recommendations',
+        'Maturity roadmap development'
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+      <AnimatedBackground />
+      
+      <div className="relative z-10">
+        {/* Navigation */}
+        <nav className="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <Link to="/" className="flex items-center space-x-2">
+                <Shield className="h-8 w-8 text-blue-600" />
+                <span className="text-xl font-bold text-gray-900">RNR Consulting</span>
+              </Link>
+              
+              <div className="hidden md:flex items-center space-x-8">
+                <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
+                <Link to="/services" className="text-gray-600 hover:text-blue-600 transition-colors">Services</Link>
+                <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">About</Link>
+                <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        {/* Breadcrumb */}
+        <div className="bg-blue-600/5 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center space-x-2 text-sm">
+              <Link to="/" className="text-gray-500 hover:text-blue-600">Home</Link>
+              <span className="text-gray-400">/</span>
+              <Link to="/services" className="text-gray-500 hover:text-blue-600">Services</Link>
+              <span className="text-gray-400">/</span>
+              <Link to="/services/tprm" className="text-gray-500 hover:text-blue-600">TPRM</Link>
+              <span className="text-gray-400">/</span>
+              <span className="text-blue-600 font-medium">Program Design & Implementation</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8">
+              <Settings className="h-10 w-10 text-blue-600" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+              TPRM Program <span className="text-blue-600">Design & Implementation</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Comprehensive third-party risk management program design and implementation services 
+              to establish robust vendor risk oversight and governance frameworks.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                Get Started
+              </Link>
+              <a
+                href="#services"
+                className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+              >
+                View Services
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Grid */}
+        <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our TPRM Program Design & Implementation Services
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Build comprehensive third-party risk management capabilities with our expert program 
+                design and implementation services tailored to your organization's needs.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                  <div className="p-8">
+                    <div className="bg-blue-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                      <Building className="h-8 w-8 text-blue-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                    <p className="text-gray-600 mb-6">{service.description}</p>
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-gray-600">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                  Why Choose Our TPRM Program Services?
+                </h2>
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                      <Users className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Expert TPRM Team</h3>
+                      <p className="text-gray-600">
+                        Our team brings extensive experience in designing and implementing TPRM programs 
+                        across various industries and regulatory environments.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                      <Settings className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Comprehensive Framework</h3>
+                      <p className="text-gray-600">
+                        We develop end-to-end TPRM frameworks that integrate seamlessly with your 
+                        existing risk management and governance structures.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                      <CheckCircle className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Proven Implementation</h3>
+                      <p className="text-gray-600">
+                        Our implementation methodology is based on industry best practices and 
+                        proven across numerous successful TPRM program deployments.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
+                <div className="text-center">
+                  <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Building className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Build Your TPRM Program?</h3>
+                  <p className="text-gray-600 mb-6">
+                    Transform your third-party risk management with our comprehensive program design services.
+                  </p>
+                  <Link
+                    to="#contact"
+                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-flex items-center"
+                  >
+                    Contact Us Today
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Get Started with TPRM Program Design
+              </h2>
+              <p className="text-xl text-gray-600">
+                Contact us to discuss your TPRM program requirements and learn how we can help 
+                design and implement comprehensive third-party risk management capabilities.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* Contact Form */}
+              <div className="bg-white rounded-xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your company name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                      Service Interest
+                    </label>
+                    <input
+                      type="text"
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
+                      readOnly
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Tell us about your TPRM program requirements..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+
+              {/* Contact Information */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in touch</h3>
+                  <p className="text-gray-600 mb-8">
+                    Ready to build a comprehensive TPRM program? Our experts are here to help you 
+                    design and implement effective third-party risk management capabilities.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="flex items-center">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                      <Mail className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">Email Us</h4>
+                      <p className="text-gray-600">tprm@rnrconsulting.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                      <Phone className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">Call Us</h4>
+                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                      <MapPin className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">Visit Us</h4>
+                      <p className="text-gray-600">
+                        123 Business District<br />
+                        New York, NY 10001
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Why Choose RNR Consulting?</h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      20+ years of TPRM expertise
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Industry-leading frameworks
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Proven implementation methodology
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      End-to-end program support
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="col-span-1">
+                <div className="flex items-center space-x-2 mb-4">
+                  <Shield className="h-8 w-8 text-blue-400" />
+                  <span className="text-xl font-bold">RNR Consulting</span>
+                </div>
+                <p className="text-gray-400">
+                  Expert TPRM program design and implementation services for comprehensive third-party risk management.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Services</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><Link to="/services/grc" className="hover:text-white transition-colors">GRC Services</Link></li>
+                  <li><Link to="/services/tprm" className="hover:text-white transition-colors">TPRM Services</Link></li>
+                  <li><Link to="/services/bcms" className="hover:text-white transition-colors">BCMS Services</Link></li>
+                  <li><Link to="/services/application-security" className="hover:text-white transition-colors">App Security</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Company</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                  <li><Link to="/team" className="hover:text-white transition-colors">Our Team</Link></li>
+                  <li><Link to="/careers" className="hover:text-white transition-colors">Careers</Link></li>
+                  <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Contact</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li>tprm@rnrconsulting.com</li>
+                  <li>+1 (555) 123-4567</li>
+                  <li>New York, NY</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
+              <p>&copy; 2024 RNR Consulting. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+export default ProgramDesignImplementation;
