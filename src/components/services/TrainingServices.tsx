@@ -40,10 +40,10 @@ const TrainingServices: React.FC = () => {
       posArray[i + 1] = (Math.random() - 0.5) * 29;
       posArray[i + 2] = (Math.random() - 0.5) * 29;
       
-      const isAmber = Math.random() > 0.45;
-      colorArray[i] = isAmber ? 0.92 : 0.95;
-      colorArray[i + 1] = isAmber ? 0.64 : 0.95;
-      colorArray[i + 2] = isAmber ? 0.15 : 0.95;
+      const isBlue = Math.random() > 0.45;
+      colorArray[i] = isBlue ? 0.25 : 0.95;
+      colorArray[i + 1] = isBlue ? 0.55 : 0.95;
+      colorArray[i + 2] = isBlue ? 0.95 : 0.95;
     }
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
@@ -131,8 +131,8 @@ const TrainingServices: React.FC = () => {
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-900 via-amber-900 to-yellow-900' 
-        : 'bg-gradient-to-br from-slate-50 via-amber-50 to-yellow-100'
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
+        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
     }`}>
       {/* Three.js Background */}
       <div ref={mountRef} className="fixed inset-0 z-0" />
@@ -147,7 +147,7 @@ const TrainingServices: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className={`inline-flex items-center px-4 py-2 rounded-full mb-6 ${
-                isDarkMode ? 'bg-amber-600/20 text-amber-400' : 'bg-amber-100 text-amber-600'
+                isDarkMode ? 'bg-blue-600/20 text-blue-400' : 'bg-blue-100 text-blue-600'
               }`}>
                 <BookOpen className="h-5 w-5 mr-2" />
                 <span className="font-medium">Training & Awareness Solutions</span>
@@ -155,8 +155,8 @@ const TrainingServices: React.FC = () => {
               
               <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent ${
                 isDarkMode 
-                  ? 'from-amber-400 via-yellow-300 to-orange-300' 
-                  : 'from-amber-600 via-yellow-600 to-orange-600'
+                  ? 'from-blue-400 via-blue-300 to-indigo-300' 
+                  : 'from-blue-600 via-blue-700 to-indigo-700'
               }`}>
                 Training & Awareness
               </h1>
@@ -196,10 +196,10 @@ const TrainingServices: React.FC = () => {
                 }`}>
                   <div className="flex items-start space-x-6">
                     <div className={`p-4 rounded-xl ${
-                      isDarkMode ? 'bg-amber-600/20' : 'bg-amber-100'
+                      isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
                     }`}>
                       <service.icon className={`h-8 w-8 ${
-                        isDarkMode ? 'text-amber-400' : 'text-amber-600'
+                        isDarkMode ? 'text-blue-400' : 'text-blue-600'
                       }`} />
                     </div>
                     
@@ -219,8 +219,8 @@ const TrainingServices: React.FC = () => {
                         to={service.link} 
                         className={`inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
                           isDarkMode 
-                            ? 'bg-amber-600 hover:bg-amber-700 text-white' 
-                            : 'bg-amber-600 hover:bg-amber-700 text-white'
+                            ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                            : 'bg-blue-600 hover:bg-blue-700 text-white'
                         }`}
                       >
                         Learn More
@@ -241,7 +241,7 @@ const TrainingServices: React.FC = () => {
               }`}>
                 <div className="flex items-start space-x-6">
                   <div className={`p-4 rounded-xl ${
-                    isDarkMode ? 'bg-amber-600/20' : 'bg-amber-100'
+                    isDarkMode ? 'bg-blue-600/20' : 'bg-amber-100'
                   }`}>
                     <Target className={`h-8 w-8 ${
                       isDarkMode ? 'text-amber-400' : 'text-amber-600'

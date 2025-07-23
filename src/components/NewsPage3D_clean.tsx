@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import Navigation from './Navigation';
 import { 

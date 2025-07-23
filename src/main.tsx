@@ -19,9 +19,13 @@ import DigitalForensics from './components/services/DigitalForensics.tsx';
 import CloudSecurityServices from './components/services/CloudSecurityServices.tsx';
 import MobileSecurityServices from './components/services/MobileSecurityServices.tsx';
 import TrainingServices from './components/services/TrainingServices.tsx';
+import TrainingAwarenessServices from './components/services/TrainingAwarenessServices.tsx';
 import InfrastructureServices from './components/services/InfrastructureServices.tsx';
+import VirtualCISOServices from './components/services/VirtualCISOServices.tsx';
 import GovernanceServices from './components/services/grc/GovernanceServices.tsx';
 import BCMSServices from './components/services/BCMSServices.tsx';
+import ApplicationSecurityServices from './components/services/ApplicationSecurityServices.tsx';
+import ResourceAsAServicesPage from './components/services/ResourceAsAServicesPage.tsx';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -42,6 +46,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/services/grc" element={<GRCServices />} />
           <Route path="/services/tprm" element={<TPRMServices />} />
           <Route path="/services/bcms" element={<BCMSServices />} />
+          <Route path="/services/application-security" element={<ApplicationSecurityServices />} />
+          <Route path="/services/resource-as-services" element={<ResourceAsAServicesPage />} />
           <Route path="/services/cybersecurity" element={<CybersecurityServices />} />
           <Route path="/services/technology-consulting" element={<TechnologyConsulting />} />
           <Route path="/services/professional-services" element={<ProfessionalServices />} />
@@ -49,7 +55,9 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/services/cloud-security" element={<CloudSecurityServices />} />
           <Route path="/services/mobile-security" element={<MobileSecurityServices />} />
           <Route path="/services/training" element={<TrainingServices />} />
+          <Route path="/services/training-awareness" element={<TrainingAwarenessServices />} />
           <Route path="/services/infrastructure" element={<InfrastructureServices />} />
+          <Route path="/services/virtual-ciso" element={<VirtualCISOServices />} />
           
           {/* GRC Sub-service Routes */}
           <Route path="/services/grc/governance" element={<GovernanceServices />} />

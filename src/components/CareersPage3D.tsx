@@ -17,7 +17,6 @@ import {
   ChevronUp,
   Building2,
   ExternalLink,
-  ArrowLeft,
   CheckCircle,
   Award,
   Zap,
@@ -31,17 +30,12 @@ import {
   Home,
   Star,
   Lock,
-  Mail,
-  Phone,
-  MapPin,
-  ChevronRight,
   Search,
   Moon,
   Sun,
   Menu,
   X
 } from 'lucide-react';
-import Navigation from './Navigation';
 
 const careers = [
   {
@@ -65,7 +59,7 @@ const careers = [
       'Excellent analytical and problem-solving skills',
       'Excellent written and verbal communication skills',
     ],
-    icon: <Shield className="h-6 w-6" />, color: 'bg-slate-800',
+    icon: <Shield className="h-8 w-8" />, color: 'bg-slate-800',
   },
   {
     title: 'VAPT (Vulnerability Assessment and Penetration Testing) Analyst',
@@ -88,7 +82,7 @@ const careers = [
       'Excellent analytical and problem-solving skills',
       'Excellent written and verbal communication skills',
     ],
-    icon: <Code className="h-6 w-6" />, color: 'bg-slate-800',
+    icon: <Code className="h-8 w-8" />, color: 'bg-slate-800',
   },
   {
     title: 'Cybersecurity Consultant',
@@ -111,7 +105,7 @@ const careers = [
       'Strong leadership and client communication skills',
       'Experience with compliance frameworks (ISO 27001, SOC 2, NIST)',
     ],
-    icon: <Brain className="h-6 w-6" />, color: 'bg-slate-800',
+    icon: <Brain className="h-8 w-8" />, color: 'bg-slate-800',
   },
   {
     title: 'SOC (Security Operations Center) Analyst',
@@ -134,7 +128,7 @@ const careers = [
       'Strong analytical and attention to detail',
       'Ability to work in rotating shifts including nights and weekends',
     ],
-    icon: <Eye className="h-6 w-6" />, color: 'bg-slate-800',
+    icon: <Eye className="h-8 w-8" />, color: 'bg-slate-800',
   },
   {
     title: 'Cloud Security Engineer',
@@ -157,7 +151,7 @@ const careers = [
       'Experience with container security and DevSecOps practices',
       'Proficiency in scripting languages (Python, PowerShell, Bash)',
     ],
-    icon: <Zap className="h-6 w-6" />, color: 'bg-slate-800',
+    icon: <Zap className="h-8 w-8" />, color: 'bg-slate-800',
   },
   {
     title: 'Cybersecurity Intern',
@@ -180,7 +174,7 @@ const careers = [
       'Good communication and teamwork skills',
       'Any relevant certifications (Security+, Network+ a plus)',
     ],
-    icon: <Users className="h-6 w-6" />, color: 'bg-slate-800',
+    icon: <Users className="h-8 w-8" />, color: 'bg-slate-800',
   },
 ];
 
@@ -534,19 +528,19 @@ const CareersPage3D: React.FC = () => {
   // Work environment features
   const workEnvironmentFeatures = [
     {
-      icon: <Target className="h-6 w-6" />,
+      icon: <Target className="h-8 w-8" />,
       title: "Training & Development",
       description: "Discover growth opportunities at RNR. Our Training & Development programs empower you to excel, with mentorship, skill-building, and career advancement opportunities tailored to your potential.",
       highlighted: false
     },
     {
-      icon: <Rocket className="h-6 w-6" />,
+      icon: <Rocket className="h-8 w-8" />,
       title: "RNR Work Environment", 
       description: "At RNR, our work environment fosters creativity, collaboration, and growth. We embrace diversity, innovation, and a supportive culture, empowering you to thrive in your career journey.",
       highlighted: false
     },
     {
-      icon: <Brain className="h-6 w-6" />,
+      icon: <Brain className="h-8 w-8" />,
       title: "Our hiring journeys",
       description: "Our hiring journeys are diverse and dynamic, reflecting our commitment to talent and inclusivity. Explore opportunities, growth, and a vibrant work culture at RNR.",
       highlighted: false
@@ -556,56 +550,56 @@ const CareersPage3D: React.FC = () => {
   // Perks and Benefits
   const perksAndBenefits = [
     {
-      icon: <Heart className="h-6 w-6" />,
+      icon: <Heart className="h-8 w-8" />,
       title: "Health & Wellness",
       description: "Comprehensive health insurance, dental, vision, and mental health support programs for you and your family.",
       color: "from-red-100 to-red-200",
       iconColor: "text-red-600"
     },
     {
-      icon: <DollarSign className="h-6 w-6" />,
+      icon: <DollarSign className="h-8 w-8" />,
       title: "Competitive Compensation",
       description: "Market-leading salaries, performance bonuses, equity participation, and annual compensation reviews.",
       color: "from-green-100 to-green-200",
       iconColor: "text-green-600"
     },
     {
-      icon: <Clock className="h-6 w-6" />,
+      icon: <Clock className="h-8 w-8" />,
       title: "Work-Life Balance",
       description: "Flexible working hours, remote work options, unlimited PTO, and sabbatical opportunities.",
       color: "from-blue-100 to-blue-200",
       iconColor: "text-blue-600"
     },
     {
-      icon: <GraduationCap className="h-6 w-6" />,
+      icon: <GraduationCap className="h-8 w-8" />,
       title: "Learning & Development",
       description: "Professional certification reimbursement, conference attendance, internal training programs, and mentorship.",
       color: "from-purple-100 to-purple-200",
       iconColor: "text-purple-600"
     },
     {
-      icon: <Plane className="h-6 w-6" />,
+      icon: <Plane className="h-8 w-8" />,
       title: "Travel & Experiences",
       description: "Annual team retreats, travel opportunities for client engagements, and global conference participation.",
       color: "from-indigo-100 to-indigo-200",
       iconColor: "text-indigo-600"
     },
     {
-      icon: <Gift className="h-6 w-6" />,
+      icon: <Gift className="h-8 w-8" />,
       title: "Additional Perks",
       description: "Free meals, gym membership, tech allowance, employee discounts, and team building activities.",
       color: "from-pink-100 to-pink-200",
       iconColor: "text-pink-600"
     },
     {
-      icon: <Car className="h-6 w-6" />,
+      icon: <Car className="h-8 w-8" />,
       title: "Transportation",
       description: "Company car allowance, parking reimbursement, and public transportation subsidies.",
       color: "from-gray-100 to-gray-200",
       iconColor: "text-gray-600"
     },
     {
-      icon: <Home className="h-6 w-6" />,
+      icon: <Home className="h-8 w-8" />,
       title: "Home Office Setup",
       description: "Work-from-home stipend, ergonomic furniture allowance, and top-tier technology equipment.",
       color: "from-yellow-100 to-yellow-200",
@@ -618,25 +612,25 @@ const CareersPage3D: React.FC = () => {
     {
       id: 1,
       title: "Who We Are",
-      icon: <Building2 className="h-6 w-6" />,
+      icon: <Building2 className="h-8 w-8" />,
       content: "RNR Consulting is a leading cybersecurity firm dedicated to protecting organizations from evolving digital threats. Our team of experts combines deep technical knowledge with strategic thinking to deliver comprehensive security solutions that adapt to the changing threat landscape."
     },
     {
       id: 2, 
       title: "What We Do",
-      icon: <Shield className="h-6 w-6" />,
+      icon: <Shield className="h-8 w-8" />,
       content: "We provide end-to-end cybersecurity services including threat assessment, vulnerability testing, security architecture design, incident response, and compliance consulting. Our proactive approach ensures your organization stays ahead of potential threats."
     },
     {
       id: 3,
       title: "How We Work",
-      icon: <Zap className="h-6 w-6" />,
+      icon: <Zap className="h-8 w-8" />,
       content: "Our methodology combines industry best practices with innovative approaches. We work collaboratively with clients, maintaining transparency throughout the process while delivering results that exceed expectations. Our agile approach ensures rapid response to emerging threats."
     },
     {
       id: 4,
       title: "Why Choose Us",
-      icon: <Award className="h-6 w-6" />,
+      icon: <Award className="h-8 w-8" />,
       content: "With 15+ years of experience and 500+ satisfied clients, we bring unmatched expertise to every engagement. Our 24/7 monitoring, 99.9% uptime guarantee, and rapid incident response capabilities make us the trusted choice for organizations worldwide."
     }
   ];
@@ -665,7 +659,7 @@ const CareersPage3D: React.FC = () => {
                 <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
                   isDarkMode ? 'bg-slate-700' : 'bg-white'
                 }`}>
-                  <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+                  <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
                 </div>
                 <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
                   isDarkMode 
@@ -1320,9 +1314,9 @@ const CareersPage3D: React.FC = () => {
                       </div>
                       <div className="text-sky-600">
                         {expandedSection === section.id ? (
-                          <ChevronUp className="h-6 w-6" />
+                          <ChevronUp className="h-8 w-8" />
                         ) : (
-                          <ChevronDown className="h-6 w-6" />
+                          <ChevronDown className="h-8 w-8" />
                         )}
                       </div>
                     </button>

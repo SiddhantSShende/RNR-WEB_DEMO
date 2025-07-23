@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import Navigation from './Navigation';
 import { 
@@ -18,17 +19,22 @@ import {
   Globe,
   Heart,
   MessageCircle,
-  Mail
+  Menu, X, Sun, Moon, ChevronDown, Users, Lock, Mail
 } from 'lucide-react';
 
 const NewsPage3D: React.FC = () => {
-  const { isDarkMode } = useTheme();
+  const { isDarkMode, toggleTheme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationRef = useRef<number | null>(null);
+
+  // Navigation state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -402,16 +408,425 @@ const NewsPage3D: React.FC = () => {
       <Navigation />
 
       {/* Content */}
+        <div className="px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo and Brand */}
+            <div className="flex items-center space-x-3">
+              <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
+                isDarkMode ? 'bg-slate-700' : 'bg-white'
+              }`}>
+                <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
+              </div>
+              <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'from-blue-400 to-blue-300' 
+                  : 'from-blue-600 to-blue-800'
+              }`}>
+                RNR Consulting
+              </span>
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-6">
+              {/* Home Link */}
+              <Link to="/" className={`font-medium transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'text-slate-300 hover:text-blue-400' 
+                  : 'text-slate-700 hover:text-blue-600'
+              }`}>Home</Link>
+              
+              {/* Services Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+              >
+                <button className={`flex items-center font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}>
+                  Services
+                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {/* Dropdown Menu */}
+                <div className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-md border rounded-xl shadow-lg transition-all duration-200 ${
+                  isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                } ${
+                  isDarkMode 
+                    ? 'bg-slate-800/90 border-slate-700/30 shadow-blue-900/10' 
+                    : 'bg-white/90 border-white/30 shadow-blue-500/10'
+                }`}>
+                  <div className="py-2">
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Shield className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Threat Detection</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>AI-powered monitoring</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Lock className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Data Encryption</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Military-grade security</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Eye className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Security Audits</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Comprehensive assessments</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/contact" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Zap className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Incident Response</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>24/7 rapid response</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/careers" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Users className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Security Training</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Employee education</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/compliance" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Award className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Compliance</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Regulatory standards</div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              {/* About Us Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsAboutOpen(true)}
+                onMouseLeave={() => setIsAboutOpen(false)}
+              >
+                <button className={`flex items-center font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}>
+                  About Us
+                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isAboutOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {/* About Us Dropdown Menu */}
+                <div className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-md border rounded-xl shadow-lg transition-all duration-200 ${
+                  isAboutOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                } ${
+                  isDarkMode 
+                    ? 'bg-slate-800/90 border-slate-700/30 shadow-blue-900/10' 
+                    : 'bg-white/90 border-white/30 shadow-blue-500/10'
+                }`}>
+                  <div className="py-2">
+                    <Link to="/philosophy" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Award className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Our Philosophy</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Our core values & approach</div>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="/team" className={`block px-4 py-3 transition-colors ${
+                      isDarkMode 
+                        ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/50' 
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}>
+                      <div className="flex items-center space-x-3">
+                        <Users className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">Our Team</div>
+                          <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Meet our experts</div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              {/* News & Blogs Link */}
+              <Link to="/news" className={`font-medium transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'text-slate-300 hover:text-blue-400' 
+                  : 'text-slate-700 hover:text-blue-600'
+              }`}>News & Blogs</Link>
+              
+              <Link to="/careers" className={`font-medium transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'text-slate-300 hover:text-blue-400' 
+                  : 'text-slate-700 hover:text-blue-600'
+              }`}>Careers</Link>
+              <Link 
+                to="/contact"
+                className={`font-medium transition-all duration-300 hover:scale-105 transform ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}
+              >
+                Contact Us
+              </Link>
+            </div>
+            
+            {/* Mobile and Desktop Actions */}
+            <div className="flex items-center space-x-3">
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 sm:p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                  isDarkMode 
+                    ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                    : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+                }`}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? (
+                  <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
+                ) : (
+                  <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
+                )}
+              </button>
+              
+              {/* Search Button - Hidden on small screens */}
+              <button className={`hidden sm:block p-2 sm:p-3 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                isDarkMode 
+                  ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                  : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+              }`}>
+                <Search className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+
+              {/* Mobile Hamburger Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`lg:hidden p-2 backdrop-blur-sm border rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
+                  isDarkMode 
+                    ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80 hover:border-slate-500' 
+                    : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white hover:border-blue-300'
+                }`}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className={`lg:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen 
+              ? 'max-h-screen opacity-100 visible' 
+              : 'max-h-0 opacity-0 invisible overflow-hidden'
+          }`}>
+            <div className="border-t border-slate-700/30 pt-4 pb-4 space-y-4">
+              {/* Home Link */}
+              <div className="space-y-2">
+                <Link to="/" className={`block py-2 font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`} onClick={() => setIsMobileMenuOpen(false)}>
+                  Home
+                </Link>
+              </div>
+              
+              {/* Services Section */}
+              <div className="space-y-2">
+                <div className={`font-semibold text-sm uppercase tracking-wide ${
+                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}>
+                  Services
+                </div>
+                <div className="pl-4 space-y-2">
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Shield className="h-4 w-4" />
+                      <span>Threat Detection</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Lock className="h-4 w-4" />
+                      <span>Data Encryption</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Eye className="h-4 w-4" />
+                      <span>Security Audits</span>
+                    </div>
+                  </Link>
+                  <Link to="/contact" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Zap className="h-4 w-4" />
+                      <span>Incident Response</span>
+                    </div>
+                  </Link>
+                  <Link to="/careers" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Users className="h-4 w-4" />
+                      <span>Security Training</span>
+                    </div>
+                  </Link>
+                  <Link to="/compliance" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Award className="h-4 w-4" />
+                      <span>Compliance</span>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* About Us Section */}
+              <div className="space-y-2">
+                <div className={`font-semibold text-sm uppercase tracking-wide ${
+                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}>
+                  About Us
+                </div>
+                <div className="pl-4 space-y-2">
+                  <Link to="/philosophy" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Award className="h-4 w-4" />
+                      <span>Our Philosophy</span>
+                    </div>
+                  </Link>
+                  <Link to="/team" className={`block py-2 text-sm transition-colors ${
+                    isDarkMode 
+                      ? 'text-slate-300 hover:text-blue-400' 
+                      : 'text-slate-700 hover:text-blue-600'
+                  }`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="flex items-center space-x-2">
+                      <Users className="h-4 w-4" />
+                      <span>Our Team</span>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Main Navigation */}
+              <div className="space-y-2 border-t border-slate-700/30 pt-4">
+                <Link to="/news" className={`block py-2 font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`} onClick={() => setIsMobileMenuOpen(false)}>
+                  News & Blogs
+                </Link>
+                <Link to="/careers" className={`block py-2 font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`} onClick={() => setIsMobileMenuOpen(false)}>
+                  Careers
+                </Link>
+                <Link to="/contact" className={`block py-2 font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-blue-400' 
+                    : 'text-slate-700 hover:text-blue-600'
+                }`} onClick={() => setIsMobileMenuOpen(false)}>
+                  Contact Us
+                </Link>
+              </div>
+
+              {/* Mobile Search */}
+              <div className="border-t border-slate-700/30 pt-4">
+                <button className={`w-full flex items-center justify-center space-x-2 py-3 backdrop-blur-sm border rounded-xl transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-slate-700/80 border-slate-600 text-blue-400 hover:bg-slate-600/80' 
+                    : 'bg-white/80 border-blue-200 text-blue-600 hover:bg-white'
+      {/* Content */}
       <div className="relative z-10 pt-20 sm:pt-24">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-16">
           {/* Header */}
           <div className="text-center mb-12 sm:mb-20">
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <div className={`p-4 sm:p-6 backdrop-blur-md border rounded-2xl sm:rounded-3xl shadow-lg ${
-                isDarkMode 
-                  ? 'bg-slate-800/90 border-slate-700' 
-                  : 'bg-white/90 border-blue-200'
-              }`}>
+            <div className="flex justify-center mb-6 sm:mb-8">            <div className={`p-4 sm:p-6 backdrop-blur-md border rounded-2xl sm:rounded-3xl shadow-lg ${
+              isDarkMode 
+                ? 'bg-slate-800/90 border-slate-700' 
+                : 'bg-white/90 border-blue-200'
+            }`}>
                 <BookOpen className={`h-10 sm:h-16 w-10 sm:w-16 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
               </div>
             </div>
@@ -455,55 +870,78 @@ const NewsPage3D: React.FC = () => {
               isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
             }`}>
               <div className="text-center mb-6 sm:mb-8">
-                <h2 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>
-                  Explore by Category
-                </h2>
-                <p className={`text-sm sm:text-lg ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Find articles that interest you most
-                </p>
+                <h2 className={`text-xl sm:text-2xl font-bold mb-2 sm:mb-4 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>Browse by Category</h2>
+                <p className={`text-sm sm:text-base ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Select a category to filter articles</p>
               </div>
-
-              {/* Category Buttons */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-2">
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
                 {categories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
-                    className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                    className={`flex flex-col items-center space-y-2 sm:space-y-3 p-3 sm:p-6 rounded-lg sm:rounded-xl transition-all duration-300 ${
                       selectedCategory === category.id
-                        ? isDarkMode
-                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/25'
-                          : 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg scale-105'
                         : isDarkMode
-                          ? 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          ? 'bg-slate-700/60 text-slate-200 hover:bg-slate-600/60 hover:scale-105'
+                          : 'bg-slate-50 text-slate-700 hover:bg-slate-100 hover:scale-105 border border-slate-200'
                     }`}
                   >
-                    {category.icon}
-                    <span className="hidden sm:inline">{category.name}</span>
-                    <span className="sm:hidden">{category.name.split(' ')[0]}</span>
+                    <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl ${
+                      selectedCategory === category.id 
+                        ? 'bg-white/20' 
+                        : isDarkMode
+                          ? 'bg-slate-600/80 border border-slate-500'
+                          : 'bg-blue-50 border border-blue-200'
+                    }`}>
+                      {React.cloneElement(category.icon, {
+                        className: selectedCategory === category.id 
+                          ? 'h-4 w-4 sm:h-6 sm:w-6 text-white' 
+                          : isDarkMode
+                            ? 'h-4 w-4 sm:h-6 sm:w-6 text-blue-400'
+                            : 'h-4 w-4 sm:h-6 sm:w-6 text-blue-600'
+                      })}
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-center leading-tight">{category.name}</span>
                   </button>
                 ))}
               </div>
-
-              {/* Search Bar */}
-              <div className="max-w-lg mx-auto px-2">
-                <div className="relative">
-                  <Search className={`absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-500'
-                  }`} />
-                  <input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border rounded-xl sm:rounded-2xl focus:ring-2 outline-none transition-all text-sm sm:text-base ${
+              
+              {selectedCategory !== 'all' && (
+                <div className="text-center mt-4 sm:mt-6">
+                  <button
+                    onClick={() => setSelectedCategory('all')}
+                    className={`transition-colors text-sm font-medium ${
                       isDarkMode 
-                        ? 'bg-slate-700/80 border-slate-600 text-slate-200 placeholder-slate-400 focus:border-blue-400 focus:ring-blue-400/20'
-                        : 'bg-white/90 border-blue-200 text-slate-700 focus:border-blue-500 focus:ring-blue-500/20 placeholder-slate-500'
+                        ? 'text-blue-400 hover:text-blue-300' 
+                        : 'text-blue-600 hover:text-blue-700'
                     }`}
-                  />
+                  >
+                    Clear Filter
+                  </button>
                 </div>
+              )}
+            </div>
+          </div>
+
+          {/* Search Bar */}
+          <div className="mb-12 sm:mb-16">
+            <div className="max-w-2xl mx-auto px-2">
+              <div className="relative">
+                <Search className={`absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-500'
+                }`} />
+                <input
+                  type="text"
+                  placeholder="Search articles, topics, or tags..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 backdrop-blur-md border rounded-xl sm:rounded-2xl focus:ring-2 outline-none transition-all shadow-lg text-sm sm:text-lg ${
+                    isDarkMode 
+                      ? 'bg-slate-800/90 border-slate-700 text-slate-200 focus:border-blue-400 focus:ring-blue-400/20 placeholder-slate-400'
+                      : 'bg-white/90 border-blue-200 text-slate-700 focus:border-blue-500 focus:ring-blue-500/20 placeholder-slate-500'
+                  }`}
+                />
               </div>
             </div>
           </div>
@@ -562,7 +1000,6 @@ const NewsPage3D: React.FC = () => {
                             <span className="text-xs sm:text-sm font-medium">{post.readTime}</span>
                           </div>
                         </div>
-                        
                         <div className={`flex items-center space-x-2 sm:space-x-3 ${
                           isDarkMode ? 'text-slate-400' : 'text-slate-500'
                         }`}>
@@ -620,15 +1057,6 @@ const NewsPage3D: React.FC = () => {
                               #{tag}
                             </span>
                           ))}
-                          {post.tags.length > 2 && (
-                            <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                              isDarkMode 
-                                ? 'text-slate-400 bg-slate-700' 
-                                : 'text-slate-500 bg-slate-100'
-                            }`}>
-                              +{post.tags.length - 2}
-                            </span>
-                          )}
                         </div>
                       </div>
                       
@@ -661,34 +1089,32 @@ const NewsPage3D: React.FC = () => {
                     isDarkMode ? 'bg-slate-800' : 'bg-slate-100'
                   }`}>
                     <Search className={`h-8 sm:h-12 w-8 sm:w-12 ${
-                      isDarkMode ? 'text-slate-400' : 'text-slate-500'
+                      isDarkMode ? 'text-slate-400' : 'text-slate-400'
                     }`} />
                   </div>
                 </div>
                 <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 ${
-                  isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                  isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                }`}>No articles found</h3>
+                <p className={`mb-6 sm:mb-8 text-base sm:text-lg ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-500'
                 }`}>
-                  No Articles Found
-                </h3>
-                <p className={`text-sm sm:text-base mb-6 sm:mb-8 ${
-                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                }`}>
-                  Try adjusting your search terms or category filter
+                  Try adjusting your search terms or filter criteria
                 </p>
                 <button 
                   onClick={() => {
-                    setSelectedCategory('all');
                     setSearchQuery('');
+                    setSelectedCategory('all');
                   }}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 text-sm sm:text-base"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg text-sm sm:text-base"
                 >
-                  Clear Filters
+                  Clear All Filters
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                 {filteredPosts.map((post) => (
-                  <div key={post.id} className={`group backdrop-blur-md border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] h-full flex flex-col ${
+                  <div key={post.id} className={`group backdrop-blur-md border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] h-full flex flex-col ${
                     isDarkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-blue-200'
                   }`}>
                     <div className="h-32 sm:h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center relative">

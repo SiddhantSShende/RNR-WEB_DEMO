@@ -40,7 +40,7 @@ const Navigation: React.FC = () => {
             <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
               isDarkMode ? 'bg-slate-700' : 'bg-white'
             }`}>
-              <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+              <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
             </div>
             <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
               isDarkMode 
@@ -228,7 +228,7 @@ const Navigation: React.FC = () => {
                         </p>
                       </Link>
 
-                      <Link to="/services/resource-as-service" 
+                      <Link to="/services/resource-as-services" 
                         className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
                           activeSubMenu === 'raas' 
                             ? isDarkMode ? 'bg-blue-600/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'
@@ -238,10 +238,10 @@ const Navigation: React.FC = () => {
                       >
                         <Users className="h-8 w-8 text-blue-500 mb-2" />
                         <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                          Resource as a Service
+                          RaaS
                         </h3>
                         <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
-                          Expert Resources
+                          Resource as a Services
                         </p>
                       </Link>
 

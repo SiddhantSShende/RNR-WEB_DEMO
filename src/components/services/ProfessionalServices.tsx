@@ -165,17 +165,17 @@ const ProfessionalServices: React.FC = () => {
         <Navigation />
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <div className={`inline-flex items-center px-4 py-2 rounded-full mb-6 ${
+        <section className="pt-24 pb-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className={`inline-flex items-center px-3 py-1.5 rounded-full mb-4 ${
                 isDarkMode ? 'bg-purple-600/20 text-purple-400' : 'bg-purple-100 text-purple-600'
               }`}>
-                <Building className="h-5 w-5 mr-2" />
-                <span className="font-medium">Professional Excellence</span>
+                <Building className="h-4 w-4 mr-2" />
+                <span className="text-sm font-medium">Professional Excellence</span>
               </div>
               
-              <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent ${
+              <h1 className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
                 isDarkMode 
                   ? 'from-purple-400 via-violet-300 to-indigo-300' 
                   : 'from-purple-600 via-violet-600 to-indigo-600'
@@ -183,7 +183,7 @@ const ProfessionalServices: React.FC = () => {
                 Professional Services
               </h1>
               
-              <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed ${
+              <p className={`text-lg max-w-3xl mx-auto leading-relaxed ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 Expert professional services to drive organizational excellence, strategic growth, 
@@ -194,80 +194,74 @@ const ProfessionalServices: React.FC = () => {
         </section>
 
         {/* Services Categories Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+        <section className="py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
                 isDarkMode ? 'text-white' : 'text-slate-900'
               }`}>
                 Our Professional Service Categories
               </h2>
-              <p className={`text-xl max-w-3xl mx-auto ${
+              <p className={`text-lg max-w-2xl mx-auto ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 Comprehensive professional services to enhance your organizational capabilities
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-6">
               {serviceCategories.map((category, index) => (
-                <div key={index} className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-300 hover:scale-105 ${
+                <div key={index} className={`backdrop-blur-md rounded-xl border p-6 transition-all duration-300 hover:scale-105 ${
                   isDarkMode 
                     ? 'bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50' 
                     : 'bg-white/30 border-white/50 hover:bg-white/50'
                 }`}>
-                  <div className="flex items-start space-x-6">
-                    <div className={`p-4 rounded-xl ${
+                  <div className="flex items-start space-x-4">
+                    <div className={`p-3 rounded-lg ${
                       isDarkMode ? 'bg-purple-600/20' : 'bg-purple-100'
                     }`}>
-                      <category.icon className={`h-8 w-8 ${
+                      <category.icon className={`h-6 w-6 ${
                         isDarkMode ? 'text-purple-400' : 'text-purple-600'
                       }`} />
                     </div>
                     
                     <div className="flex-1">
-                      <h3 className={`text-2xl font-bold mb-3 ${
+                      <h3 className={`text-xl font-bold mb-2 ${
                         isDarkMode ? 'text-white' : 'text-slate-900'
                       }`}>
                         {category.title}
                       </h3>
-                      <p className={`text-lg mb-6 ${
+                      <p className={`text-sm mb-4 ${
                         isDarkMode ? 'text-slate-300' : 'text-slate-600'
                       }`}>
                         {category.description}
                       </p>
                       
-                      <div className="space-y-3 mb-6">
+                      <div className="space-y-2 mb-4">
                         {category.services.map((service, serviceIndex) => (
-                          <div key={serviceIndex} className={`p-3 rounded-lg border ${
-                            isDarkMode 
-                              ? 'bg-slate-900/30 border-slate-700/30' 
-                              : 'bg-slate-50/50 border-slate-200/50'
-                          }`}>
-                            <div className="flex items-start space-x-3">
-                              <CheckCircle className={`h-5 w-5 mt-1 flex-shrink-0 ${
-                                isDarkMode ? 'text-green-400' : 'text-green-600'
-                              }`} />
-                              <span className={`text-sm font-medium ${
-                                isDarkMode ? 'text-slate-200' : 'text-slate-700'
-                              }`}>
-                                {service}
-                              </span>
-                            </div>
+                          <div key={serviceIndex} className="flex items-center space-x-2">
+                            <CheckCircle className={`h-4 w-4 flex-shrink-0 ${
+                              isDarkMode ? 'text-green-400' : 'text-green-600'
+                            }`} />
+                            <span className={`text-sm ${
+                              isDarkMode ? 'text-slate-200' : 'text-slate-700'
+                            }`}>
+                              {service}
+                            </span>
                           </div>
                         ))}
                       </div>
                       
                       <Link 
                         to={category.link} 
-                        className={`inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
+                        className={`inline-flex items-center px-4 py-2 text-sm rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
                           isDarkMode 
                             ? 'bg-purple-600 hover:bg-purple-700 text-white' 
                             : 'bg-purple-600 hover:bg-purple-700 text-white'
                         }`}
                       >
                         Learn More
-                        <ArrowRight className="h-5 w-5 ml-2" />
+                        <ArrowRight className="h-4 w-4 ml-1" />
                       </Link>
                     </div>
                   </div>
@@ -278,43 +272,43 @@ const ProfessionalServices: React.FC = () => {
         </section>
 
         {/* Contact Form Section */}
-        <section className={`py-20 px-4 ${
+        <section className={`py-16 px-4 ${
           isDarkMode ? 'bg-slate-800/20' : 'bg-white/20'
         } backdrop-blur-sm`}>
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+            <div className="text-center mb-8">
+              <h2 className={`text-3xl md:text-4xl font-bold mb-3 ${
                 isDarkMode ? 'text-white' : 'text-slate-900'
               }`}>
                 Elevate Your Organization
               </h2>
-              <p className={`text-xl ${
+              <p className={`text-lg ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 Ready to unlock your organization's full potential? Let's discuss your professional service needs.
               </p>
             </div>
 
-            <div className={`backdrop-blur-md rounded-2xl border p-8 ${
+            <div className={`backdrop-blur-md rounded-xl border p-6 ${
               isDarkMode 
                 ? 'bg-slate-800/40 border-slate-700/50' 
                 : 'bg-white/40 border-white/50'
             }`}>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className={`block text-sm font-medium mb-2 ${
+                    <label className={`block text-sm font-medium mb-1 ${
                       isDarkMode ? 'text-slate-200' : 'text-slate-700'
                     }`}>
                       Full Name
                     </label>
                     <div className="relative">
-                      <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+                      <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 ${
                         isDarkMode ? 'text-slate-400' : 'text-slate-500'
                       }`} />
                       <input
                         type="text"
-                        className={`w-full pl-10 pr-4 py-3 rounded-lg border transition-colors ${
+                        className={`w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border transition-colors ${
                           isDarkMode 
                             ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-400 focus:border-purple-500' 
                             : 'bg-white/50 border-slate-300 text-slate-900 placeholder-slate-500 focus:border-purple-500'
@@ -325,18 +319,18 @@ const ProfessionalServices: React.FC = () => {
                   </div>
                   
                   <div>
-                    <label className={`block text-sm font-medium mb-2 ${
+                    <label className={`block text-sm font-medium mb-1 ${
                       isDarkMode ? 'text-slate-200' : 'text-slate-700'
                     }`}>
                       Email Address
                     </label>
                     <div className="relative">
-                      <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+                      <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 ${
                         isDarkMode ? 'text-slate-400' : 'text-slate-500'
                       }`} />
                       <input
                         type="email"
-                        className={`w-full pl-10 pr-4 py-3 rounded-lg border transition-colors ${
+                        className={`w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border transition-colors ${
                           isDarkMode 
                             ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-400 focus:border-purple-500' 
                             : 'bg-white/50 border-slate-300 text-slate-900 placeholder-slate-500 focus:border-purple-500'
@@ -348,18 +342,18 @@ const ProfessionalServices: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${
+                  <label className={`block text-sm font-medium mb-1 ${
                     isDarkMode ? 'text-slate-200' : 'text-slate-700'
                   }`}>
                     Phone Number
                   </label>
                   <div className="relative">
-                    <Phone className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+                    <Phone className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 ${
                       isDarkMode ? 'text-slate-400' : 'text-slate-500'
                     }`} />
                     <input
                       type="tel"
-                      className={`w-full pl-10 pr-4 py-3 rounded-lg border transition-colors ${
+                      className={`w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border transition-colors ${
                         isDarkMode 
                           ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-400 focus:border-purple-500' 
                           : 'bg-white/50 border-slate-300 text-slate-900 placeholder-slate-500 focus:border-purple-500'
@@ -370,7 +364,7 @@ const ProfessionalServices: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${
+                  <label className={`block text-sm font-medium mb-1 ${
                     isDarkMode ? 'text-slate-200' : 'text-slate-700'
                   }`}>
                     Service
@@ -379,7 +373,7 @@ const ProfessionalServices: React.FC = () => {
                     type="text"
                     value="Professional Services"
                     readOnly
-                    className={`w-full px-4 py-3 rounded-lg border ${
+                    className={`w-full px-4 py-2.5 text-sm rounded-lg border ${
                       isDarkMode 
                         ? 'bg-slate-900/50 border-slate-700 text-slate-400' 
                         : 'bg-slate-100/50 border-slate-300 text-slate-500'
@@ -389,13 +383,13 @@ const ProfessionalServices: React.FC = () => {
 
                 <button
                   type="submit"
-                  className={`w-full flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
+                  className={`w-full flex items-center justify-center px-6 py-3 text-sm rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
                     isDarkMode 
                       ? 'bg-purple-600 hover:bg-purple-700 text-white' 
                       : 'bg-purple-600 hover:bg-purple-700 text-white'
                   }`}
                 >
-                  <Send className="h-5 w-5 mr-2" />
+                  <Send className="h-4 w-4 mr-2" />
                   Send Message
                 </button>
               </form>

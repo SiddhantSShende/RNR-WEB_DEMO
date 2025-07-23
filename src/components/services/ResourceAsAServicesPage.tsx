@@ -1,16 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { 
-  Shield, AlertTriangle, CheckCircle, Settings,
-  ArrowRight, Mail, Phone, Send,
-  FileCheck, Eye, BarChart3,
-  Search, TrendingUp, Award
+  Shield, Users, Eye, Wrench, FileCheck, CheckCircle,
+  ArrowRight, Mail, Phone, Send, Award, Target
 } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import Navigation from '../Navigation';
 import { Link } from 'react-router-dom';
 
-const BCMSServices: React.FC = () => {
+const ResourceAsAServicesPage: React.FC = () => {
   const { isDarkMode } = useTheme();
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -108,71 +106,76 @@ const BCMSServices: React.FC = () => {
 
   const serviceCategories = [
     {
-      title: "BCMS Framework Design & Implementation",
-      description: "Comprehensive framework design aligned with ISO 22301 standards",
-      icon: Settings,
+      title: "GRC Specialists",
+      subtitle: "ISO 27001, RBI, SEBI, CERT-In, etc.",
+      description: "Expert governance, risk, and compliance specialists with deep regulatory knowledge",
+      icon: Shield,
       services: [
-        "Development of business continuity policy and governance structure",
-        "Identification of critical business functions and dependencies",
-        "Establishment of roles, responsibilities, and escalation procedures",
-        "Alignment with ISO 22301 and sector-specific guidelines (e.g., RBI, SEBI, IRDAI)"
+        "ISO 27001 Lead Auditors and Implementation Specialists",
+        "RBI Cybersecurity Framework and Guidelines Experts",
+        "SEBI IT Governance and Compliance Professionals",
+        "CERT-In Incident Response and Reporting Specialists",
+        "PCI DSS and Payment Security Standards Consultants",
+        "GDPR and Data Privacy Compliance Experts"
       ],
-      link: "/services/bcms/framework"
+      link: "/services/resource-as-services/grc-specialists"
     },
     {
-      title: "Business Impact Analysis (BIA)",
-      description: "Comprehensive assessment of business processes and impact estimation",
-      icon: BarChart3,
-      services: [
-        "Identification of key business processes and interdependencies",
-        "Estimation of potential impact due to disruptions (financial, operational, reputational)",
-        "Definition of Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)"
-      ],
-      link: "/services/bcms/bia"
-    },
-    {
-      title: "Risk Assessment & Strategy Development",
-      description: "Threat assessment and comprehensive continuity strategy formulation",
-      icon: Search,
-      services: [
-        "Threat and vulnerability assessment",
-        "Continuity and recovery strategy formulation (people, process, technology)",
-        "Integration with IT Disaster Recovery (DR) plans"
-      ],
-      link: "/services/bcms/risk-assessment"
-    },
-    {
-      title: "Business Continuity & DR Plan Development",
-      description: "Customized BC & DR plans with detailed recovery procedures",
-      icon: FileCheck,
-      services: [
-        "Drafting and customizing BC & DR Plans per business unit",
-        "Documentation of recovery procedures, communication protocols, and fallback operations",
-        "Creation of Emergency Response and Crisis Management Plans"
-      ],
-      link: "/services/bcms/plan-development"
-    },
-    {
-      title: "BC/DR Testing & Drills",
-      description: "Comprehensive testing through exercises and simulations",
+      title: "Information Security Analysts",
+      description: "Skilled analysts specialized in threat detection, incident response, and security monitoring",
       icon: Eye,
       services: [
-        "Tabletop exercises, walk-throughs, and full-scale simulations",
-        "Testing of alternate site operations and failover capabilities",
-        "Gap identification and improvement planning post-drill"
+        "SOC Analysts for 24/7 Security Operations Center monitoring",
+        "Threat Intelligence Analysts for proactive threat hunting",
+        "Incident Response Specialists for breach containment",
+        "Security Risk Assessment and Vulnerability Analysts",
+        "Digital Forensics Investigators and Evidence Analysts",
+        "Security Awareness Training and Education Specialists"
       ],
-      link: "/services/bcms/testing"
+      link: "/services/resource-as-services/security-analysts"
     },
     {
-      title: "Ongoing Monitoring, Maintenance & Awareness",
-      description: "Continuous BCMS improvement and organizational readiness",
-      icon: TrendingUp,
+      title: "Cybersecurity Engineers",
+      subtitle: "SIEM, EDR, Firewall, etc.",
+      description: "Technical cybersecurity engineers with expertise in security infrastructure and tools",
+      icon: Wrench,
       services: [
-        "Periodic BCMS audits and readiness assessments",
-        "Training and awareness programs for staff",
-        "Plan updates aligned with organizational or regulatory changes"
+        "SIEM Engineers for Security Information and Event Management",
+        "EDR/XDR Engineers for Endpoint Detection and Response",
+        "Firewall and Network Security Engineers",
+        "Cloud Security Engineers (AWS, Azure, GCP)",
+        "Security Automation and Orchestration Engineers",
+        "Identity and Access Management (IAM) Engineers"
       ],
-      link: "/services/bcms/monitoring"
+      link: "/services/resource-as-services/cybersecurity-engineers"
+    },
+    {
+      title: "VAPT & Application Security Testers",
+      description: "Certified penetration testers and application security assessment professionals",
+      icon: Target,
+      services: [
+        "Certified Ethical Hackers (CEH) and OSCP Professionals",
+        "Web Application Penetration Testing Specialists",
+        "Mobile Application Security Testing Experts",
+        "Network Infrastructure Penetration Testers",
+        "API Security Assessment and Testing Professionals",
+        "Source Code Review and Static Analysis Specialists"
+      ],
+      link: "/services/resource-as-services/vapt-testers"
+    },
+    {
+      title: "Compliance & Risk Consultants",
+      description: "Expert consultants specializing in regulatory compliance and enterprise risk management",
+      icon: FileCheck,
+      services: [
+        "Enterprise Risk Management (ERM) Consultants",
+        "Third-Party Risk Management (TPRM) Specialists",
+        "Business Continuity and Crisis Management Experts",
+        "Operational Risk Assessment and Mitigation Consultants",
+        "Regulatory Compliance and Audit Specialists",
+        "Cyber Risk Quantification and Insurance Advisors"
+      ],
+      link: "/services/resource-as-services/compliance-consultants"
     }
   ];
 
@@ -197,8 +200,8 @@ const BCMSServices: React.FC = () => {
               <div className={`inline-flex items-center px-4 py-2 rounded-full mb-6 ${
                 isDarkMode ? 'bg-blue-600/20 text-blue-400' : 'bg-blue-100 text-blue-600'
               }`}>
-                <Shield className="h-5 w-5 mr-2" />
-                <span className="font-medium">Business Continuity Management System</span>
+                <Users className="h-5 w-5 mr-2" />
+                <span className="font-medium">Resource as a Services</span>
               </div>
               
               <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent ${
@@ -206,14 +209,14 @@ const BCMSServices: React.FC = () => {
                   ? 'from-blue-400 via-blue-300 to-indigo-300' 
                   : 'from-blue-600 via-blue-700 to-indigo-700'
               }`}>
-                BCMS Services
+                Expert Security Resources
               </h1>
               
               <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                Comprehensive business continuity management solutions to ensure organizational resilience, 
-                regulatory compliance, and seamless operations during disruptions.
+                Access highly skilled cybersecurity professionals and specialists on-demand to strengthen 
+                your security posture with expert knowledge and proven experience.
               </p>
             </div>
           </div>
@@ -226,55 +229,63 @@ const BCMSServices: React.FC = () => {
               <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
                 isDarkMode ? 'text-white' : 'text-slate-900'
               }`}>
-                Our BCMS Service Classifications
+                Our Professional Resource Categories
               </h2>
               <p className={`text-xl max-w-3xl mx-auto ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                Comprehensive business continuity management services designed to ensure organizational resilience 
-                and regulatory compliance across all business functions.
+                Highly qualified cybersecurity professionals ready to integrate seamlessly 
+                into your team and deliver immediate value to your security initiatives.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-12">
               {serviceCategories.map((category, index) => {
                 const Icon = category.icon;
                 return (
                   <div
                     key={index}
-                    className={`group relative p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] ${
+                    className={`group relative p-8 rounded-3xl border transition-all duration-500 hover:scale-105 ${
                       isDarkMode
                         ? 'bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-blue-500/50'
                         : 'bg-white/70 backdrop-blur-sm border-slate-200 hover:border-blue-300'
                     }`}
                   >
-                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
                       isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
                     }`}>
-                      <Icon className={`w-6 h-6 ${
+                      <Icon className={`w-8 h-8 ${
                         isDarkMode ? 'text-blue-400' : 'text-blue-600'
                       }`} />
                     </div>
                     
-                    <h3 className={`text-lg font-bold mb-2 ${
+                    <h3 className={`text-2xl font-bold mb-2 ${
                       isDarkMode ? 'text-white' : 'text-slate-900'
                     }`}>
                       {category.title}
                     </h3>
                     
-                    <p className={`text-sm mb-4 leading-relaxed ${
+                    {category.subtitle && (
+                      <p className={`text-sm font-medium mb-4 ${
+                        isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                      }`}>
+                        {category.subtitle}
+                      </p>
+                    )}
+                    
+                    <p className={`text-lg mb-6 leading-relaxed ${
                       isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}>
                       {category.description}
                     </p>
                     
-                    <ul className="space-y-2 mb-6">
+                    <ul className="space-y-3 mb-8">
                       {category.services.map((service, idx) => (
-                        <li key={idx} className="flex items-start space-x-2">
-                          <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                        <li key={idx} className="flex items-start space-x-3">
+                          <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
                             isDarkMode ? 'text-blue-400' : 'text-blue-600'
                           }`} />
-                          <span className={`text-sm leading-relaxed ${
+                          <span className={`leading-relaxed ${
                             isDarkMode ? 'text-slate-400' : 'text-slate-600'
                           }`}>
                             {service}
@@ -285,11 +296,11 @@ const BCMSServices: React.FC = () => {
                     
                     <Link
                       to="/contact"
-                      className={`inline-flex items-center text-sm font-semibold transition-all duration-300 group-hover:translate-x-1 ${
+                      className={`inline-flex items-center font-semibold transition-all duration-300 group-hover:translate-x-2 ${
                         isDarkMode ? 'text-blue-400' : 'text-blue-600'
                       }`}
                     >
-                      Learn More <ArrowRight className="w-3 h-3 ml-1" />
+                      Learn More <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </div>
                 );
@@ -298,25 +309,106 @@ const BCMSServices: React.FC = () => {
           </div>
         </section>
 
-        {/* Get Started with Us Section */}
+        {/* Why Choose Our Resources Section */}
         <section className="py-20 px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className={`relative overflow-hidden rounded-2xl p-8 ${
-              isDarkMode
-                ? 'bg-slate-800/50 backdrop-blur-sm border border-slate-700/50'
-                : 'bg-white/70 backdrop-blur-sm border-slate-200 shadow-xl'
-            }`}>
-              <div className="text-center mb-8">
-                <h2 className={`text-3xl font-bold mb-3 ${
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+                isDarkMode ? 'text-white' : 'text-slate-900'
+              }`}>
+                Why Choose Our Security Resources?
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className={`text-center p-8 rounded-3xl ${
+                isDarkMode ? 'bg-slate-800/30' : 'bg-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
+                  isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
+                }`}>
+                  <Award className={`w-8 h-8 ${
+                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                  }`} />
+                </div>
+                <h3 className={`text-xl font-bold mb-4 ${
                   isDarkMode ? 'text-white' : 'text-slate-900'
                 }`}>
-                  Get Started
+                  Certified Professionals
+                </h3>
+                <p className={`${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}>
+                  All our resources hold industry-recognized certifications and have proven track records in their specializations.
+                </p>
+              </div>
+
+              <div className={`text-center p-8 rounded-3xl ${
+                isDarkMode ? 'bg-slate-800/30' : 'bg-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
+                  isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
+                }`}>
+                  <Users className={`w-8 h-8 ${
+                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                  }`} />
+                </div>
+                <h3 className={`text-xl font-bold mb-4 ${
+                  isDarkMode ? 'text-white' : 'text-slate-900'
+                }`}>
+                  Flexible Engagement
+                </h3>
+                <p className={`${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}>
+                  Scale your security team up or down based on project needs with flexible short-term and long-term engagements.
+                </p>
+              </div>
+
+              <div className={`text-center p-8 rounded-3xl ${
+                isDarkMode ? 'bg-slate-800/30' : 'bg-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
+                  isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
+                }`}>
+                  <Target className={`w-8 h-8 ${
+                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                  }`} />
+                </div>
+                <h3 className={`text-xl font-bold mb-4 ${
+                  isDarkMode ? 'text-white' : 'text-slate-900'
+                }`}>
+                  Immediate Impact
+                </h3>
+                <p className={`${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}>
+                  Our pre-vetted professionals can integrate quickly and start delivering value from day one of engagement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Get Started with Us Section */}
+        <section className="py-32 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className={`relative overflow-hidden rounded-3xl p-12 ${
+              isDarkMode
+                ? 'bg-slate-800/50 backdrop-blur-sm border border-slate-700/50'
+                : 'bg-white/70 backdrop-blur-sm border-slate-200 shadow-2xl'
+            }`}>
+              <div className="text-center mb-12">
+                <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+                  isDarkMode ? 'text-white' : 'text-slate-900'
+                }`}>
+                  Get Started with Us
                 </h2>
                 
-                <p className={`text-base ${
+                <p className={`text-xl leading-relaxed ${
                   isDarkMode ? 'text-slate-300' : 'text-slate-600'
                 }`}>
-                  Connect with our BCMS experts for tailored solutions.
+                  Ready to augment your security team with expert resources? Fill out the form below and our Resource as a Services experts will get in touch with you.
                 </p>
               </div>
               
@@ -386,7 +478,7 @@ const BCMSServices: React.FC = () => {
                     </label>
                     <input
                       type="text"
-                      value="Business Continuity Management System (BCMS)"
+                      value="Resource as a Services"
                       readOnly
                       className={`w-full px-4 py-3 rounded-lg border ${
                         isDarkMode
@@ -427,18 +519,19 @@ const BCMSServices: React.FC = () => {
                   <span className="text-2xl font-bold">RNR Consulting</span>
                 </div>
                 <p className="text-slate-400 mb-4">
-                  Leading provider of Business Continuity Management System services, 
-                  ensuring organizational resilience and regulatory compliance.
+                  Leading provider of expert cybersecurity professionals and specialists, 
+                  delivering on-demand security resources to strengthen your team.
                 </p>
               </div>
               
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-blue-400">BCMS Services</h4>
+                <h4 className="text-lg font-semibold mb-4 text-blue-400">Resource Categories</h4>
                 <ul className="space-y-2 text-slate-400">
-                  <li><a href="#" className="hover:text-white transition-colors">Framework Design</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Business Impact Analysis</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Risk Assessment</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">BC/DR Planning</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">GRC Specialists</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Security Analysts</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Cybersecurity Engineers</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">VAPT Testers</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Compliance Consultants</a></li>
                 </ul>
               </div>
               
@@ -447,8 +540,9 @@ const BCMSServices: React.FC = () => {
                 <ul className="space-y-2 text-slate-400">
                   <li><Link to="/services/grc" className="hover:text-white transition-colors">GRC Services</Link></li>
                   <li><Link to="/services/tprm" className="hover:text-white transition-colors">TPRM Services</Link></li>
-                  <li><Link to="/services/cybersecurity" className="hover:text-white transition-colors">Cybersecurity</Link></li>
-                  <li><Link to="/services" className="hover:text-white transition-colors">All Services</Link></li>
+                  <li><Link to="/services/bcms" className="hover:text-white transition-colors">BCMS Services</Link></li>
+                  <li><Link to="/services/application-security" className="hover:text-white transition-colors">Application Security</Link></li>
+                  <li><Link to="/services/cloud-security" className="hover:text-white transition-colors">Cloud Security</Link></li>
                 </ul>
               </div>
               
@@ -457,22 +551,22 @@ const BCMSServices: React.FC = () => {
                 <ul className="space-y-3 text-slate-400">
                   <li className="flex items-center space-x-2">
                     <Mail className="w-4 h-4" />
-                    <span>bcms@rnrconsulting.com</span>
+                    <span>resources@rnrconsulting.com</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Phone className="w-4 h-4" />
                     <span>+1 (555) 123-4567</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <Award className="w-4 h-4" />
-                    <span>ISO 22301 Certified Consultants</span>
+                    <Users className="w-4 h-4" />
+                    <span>Expert Security Professionals</span>
                   </li>
                 </ul>
               </div>
             </div>
             
             <div className="border-t border-slate-800 pt-8 mt-12 text-center text-slate-400">
-              <p>&copy; 2024 RNR Consulting. All rights reserved. | Business Continuity Management System Services</p>
+              <p>&copy; 2024 RNR Consulting. All rights reserved. | Resource as a Services</p>
             </div>
           </div>
         </footer>
@@ -481,4 +575,4 @@ const BCMSServices: React.FC = () => {
   );
 };
 
-export default BCMSServices;
+export default ResourceAsAServicesPage;

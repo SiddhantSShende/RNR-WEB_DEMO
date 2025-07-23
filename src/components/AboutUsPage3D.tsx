@@ -7,7 +7,6 @@ import {
   Award, 
   Shield, 
   Globe, 
-  ArrowLeft, 
   Target,
   Zap, 
   Lock,
@@ -16,11 +15,6 @@ import {
   ChevronDown,
   ChevronUp,
   Code,
-  Mail,
-  Phone,
-  MapPin,
-  ChevronRight,
-  Star,
   Search,
   Moon,
   Sun,
@@ -454,7 +448,7 @@ const AboutUsPage3D: React.FC = () => {
                 <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
                   isDarkMode ? 'bg-slate-700' : 'bg-white'
                 }`}>
-                  <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+                  <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
                 </div>
                 <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
                   isDarkMode 
@@ -991,9 +985,9 @@ const AboutUsPage3D: React.FC = () => {
                       </div>
                       <div className={isDarkMode ? 'text-blue-400' : 'text-blue-600'}>
                         {expandedSection === section.id ? (
-                          <ChevronUp className="h-6 w-6" />
+                          <ChevronUp className="h-8 w-8" />
                         ) : (
-                          <ChevronDown className="h-6 w-6" />
+                          <ChevronDown className="h-8 w-8" />
                         )}
                       </div>
                     </button>

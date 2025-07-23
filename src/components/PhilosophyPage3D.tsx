@@ -421,7 +421,7 @@ const PhilosophyPage3D: React.FC = () => {
                 <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
                   isDarkMode ? 'bg-slate-700' : 'bg-white'
                 }`}>
-                  <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+                  <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
                 </div>
                 <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
                   isDarkMode 

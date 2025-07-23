@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { 
-  Server, Shield, Network, Monitor, Lock,
+  BookOpen, Users, Shield, Award, Target, FileText,
   ArrowRight, Mail, Phone, User, Send
 } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
@@ -9,12 +9,52 @@ import Navigation from '../Navigation';
 import AnimatedContainer from '../AnimatedContainer';
 import { Link } from 'react-router-dom';
 
-const InfrastructureServices: React.FC = () => {
+const TrainingAwarenessServices: React.FC = () => {
   const { isDarkMode } = useTheme();
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationRef = useRef<number | null>(null);
+
+  // Service data based on your requirements
+  const services = [
+    {
+      icon: BookOpen,
+      title: "Cybersecurity Awareness Workshops",
+      description: "Comprehensive workshops designed to educate employees about cybersecurity threats, best practices, and organizational security policies. Interactive sessions covering threat landscape, social engineering, and security mindset development.",
+      link: "/contact"
+    },
+    {
+      icon: Shield,
+      title: "Phishing Simulation Campaigns",
+      description: "Realistic phishing simulation campaigns to test and improve employee awareness. Includes targeted training modules, progress tracking, and behavioral assessment to reduce susceptibility to social engineering attacks.",
+      link: "/contact"
+    },
+    {
+      icon: Users,
+      title: "Secure Coding Training",
+      description: "Specialized training programs for developers focusing on secure coding practices, vulnerability identification, and application security principles. Covers OWASP guidelines, code review techniques, and secure development lifecycle.",
+      link: "/contact"
+    },
+    {
+      icon: FileText,
+      title: "Training Material Articulation",
+      description: "Custom development of training materials, documentation, and educational resources tailored to your organization's specific needs. Includes interactive modules, assessment tools, and certification programs.",
+      link: "/contact"
+    },
+    {
+      icon: Target,
+      title: "BCP Training",
+      description: "Business Continuity Planning training programs covering crisis management, disaster recovery procedures, emergency response protocols, and business resilience strategies. Hands-on exercises and tabletop simulations included.",
+      link: "/contact"
+    },
+    {
+      icon: Award,
+      title: "ISMS Training",
+      description: "Information Security Management System training aligned with ISO 27001 standards. Covers implementation, maintenance, and continuous improvement of ISMS frameworks, risk management, and compliance requirements.",
+      link: "/contact"
+    }
+  ];
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -30,7 +70,7 @@ const InfrastructureServices: React.FC = () => {
     sceneRef.current = scene;
     rendererRef.current = renderer;
 
-    // Create animated background particles with Infrastructure theme
+    // Create animated background particles with blue theme
     const particlesGeometry = new THREE.BufferGeometry();
     const particleCount = 2900;
     const posArray = new Float32Array(particleCount * 3);
@@ -49,14 +89,14 @@ const InfrastructureServices: React.FC = () => {
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
-    
+
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.005,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.8
     });
-    
+
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
@@ -66,20 +106,18 @@ const InfrastructureServices: React.FC = () => {
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       
-      particlesMesh.rotation.x += 0.0002;
-      particlesMesh.rotation.y += 0.0006;
+      particlesMesh.rotation.x += 0.0005;
+      particlesMesh.rotation.y += 0.0005;
       
       renderer.render(scene, camera);
     };
+    
     animate();
 
-    // Handle resize
     const handleResize = () => {
-      if (camera && renderer) {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      }
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
     window.addEventListener('resize', handleResize);
@@ -96,53 +134,23 @@ const InfrastructureServices: React.FC = () => {
     };
   }, []);
 
-  const services = [
-    {
-      title: "Network Security Architecture",
-      description: "Comprehensive network security design and implementation including firewall configuration, intrusion detection systems, network segmentation, and secure network topology planning.",
-      icon: Network,
-      link: "/services/infrastructure/network-security"
-    },
-    {
-      title: "Server & Endpoint Hardening",
-      description: "System hardening services for servers and endpoints including security configuration, patch management, access control implementation, and vulnerability remediation strategies.",
-      icon: Server,
-      link: "/services/infrastructure/server-hardening"
-    },
-    {
-      title: "Security Monitoring & SIEM",
-      description: "Implementation and management of Security Information and Event Management systems, continuous monitoring solutions, threat detection, and incident response automation.",
-      icon: Monitor,
-      link: "/services/infrastructure/siem-monitoring"
-    },
-    {
-      title: "Identity & Access Management",
-      description: "Enterprise IAM solutions including single sign-on, multi-factor authentication, privileged access management, and identity governance frameworks for secure access control.",
-      icon: Lock,
-      link: "/services/infrastructure/identity-management"
-    },
-    {
-      title: "Infrastructure Security Assessment",
-      description: "Comprehensive security assessments of IT infrastructure including vulnerability scanning, configuration reviews, security architecture analysis, and compliance validation.",
-      icon: Shield,
-      link: "/services/infrastructure/security-assessment"
-    }
-  ];
-
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       isDarkMode 
         ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
         : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
     }`}>
-      {/* Three.js Background */}
-      <div ref={mountRef} className="fixed inset-0 z-0" />
+      {/* Background Animation */}
+      <div 
+        ref={mountRef} 
+        className="fixed inset-0 z-0"
+        style={{ background: 'transparent' }}
+      />
       
-      {/* Content Overlay */}
-      <div className="relative z-10 min-h-screen">
-        {/* Navigation */}
+      {/* Navigation */}
+      <div className="relative z-10">
         <Navigation />
-
+        
         {/* Hero Section */}
         <section className="pt-32 pb-20 px-4">
           <div className="max-w-7xl mx-auto">
@@ -150,8 +158,8 @@ const InfrastructureServices: React.FC = () => {
               <div className={`inline-flex items-center px-4 py-2 rounded-full mb-6 ${
                 isDarkMode ? 'bg-blue-600/20 text-blue-400' : 'bg-blue-100 text-blue-600'
               }`}>
-                <Server className="h-5 w-5 mr-2" />
-                <span className="font-medium">Infrastructure Security Solutions</span>
+                <BookOpen className="h-5 w-5 mr-2" />
+                <span className="font-medium">Training & Awareness Solutions</span>
               </div>
               
               <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent ${
@@ -159,35 +167,26 @@ const InfrastructureServices: React.FC = () => {
                   ? 'from-blue-400 via-blue-300 to-indigo-300' 
                   : 'from-blue-600 via-blue-700 to-indigo-700'
               }`}>
-                Infrastructure Security
+                Training & Awareness
               </h1>
               
               <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                Comprehensive infrastructure security services including network architecture, system hardening, 
-                SIEM implementation, and advanced security monitoring for enterprise environments.
+                Comprehensive cybersecurity training and awareness programs designed to build a strong human firewall. 
+                Empower your workforce with knowledge and skills to defend against evolving cyber threats.
               </p>
             </AnimatedContainer>
-          </div>
-        </section>
 
-        {/* Services Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
-                isDarkMode ? 'text-white' : 'text-slate-900'
-              }`}>
-                Our Infrastructure Services
-              </h2>
-              <p className={`text-xl max-w-3xl mx-auto ${
+            <AnimatedContainer animation="slideUp" delay={200} duration={600} className="text-center mb-16">
+              <p className={`text-lg ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                Enterprise-grade infrastructure security solutions for modern IT environments
+                Professional training solutions for cybersecurity awareness and skill development
               </p>
-            </div>
+            </AnimatedContainer>
 
+            {/* Services Grid */}
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
               {services.slice(0, 4).map((service, index) => (
                 <AnimatedContainer 
@@ -239,49 +238,57 @@ const InfrastructureServices: React.FC = () => {
               ))}
             </div>
 
-            {/* Last service centered */}
-            <AnimatedContainer animation="scaleIn" delay={400} duration={600} className="flex justify-center">
-              <div className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-300 hover:scale-105 max-w-2xl w-full ${
-                isDarkMode 
-                  ? 'bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50' 
-                  : 'bg-white/30 border-white/50 hover:bg-white/50'
-              }`}>
-                <div className="flex items-start space-x-6">
-                  <div className={`p-4 rounded-xl ${
-                    isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
-                  }`}>
-                    <Shield className={`h-8 w-8 ${
-                      isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                    }`} />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className={`text-2xl font-bold mb-3 ${
-                      isDarkMode ? 'text-white' : 'text-slate-900'
+            {/* Last two services centered */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {services.slice(4).map((service, index) => (
+                <AnimatedContainer 
+                  key={index + 4} 
+                  animation="scaleIn" 
+                  delay={(index + 4) * 100}
+                  duration={600}
+                  className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-300 hover:scale-105 ${
+                    isDarkMode 
+                      ? 'bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50' 
+                      : 'bg-white/30 border-white/50 hover:bg-white/50'
+                  }`}
+                >
+                  <div className="flex items-start space-x-6">
+                    <div className={`p-4 rounded-xl ${
+                      isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
                     }`}>
-                      {services[4].title}
-                    </h3>
-                    <p className={`text-lg mb-6 ${
-                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                    }`}>
-                      {services[4].description}
-                    </p>
+                      <service.icon className={`h-8 w-8 ${
+                        isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                      }`} />
+                    </div>
                     
-                    <Link 
-                      to={services[4].link} 
-                      className={`inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
-                        isDarkMode 
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                          : 'bg-blue-600 hover:bg-blue-700 text-white'
-                      }`}
-                    >
-                      Learn More
-                      <ArrowRight className="h-5 w-5 ml-2" />
-                    </Link>
+                    <div className="flex-1">
+                      <h3 className={`text-2xl font-bold mb-3 ${
+                        isDarkMode ? 'text-white' : 'text-slate-900'
+                      }`}>
+                        {service.title}
+                      </h3>
+                      <p className={`text-lg mb-6 ${
+                        isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                      }`}>
+                        {service.description}
+                      </p>
+                      
+                      <Link 
+                        to={service.link} 
+                        className={`inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
+                          isDarkMode 
+                            ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                            : 'bg-blue-600 hover:bg-blue-700 text-white'
+                        }`}
+                      >
+                        Learn More
+                        <ArrowRight className="h-5 w-5 ml-2" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </AnimatedContainer>
+                </AnimatedContainer>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -294,12 +301,12 @@ const InfrastructureServices: React.FC = () => {
               <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
                 isDarkMode ? 'text-white' : 'text-slate-900'
               }`}>
-                Leave Us a Message
+                Start Your Training Journey
               </h2>
               <p className={`text-xl ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                Ready to secure your infrastructure? Connect with our infrastructure security experts.
+                Ready to strengthen your cybersecurity posture? Contact our training experts for customized solutions.
               </p>
             </AnimatedContainer>
 
@@ -381,23 +388,40 @@ const InfrastructureServices: React.FC = () => {
                   <label className={`block text-sm font-medium mb-2 ${
                     isDarkMode ? 'text-slate-200' : 'text-slate-700'
                   }`}>
-                    Service
+                    Service Interest
                   </label>
                   <input
                     type="text"
-                    value="Infrastructure Security Services"
-                    readOnly
-                    className={`w-full px-4 py-3 rounded-lg border ${
+                    className={`w-full px-4 py-3 rounded-lg border transition-colors ${
                       isDarkMode 
-                        ? 'bg-slate-900/50 border-slate-700 text-slate-400' 
-                        : 'bg-slate-100/50 border-slate-300 text-slate-500'
-                    }`}
+                        ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-400 focus:border-blue-500' 
+                        : 'bg-white/50 border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500'
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
+                    placeholder="Which training service interests you?"
+                    defaultValue="Training & Awareness Services"
                   />
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${
+                    isDarkMode ? 'text-slate-200' : 'text-slate-700'
+                  }`}>
+                    Message
+                  </label>
+                  <textarea
+                    rows={4}
+                    className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                      isDarkMode 
+                        ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-400 focus:border-blue-500' 
+                        : 'bg-white/50 border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500'
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
+                    placeholder="Tell us about your training requirements..."
+                  ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className={`w-full flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
+                  className={`w-full flex items-center justify-center px-6 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
                     isDarkMode 
                       ? 'bg-blue-600 hover:bg-blue-700 text-white' 
                       : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -415,4 +439,4 @@ const InfrastructureServices: React.FC = () => {
   );
 };
 
-export default InfrastructureServices;
+export default TrainingAwarenessServices;

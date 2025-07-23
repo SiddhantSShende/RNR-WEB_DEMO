@@ -46,7 +46,7 @@ function App() {
               <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
                 isDarkMode ? 'bg-slate-700' : 'bg-white'
               }`}>
-                <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+                <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
               </div>
               <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
                 isDarkMode 
@@ -857,7 +857,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 pb-12 sm:pb-16">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8">
         <div className={`absolute inset-0 bg-gradient-to-br ${
           isDarkMode 
             ? 'from-blue-900/20 via-indigo-900/20 to-blue-800/30' 
@@ -872,10 +872,10 @@ function App() {
           }`}></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
             {/* Text Content */}
             <AnimatedContainer animation="slideRight" duration={700} className="text-center lg:text-left lg:col-span-2 px-4 sm:px-0">
-              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 bg-gradient-to-r bg-clip-text text-transparent leading-tight ${
+              <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r bg-clip-text text-transparent leading-tight ${
                 isDarkMode 
                   ? 'from-blue-400 via-blue-300 to-indigo-300' 
                   : 'from-blue-600 via-blue-700 to-indigo-700'
@@ -885,7 +885,7 @@ function App() {
                 <span className="block">Security</span>
               </h1>
               <AnimatedContainer animation="fadeIn" delay={200} duration={600}>
-                <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 leading-relaxed max-w-full mx-auto lg:mx-0 ${
+                <p className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed max-w-full mx-auto lg:mx-0 ${
                   isDarkMode ? 'text-slate-300' : 'text-slate-600'
                 }`}>
                   Protecting your digital assets with next-generation security solutions. 
@@ -893,16 +893,16 @@ function App() {
                 </p>
               </AnimatedContainer>
               <AnimatedContainer animation="slideUp" delay={400} duration={600}>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
                   <Link 
                     to="/contact"
-                    className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 sm:px-8 py-4 sm:py-4 rounded-xl text-base sm:text-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg shadow-blue-500/25 animate-glow"
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg shadow-blue-500/25 animate-glow"
                   >
-                    Start Protection <ChevronRight className="ml-2 h-5 w-5" />
+                    Start Protection <ChevronRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link 
                     to="/about"
-                    className={`backdrop-blur-sm border-2 px-6 sm:px-8 py-4 sm:py-4 rounded-xl text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
+                    className={`backdrop-blur-sm border-2 px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
                       isDarkMode 
                         ? 'bg-slate-800/80 border-slate-600 text-blue-400 hover:bg-slate-700/80 hover:border-slate-500' 
                         : 'bg-white/80 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
@@ -929,19 +929,19 @@ function App() {
       <ProfessionalServices />
 
       {/* Services Section */}
-      <section id="services" className={`py-20 backdrop-blur-sm ${
+      <section id="services" className={`py-16 backdrop-blur-sm ${
         isDarkMode ? 'bg-slate-800/50' : 'bg-white/50'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedContainer animation="fadeIn" className="text-center mb-16">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
+          <AnimatedContainer animation="fadeIn" className="text-center mb-12">
+            <h2 className={`text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r bg-clip-text text-transparent ${
               isDarkMode 
                 ? 'from-blue-400 to-indigo-300' 
                 : 'from-blue-600 to-indigo-700'
             }`}>
               Our Services
             </h2>
-            <p className={`text-xl max-w-2xl mx-auto ${
+            <p className={`text-lg max-w-2xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
               Comprehensive cybersecurity solutions tailored to protect your business from evolving threats
@@ -1019,7 +1019,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className={`py-20 bg-gradient-to-br ${
+      <section id="about" className={`py-16 bg-gradient-to-br ${
         isDarkMode 
           ? 'from-slate-800 to-slate-900' 
           : 'from-blue-50 to-indigo-50'
@@ -1027,14 +1027,14 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedContainer animation="slideRight" duration={700}>
-              <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent ${
+              <h2 className={`text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
                 isDarkMode 
                   ? 'from-blue-400 to-indigo-300' 
                   : 'from-blue-600 to-indigo-700'
               }`}>
                 Why Choose Us
               </h2>
-              <p className={`text-xl mb-8 leading-relaxed ${
+              <p className={`text-lg mb-6 leading-relaxed ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 With over a decade of experience in cybersecurity, we've protected thousands of organizations 
@@ -1091,19 +1091,19 @@ function App() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className={`py-20 backdrop-blur-sm ${
+      <section id="team" className={`py-16 backdrop-blur-sm ${
         isDarkMode ? 'bg-slate-800/50' : 'bg-white/50'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedContainer animation="fadeIn" className="text-center mb-16">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
+          <AnimatedContainer animation="fadeIn" className="text-center mb-12">
+            <h2 className={`text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r bg-clip-text text-transparent ${
               isDarkMode 
                 ? 'from-blue-400 to-indigo-300' 
                 : 'from-blue-600 to-indigo-700'
             }`}>
               Security Experts
             </h2>
-            <p className={`text-xl max-w-2xl mx-auto ${
+            <p className={`text-lg max-w-2xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
               Meet our team of certified cybersecurity professionals dedicated to protecting your business
@@ -1166,21 +1166,21 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 bg-gradient-to-br ${
+      <section id="contact" className={`py-16 bg-gradient-to-br ${
         isDarkMode 
           ? 'from-slate-800 to-slate-900' 
           : 'from-blue-50 to-indigo-50'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedContainer animation="fadeIn" className="text-center mb-16">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
+          <AnimatedContainer animation="fadeIn" className="text-center mb-12">
+            <h2 className={`text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r bg-clip-text text-transparent ${
               isDarkMode 
                 ? 'from-blue-400 to-indigo-300' 
                 : 'from-blue-600 to-indigo-700'
             }`}>
               Get Protected Today
             </h2>
-            <p className={`text-xl max-w-2xl mx-auto ${
+            <p className={`text-lg max-w-2xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
               Ready to secure your business? Contact our security experts for a free consultation
@@ -1281,7 +1281,7 @@ function App() {
                 <div className={`p-2 rounded-xl shadow-lg ${
                   isDarkMode ? 'bg-slate-800' : 'bg-white'
                 }`}>
-                  <img src="/rnr-logo.png" alt="RNR Consulting" className="h-6 w-6" />
+                  <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
                 </div>
                 <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
                   isDarkMode 
