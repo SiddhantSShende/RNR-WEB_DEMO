@@ -1802,13 +1802,10 @@ const CareersPage3D: React.FC = () => {
                 Join RNR Consulting and be part of a team that's defining the next generation of cybersecurity solutions.
                 Your expertise will help protect organizations worldwide from evolving digital threats.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25">
-                  View All Positions
-                </button>
-                <button className="bg-gradient-to-r from-sky-500 to-sky-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-sky-600 hover:to-sky-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-sky-500/25">
-                  Submit Resume
-                </button>
+              <div className="flex justify-center">
+                <Link to="/apply" className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-10 py-4 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25">
+                  Apply Now
+                </Link>
               </div>
             </div>
           </div>
