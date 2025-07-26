@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Lock, Eye, Zap, Users, Award, Mail, Phone, MapPin, ChevronRight, Star, Search, ChevronDown, Moon, Sun, Menu, X } from 'lucide-react';
+import { Shield, Lock, Users, Award, Mail, Phone, MapPin, ChevronRight, Star, Search, ChevronDown, Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from './contexts/ThemeContext';
 import ParticleAnimation from './components/ParticleAnimation';
 import AnimatedContainer from './components/AnimatedContainer';
@@ -880,16 +880,15 @@ function App() {
                   ? 'from-blue-400 via-blue-300 to-indigo-300' 
                   : 'from-blue-600 via-blue-700 to-indigo-700'
               }`}>
-                <span className="block">Advanced</span>
-                <span className="block">Cyber</span>
-                <span className="block">Security</span>
+                <span className="block">YOUR SHIELD</span>
+                <span className="block">IN A DIGITAL</span>
+                <span className="block">WORLD</span>
               </h1>
               <AnimatedContainer animation="fadeIn" delay={200} duration={600}>
                 <p className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed max-w-full mx-auto lg:mx-0 ${
                   isDarkMode ? 'text-slate-300' : 'text-slate-600'
                 }`}>
-                  Protecting your digital assets with next-generation security solutions. 
-                  Stay ahead of threats with our cutting-edge cybersecurity expertise.
+                  Empowering businesses with strategic, scalable, and secure cybersecurity solutions.
                 </p>
               </AnimatedContainer>
               <AnimatedContainer animation="slideUp" delay={400} duration={600}>
@@ -951,33 +950,48 @@ function App() {
             {[
               {
                 icon: <Shield className="h-8 w-8" />,
-                title: "Threat Detection",
-                description: "Advanced AI-powered threat detection and real-time monitoring to identify vulnerabilities before they become breaches."
-              },
-              {
-                icon: <Lock className="h-8 w-8" />,
-                title: "Data Encryption",
-                description: "Military-grade encryption solutions to secure your sensitive data both at rest and in transit."
-              },
-              {
-                icon: <Eye className="h-8 w-8" />,
-                title: "Security Audits",
-                description: "Comprehensive security assessments and penetration testing to identify and fix potential weaknesses."
-              },
-              {
-                icon: <Zap className="h-8 w-8" />,
-                title: "Incident Response",
-                description: "24/7 rapid response team ready to contain and neutralize security incidents immediately."
+                title: "GRC",
+                description: "Our GRC services help organizations establish a unified approach to managing cybersecurity risks, aligning policies with business objectives, and ensuring compliance with regulatory standards. From identifying potential threats to setting governance frameworks and maintaining audit readiness."
               },
               {
                 icon: <Users className="h-8 w-8" />,
-                title: "Security Training",
-                description: "Employee training programs to build a human firewall against social engineering attacks."
+                title: "Third-Party Risk Management (TPRM) Services",
+                description: "Our TPRM service ensures you assess, monitor, and manage cybersecurity, compliance, and operational risks posed by third parties. We help build a structured framework for vendor onboarding, risk scoring, continuous monitoring, and contractual risk mitigation."
               },
               {
-                icon: <Award className="h-8 w-8" />,
-                title: "Compliance",
-                description: "Ensure your organization meets industry standards and regulatory requirements."
+                icon: <Shield className="h-8 w-8" />,
+                title: "Business Continuity Management System (BCMS) Services",
+                description: "Disruptions can strike anytime — be it cyber-attacks, natural disasters, or system failures. Our BCMS service ensures your organization is ready to respond, recover, and resume operations with minimal downtime."
+              },
+              {
+                icon: <Lock className="h-8 w-8" />,
+                title: "Application Security",
+                description: "Applications are prime targets for attackers. Our Application Security services help identify and fix vulnerabilities across web, mobile, and cloud-native applications — right from the development phase to post-deployment."
+              },
+              {
+                icon: <Shield className="h-8 w-8" />,
+                title: "Cloud Security",
+                description: "As organizations move to the cloud, so do the threats. RNR's Cloud Security services ensure your cloud infrastructure is secure, compliant, and resilient. We help identify misconfigurations, enforce access controls, secure APIs, and protect data across platforms like AWS, Azure, and GCP."
+              },
+              {
+                icon: <Lock className="h-8 w-8" />,
+                title: "Mobile App Security",
+                description: "Mobile applications are prime targets for attackers due to the sensitive data they process. RNR's Mobile App Security service ensures your Android and iOS applications are tested against the latest OWASP MASVS standards."
+              },
+              {
+                icon: <Users className="h-8 w-8" />,
+                title: "Training and Awareness",
+                description: "Technology alone can't secure an organization — your people play a vital role. At RNR, we offer tailored cybersecurity training and awareness programs to build a security-first culture."
+              },
+              {
+                icon: <Shield className="h-8 w-8" />,
+                title: "Infrastructure Security Services",
+                description: "Our Infrastructure Security Services help secure your core IT environment — including servers, networks, databases, endpoints, and firewalls — against evolving cyber threats."
+              },
+              {
+                icon: <Users className="h-8 w-8" />,
+                title: "Resource as a Service",
+                description: "RNR Consulting offers skilled cybersecurity professionals on a flexible, contract-based model — from Security Analysts and GRC experts to VAPT specialists and vCISOs."
               }
             ].map((service, index) => (
               <AnimatedContainer 
@@ -1018,80 +1032,8 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className={`py-16 bg-gradient-to-br ${
-        isDarkMode 
-          ? 'from-slate-800 to-slate-900' 
-          : 'from-blue-50 to-indigo-50'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <AnimatedContainer animation="slideRight" duration={700}>
-              <h2 className={`text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
-                isDarkMode 
-                  ? 'from-blue-400 to-indigo-300' 
-                  : 'from-blue-600 to-indigo-700'
-              }`}>
-                Why Choose Us
-              </h2>
-              <p className={`text-lg mb-6 leading-relaxed ${
-                isDarkMode ? 'text-slate-300' : 'text-slate-600'
-              }`}>
-                With over a decade of experience in cybersecurity, we've protected thousands of organizations 
-                from cyber threats. Our team of certified experts uses cutting-edge technology and proven 
-                methodologies to keep your business secure.
-              </p>
-              <div className="space-y-4">
-                {[
-                  "ISO 27001 Certified Security Practices",
-                  "24/7 Security Operations Center",
-                  "99.9% Threat Detection Accuracy",
-                  "Rapid Response Times"
-                ].map((feature, index) => (
-                  <AnimatedContainer 
-                    key={index} 
-                    animation="slideUp" 
-                    delay={index * 100}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full animate-pulse"></div>
-                    <span className="text-slate-700 font-medium">{feature}</span>
-                  </AnimatedContainer>
-                ))}
-              </div>
-            </AnimatedContainer>
-            <AnimatedContainer animation="slideLeft" delay={200} duration={700}>
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { number: "1000+", label: "Clients Protected" },
-                  { number: "99.9%", label: "Uptime Guarantee" },
-                  { number: "24/7", label: "Support Available" },
-                  { number: "10+", label: "Years Experience" }
-                ].map((stat, index) => (
-                  <AnimatedContainer
-                    key={index}
-                    animation="bounceIn"
-                    delay={index * 150}
-                    className={`backdrop-blur-sm p-6 rounded-2xl border text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 ${
-                      isDarkMode 
-                        ? 'bg-slate-800/80 border-slate-700/50' 
-                        : 'bg-white/80 border-blue-100'
-                    }`}
-                  >
-                    <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                    <div className={`font-medium ${
-                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                    }`}>{stat.label}</div>
-                  </AnimatedContainer>
-                ))}
-              </div>
-            </AnimatedContainer>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section id="team" className={`py-16 backdrop-blur-sm ${
+      {/* Client Testimonials Section */}
+      <section className={`py-16 ${
         isDarkMode ? 'bg-slate-800/50' : 'bg-white/50'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1101,66 +1043,108 @@ function App() {
                 ? 'from-blue-400 to-indigo-300' 
                 : 'from-blue-600 to-indigo-700'
             }`}>
-              Security Experts
+              Client Testimonials
             </h2>
             <p className={`text-lg max-w-2xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              Meet our team of certified cybersecurity professionals dedicated to protecting your business
+              What our clients say about our cybersecurity solutions
             </p>
           </AnimatedContainer>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Sarah Chen",
-                role: "Chief Security Officer",
-                expertise: "Penetration Testing, Threat Analysis"
+                text: "We partnered with RNR for VAPT and ITGC assessments. The team was highly professional, prompt, and thorough. We now feel confident in our security posture.",
+                rating: 5
               },
               {
-                name: "Marcus Rodriguez",
-                role: "Security Architect",
-                expertise: "Infrastructure Security, Compliance"
+                text: "Their vCISO service gave us the strategic guidance we lacked. RNR helped align our security goals with business objectives effortlessly.",
+                rating: 5
               },
               {
-                name: "Emily Johnson",
-                role: "Incident Response Lead",
-                expertise: "Forensics, Malware Analysis"
+                text: "RNR's team brought both expertise and empathy to the table. They didn't just give us reports, they helped us improve.",
+                rating: 5
+              },
+              {
+                text: "From source code reviews to infrastructure audits, RNR delivered exceptional value. Their team is always available, knowledgeable, and easy to work with.",
+                rating: 5
+              },
+              {
+                text: "The training and awareness sessions by RNR were practical, engaging, and well-structured. Our team is now much more cyber-aware and vigilant.",
+                rating: 5
               }
-            ].map((member, index) => (
+            ].map((testimonial, index) => (
               <AnimatedContainer 
                 key={index} 
                 animation="slideUp" 
-                delay={index * 200}
-                duration={600}
-                className={`group backdrop-blur-sm p-8 rounded-2xl border transition-all duration-300 text-center shadow-lg hover:shadow-xl ${
+                delay={index * 100}
+                className={`backdrop-blur-md p-6 rounded-2xl border shadow-lg hover:shadow-xl transition-all duration-300 ${
                   isDarkMode 
-                    ? 'bg-slate-800/80 border-slate-700 hover:border-slate-600 hover:shadow-blue-900/10' 
-                    : 'bg-white/80 border-blue-100 hover:border-blue-300 hover:shadow-blue-500/10'
+                    ? 'bg-slate-800/80 border-slate-700/50' 
+                    : 'bg-white/80 border-blue-100'
                 }`}
               >
-                <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Users className="h-12 w-12 text-white" />
-                </div>
-                <h3 className={`text-xl font-semibold mb-2 transition-colors ${
-                  isDarkMode 
-                    ? 'text-slate-200 group-hover:text-blue-400' 
-                    : 'text-slate-800 group-hover:text-blue-700'
-                }`}>
-                  {member.name}
-                </h3>
-                <p className={`mb-3 font-medium ${
-                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                }`}>{member.role}</p>
-                <p className={`text-sm leading-relaxed ${
-                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                }`}>{member.expertise}</p>
-                <div className="flex justify-center mt-4 space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 text-yellow-500 fill-current animate-pulse" />
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
+                <p className={`text-sm leading-relaxed ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
+                  "{testimonial.text}"
+                </p>
               </AnimatedContainer>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className={`py-16 bg-gradient-to-br ${
+        isDarkMode 
+          ? 'from-slate-800 to-slate-900' 
+          : 'from-blue-50 to-indigo-50'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <AnimatedContainer animation="slideRight" duration={700}>
+              <h2 className={`text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent text-center ${
+                isDarkMode 
+                  ? 'from-blue-400 to-indigo-300' 
+                  : 'from-blue-600 to-indigo-700'
+              }`}>
+                Why Choose Us
+              </h2>
+              <p className={`text-lg mb-6 leading-relaxed text-center ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
+                RNR Consulting is in the business of cyber security and process improvement. With a humble beginning in the year 2014 we have successfully etched our name as an eccentric solution providing management consulting firm with an exclusive purpose of seamlessly solving our client's business problems.
+              </p>
+              <div className="space-y-4 max-w-2xl mx-auto">
+                {[
+                  "CERT-IN empaneled and government recognized",
+                  "End-to-end cybersecurity and risk solutions",
+                  "Strong technical expertise with business insight",
+                  "Customized approach for every client",
+                  "Ongoing support beyond just assessments",
+                  "Trusted by clients across multiple industries"
+                ].map((feature, index) => (
+                  <AnimatedContainer 
+                    key={index} 
+                    animation="slideUp" 
+                    delay={index * 100}
+                    className="flex items-center space-x-3"
+                  >
+                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full animate-pulse"></div>
+                    <span className={`font-medium ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                    }`}>{feature}</span>
+                  </AnimatedContainer>
+                ))}
+              </div>
+            </AnimatedContainer>
           </div>
         </div>
       </section>
@@ -1183,7 +1167,7 @@ function App() {
             <p className={`text-lg max-w-2xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              Ready to secure your business? Contact our security experts for a free consultation
+              Ready to secure your business? Contact our team for a free consultation
             </p>
           </AnimatedContainer>
           <div className="grid lg:grid-cols-2 gap-12">
@@ -1283,7 +1267,7 @@ function App() {
                 }`}>
                   <img src="/RNR-WEB_DEMO/rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
                 </div>
-                <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+                <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent orbitron-bold ${
                   isDarkMode 
                     ? 'from-blue-400 to-blue-300' 
                     : 'from-blue-600 to-blue-800'
@@ -1291,7 +1275,7 @@ function App() {
                   RNR Consulting
                 </span>
               </div>
-              <p className={`leading-relaxed ${
+              <p className={`leading-relaxed iceland-regular ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 Advanced cybersecurity solutions for modern businesses. Protecting what matters most.
