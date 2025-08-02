@@ -2,18 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-
 @layer base {
-  /* Apply Orbitron font globally */
+  /* Apply Roboto Slab font globally */
   * {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-style: normal;
   }
   
   body {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-style: normal;
     line-height: 1.6;
@@ -27,44 +25,65 @@
 }
 
 @layer utilities {
-  /* Orbitron Font Utility Classes */
-  .orbitron-regular {
-    font-family: "Orbitron", sans-serif;
+  /* Michroma Font Utility Classes */
+  .michroma-regular {
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /* Roboto Slab Font Utility Classes */
+  .roboto-slab-thin {
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-slab-light {
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-slab-regular {
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
   }
   
-  .orbitron-medium {
-    font-family: "Orbitron", sans-serif;
+  .roboto-slab-medium {
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
   }
   
-  .orbitron-semibold {
-    font-family: "Orbitron", sans-serif;
+  .roboto-slab-semibold {
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
   }
   
-  .orbitron-bold {
-    font-family: "Orbitron", sans-serif;
+  .roboto-slab-bold {
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
   }
   
-  .orbitron-extrabold {
-    font-family: "Orbitron", sans-serif;
+  .roboto-slab-extrabold {
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
   }
   
-  .orbitron-black {
-    font-family: "Orbitron", sans-serif;
+  .roboto-slab-black {
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 900;
     font-style: normal;

@@ -99,124 +99,168 @@ const MobileAppSecurityPage3D: React.FC = () => {
   }, []);
 
   const mobileSecurityServices = {
-    staticAnalysis: [
+    vapt: [
       {
-        title: "Mobile App Static Analysis (SAST)",
-        description: "Comprehensive source code analysis for mobile applications",
-        icon: Code,
-        features: ["iOS/Android code review", "Vulnerability detection", "Secure coding validation"]
+        title: "Mobile Application VAPT",
+        description: "Specialized security testing for Android and iOS applications to identify vulnerabilities in mobile apps handling sensitive data",
+        icon: Smartphone,
+        features: [
+          "Insecure data storage assessment",
+          "Session handling validation", 
+          "Authentication mechanism testing",
+          "API security evaluation",
+          "Encryption implementation review",
+          "Sensitive information exposure detection"
+        ]
       },
       {
-        title: "Binary Analysis",
-        description: "Reverse engineering and binary security assessment",
-        icon: Cpu,
-        features: ["Binary reverse engineering", "Code obfuscation analysis", "Runtime protection assessment"]
-      },
-      {
-        title: "Third-Party Library Assessment",
-        description: "Security assessment of third-party mobile libraries and SDKs",
+        title: "Vulnerability Assessment (VA)",
+        description: "Systematic identification and analysis of security weaknesses in mobile applications and infrastructure",
         icon: Search,
-        features: ["Library vulnerability scanning", "SDK security review", "Dependency analysis"]
-      }
-    ],
-    dynamicAnalysis: [
-      {
-        title: "Mobile App Dynamic Analysis (DAST)",
-        description: "Runtime security testing and vulnerability assessment",
-        icon: Monitor,
-        features: ["Runtime vulnerability testing", "API endpoint testing", "Behavioral analysis"]
+        features: [
+          "Known vulnerability detection",
+          "Configuration analysis",
+          "Access control evaluation",
+          "Missing patch identification",
+          "Security baseline compliance",
+          "Risk categorization and reporting"
+        ]
       },
       {
-        title: "Interactive Application Security Testing (IAST)",
-        description: "Real-time security testing during mobile app execution",
-        icon: Eye,
-        features: ["Real-time analysis", "Interactive testing", "Runtime monitoring"]
-      },
-      {
-        title: "Runtime Application Self-Protection (RASP)",
-        description: "Implementation of runtime security controls and monitoring",
+        title: "Penetration Testing (PT)",
+        description: "Controlled simulated attacks to actively exploit vulnerabilities and validate security controls",
         icon: Shield,
-        features: ["Runtime protection", "Attack detection", "Self-defense mechanisms"]
+        features: [
+          "Real-world attack simulation",
+          "Exploitability validation",
+          "Defense mechanism testing",
+          "Impact assessment",
+          "Security control effectiveness",
+          "Proof-of-concept demonstrations"
+        ]
       }
     ],
-    penetrationTesting: [
+    sourceCodeReview: [
       {
-        title: "iOS Application Penetration Testing",
-        description: "Comprehensive security assessment of iOS applications",
-        icon: Smartphone,
-        features: ["iOS-specific vulnerabilities", "Jailbreak detection bypass", "Keychain security"]
-      },
-      {
-        title: "Android Application Penetration Testing",
-        description: "In-depth security testing of Android applications",
-        icon: Smartphone,
-        features: ["Android vulnerability assessment", "Root detection bypass", "Intent security"]
-      },
-      {
-        title: "Cross-Platform App Testing",
-        description: "Security testing for cross-platform mobile applications",
-        icon: Settings,
-        features: ["Hybrid app testing", "Framework-specific issues", "Platform integration security"]
-      }
-    ],
-    dataProtection: [
-      {
-        title: "Data Storage Security",
-        description: "Assessment and implementation of secure data storage practices",
-        icon: Database,
-        features: ["Local storage encryption", "Secure data handling", "Privacy compliance"]
-      },
-      {
-        title: "Communication Security",
-        description: "Secure communication protocols and API security implementation",
-        icon: Lock,
-        features: ["TLS/SSL implementation", "Certificate pinning", "API authentication"]
-      },
-      {
-        title: "Privacy & Compliance",
-        description: "Mobile app privacy compliance and data protection strategies",
-        icon: Shield,
-        features: ["GDPR compliance", "Privacy by design", "Data minimization"]
-      }
-    ],
-    deviceSecurity: [
-      {
-        title: "Device Security Assessment",
-        description: "Comprehensive assessment of mobile device security features",
-        icon: Smartphone,
-        features: ["Device fingerprinting", "Hardware security features", "Biometric security"]
-      },
-      {
-        title: "Jailbreak/Root Detection",
-        description: "Implementation of jailbreak and root detection mechanisms",
-        icon: AlertTriangle,
-        features: ["Anti-tampering controls", "Device integrity checks", "Runtime environment validation"]
-      },
-      {
-        title: "Mobile Device Management (MDM)",
-        description: "Security assessment and implementation of MDM solutions",
-        icon: Settings,
-        features: ["Enterprise mobility", "Device policy enforcement", "Remote security management"]
-      }
-    ],
-    secureDevlopment: [
-      {
-        title: "Secure Mobile Development Lifecycle",
-        description: "Implementation of secure development practices for mobile apps",
+        title: "Mobile Source Code Review",
+        description: "Detailed manual and automated analysis of mobile app source code to detect security vulnerabilities and weak coding practices",
         icon: Code,
-        features: ["Secure SDLC", "Security requirements", "Development guidelines"]
+        features: [
+          "Hardcoded credentials detection",
+          "API key exposure identification",
+          "Insecure coding practice analysis",
+          "Third-party SDK vulnerability assessment",
+          "Business logic flaw detection",
+          "Compliance requirement validation"
+        ]
       },
       {
-        title: "Mobile App Security Training",
-        description: "Developer training on mobile application security best practices",
-        icon: Eye,
-        features: ["Platform-specific training", "Secure coding practices", "Threat awareness"]
-      },
-      {
-        title: "DevSecOps for Mobile",
-        description: "Integration of security into mobile app development pipelines",
+        title: "Automated Scanning",
+        description: "Industry-trusted tools for comprehensive code vulnerability detection",
         icon: Monitor,
-        features: ["Automated security testing", "CI/CD security integration", "Continuous monitoring"]
+        features: [
+          "MobSF (Mobile Security Framework)",
+          "SonarQube integration",
+          "Semgrep rule-based scanning",
+          "Common vulnerability detection",
+          "Insecure SDK identification",
+          "OWASP MASVS compliance checking"
+        ]
+      },
+      {
+        title: "Manual Security Review",
+        description: "Expert analysis of critical security components that automated tools cannot fully assess",
+        icon: Eye,
+        features: [
+          "Authentication logic review",
+          "API security implementation",
+          "Secure storage validation",
+          "Session management analysis",
+          "Business logic security",
+          "Configuration security assessment"
+        ]
+      }
+    ],
+    methodology: [
+      {
+        title: "Pre-Engagement & Scoping",
+        description: "Comprehensive planning phase to define testing scope, methodology, and requirements",
+        icon: Settings,
+        features: [
+          "Application scope definition (Android/iOS/Hybrid)",
+          "Test type determination (Black/Grey/White Box)",
+          "APK/IPA file collection",
+          "API documentation review",
+          "Timeline and deliverable planning",
+          "Terms and conditions agreement"
+        ]
+      },
+      {
+        title: "Static & Dynamic Analysis",
+        description: "Comprehensive testing approach combining code analysis with runtime behavior assessment",
+        icon: Cpu,
+        features: [
+          "Static Application Security Testing (SAST)",
+          "Dynamic Application Security Testing (DAST)",
+          "Code decompilation and examination",
+          "Runtime behavior observation",
+          "Real device and emulator testing",
+          "Network traffic analysis"
+        ]
+      },
+      {
+        title: "Reporting & Remediation",
+        description: "Detailed documentation of findings with practical remediation guidance",
+        icon: AlertTriangle,
+        features: [
+          "Vulnerability severity classification",
+          "OWASP Mobile Top 10 mapping",
+          "CVSS risk scoring",
+          "Proof-of-concept demonstrations",
+          "Step-by-step reproduction guides",
+          "Technical remediation recommendations"
+        ]
+      }
+    ],
+    deliverables: [
+      {
+        title: "Technical Vulnerability Report",
+        description: "Comprehensive technical documentation of all identified security issues",
+        icon: Database,
+        features: [
+          "Detailed vulnerability descriptions",
+          "Severity ratings (Critical/High/Medium/Low)",
+          "OWASP Mobile Top 10 & MASVS mapping",
+          "Screenshots and proof-of-concept",
+          "Business impact analysis",
+          "Technical remediation steps"
+        ]
+      },
+      {
+        title: "Executive Summary Report",
+        description: "High-level summary designed for management and decision-makers",
+        icon: Monitor,
+        features: [
+          "Risk assessment overview",
+          "Visual risk distribution charts",
+          "Business impact in non-technical terms",
+          "Security posture summary",
+          "Strategic recommendations",
+          "Compliance status overview"
+        ]
+      },
+      {
+        title: "Walkthrough & Support",
+        description: "Expert guidance and support during remediation implementation",
+        icon: CheckCircle,
+        features: [
+          "Live vulnerability demonstrations",
+          "Developer team consultation",
+          "Remediation guidance sessions",
+          "Best practice recommendations",
+          "Re-testing validation",
+          "Ongoing security support"
+        ]
       }
     ]
   };
@@ -307,59 +351,162 @@ const MobileAppSecurityPage3D: React.FC = () => {
                 ? 'from-purple-400 via-pink-300 to-purple-300' 
                 : 'from-purple-600 via-pink-600 to-purple-700'
             }`}>
-              Mobile App Security
+              Mobile Application Security
             </h1>
             <p className={`text-xl md:text-2xl mb-8 max-w-4xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              Comprehensive mobile application security solutions for iOS, Android, and cross-platform 
-              apps with advanced testing methodologies and secure development practices.
+              Comprehensive mobile application security solutions including VAPT, source code review, 
+              and secure development practices for iOS, Android, and cross-platform applications.
             </p>
+            
+            {/* Key Benefits */}
+            <div className="grid md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto">
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Shield className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Data Protection
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <CheckCircle className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Compliance Ready
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Lock className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Secure by Design
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Eye className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-pink-400' : 'text-pink-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Expert Analysis
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Service Sections */}
         <ServiceSection 
-          title="Static Analysis & Code Review"
-          description="Comprehensive static analysis and source code security assessment"
-          services={mobileSecurityServices.staticAnalysis}
+          title="Mobile Application VAPT"
+          description="Comprehensive vulnerability assessment and penetration testing for mobile applications to identify and address security weaknesses before attackers exploit them"
+          services={mobileSecurityServices.vapt}
           colorClass={isDarkMode ? "bg-purple-600/20" : "bg-purple-100"}
         />
 
         <ServiceSection 
-          title="Dynamic & Runtime Analysis"
-          description="Dynamic testing and runtime security analysis for mobile apps"
-          services={mobileSecurityServices.dynamicAnalysis}
-          colorClass={isDarkMode ? "bg-pink-600/20" : "bg-pink-100"}
-        />
-
-        <ServiceSection 
-          title="Mobile App Penetration Testing"
-          description="Platform-specific penetration testing for iOS and Android applications"
-          services={mobileSecurityServices.penetrationTesting}
+          title="Source Code Security Review"
+          description="Deep analysis of mobile application source code using automated tools and expert manual review to uncover hidden vulnerabilities and security risks"
+          services={mobileSecurityServices.sourceCodeReview}
           colorClass={isDarkMode ? "bg-blue-600/20" : "bg-blue-100"}
         />
 
         <ServiceSection 
-          title="Data Protection & Privacy"
-          description="Mobile app data security and privacy compliance solutions"
-          services={mobileSecurityServices.dataProtection}
+          title="Our VAPT Methodology"
+          description="Systematic approach to mobile security testing following industry best practices and comprehensive testing procedures"
+          services={mobileSecurityServices.methodology}
           colorClass={isDarkMode ? "bg-green-600/20" : "bg-green-100"}
         />
 
         <ServiceSection 
-          title="Device & Platform Security"
-          description="Mobile device security assessment and management solutions"
-          services={mobileSecurityServices.deviceSecurity}
+          title="Service Deliverables"
+          description="Comprehensive documentation and ongoing support to ensure effective remediation and long-term security improvement"
+          services={mobileSecurityServices.deliverables}
           colorClass={isDarkMode ? "bg-orange-600/20" : "bg-orange-100"}
         />
 
-        <ServiceSection 
-          title="Secure Development & DevSecOps"
-          description="Secure mobile development lifecycle and DevSecOps implementation"
-          services={mobileSecurityServices.secureDevlopment}
-          colorClass={isDarkMode ? "bg-indigo-600/20" : "bg-indigo-100"}
-        />
+        {/* Why Mobile Security Section */}
+        <section className="py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className={`text-4xl font-bold text-center mb-12 ${
+              isDarkMode ? 'text-white' : 'text-slate-900'
+            }`}>
+              Why Mobile Application Security is Critical
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-red-600/20' : 'bg-red-100'
+                }`}>
+                  <AlertTriangle className={`w-6 h-6 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Protect Sensitive Data
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Secure passwords, credit card information, personal data, and business-critical information from unauthorized access
+                </p>
+              </div>
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
+                }`}>
+                  <Shield className={`w-6 h-6 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Prevent Data Breaches
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Identify and fix vulnerabilities before malicious actors can exploit them to access your systems
+                </p>
+              </div>
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-green-600/20' : 'bg-green-100'
+                }`}>
+                  <CheckCircle className={`w-6 h-6 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Ensure Compliance
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Meet security standards like OWASP Mobile Top 10, MASVS, GDPR, and industry-specific regulations
+                </p>
+              </div>
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-purple-600/20' : 'bg-purple-100'
+                }`}>
+                  <Eye className={`w-6 h-6 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Build User Trust
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Demonstrate commitment to security and privacy, building credibility with users and app stores
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* CTA Section */}
         <section className="py-16 px-4">
@@ -370,19 +517,49 @@ const MobileAppSecurityPage3D: React.FC = () => {
                 : 'bg-white/70 border-white/50'
             }`}>
               <h2 className={`text-3xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                Ready to Secure Your Mobile Apps?
+                Secure Your Mobile Applications Today
               </h2>
               <p className={`text-lg mb-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-                Let our mobile security experts help you build and maintain secure mobile applications 
-                that protect user data and provide a trusted experience across all platforms.
+                Protect your mobile apps from security threats with our comprehensive VAPT services, 
+                source code review, and expert security guidance. Ensure your applications meet the 
+                highest security standards before they reach your users.
               </p>
-              <button className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
-                isDarkMode 
-                  ? 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg hover:shadow-purple-900/25' 
-                  : 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg hover:shadow-purple-500/25'
-              }`}>
-                Get Started Today
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg hover:shadow-purple-900/25' 
+                    : 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg hover:shadow-purple-500/25'
+                }`}>
+                  Get Mobile VAPT Assessment
+                </button>
+                <button className={`px-8 py-4 rounded-xl font-medium border-2 transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-slate-900' 
+                    : 'border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white'
+                }`}>
+                  Schedule Consultation
+                </button>
+              </div>
+              
+              {/* Contact Information */}
+              <div className="mt-8 pt-8 border-t border-slate-600/30">
+                <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                  Need immediate assistance? Contact our mobile security experts
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                  <a href="mailto:security@rnrconsulting.com" className={`text-sm font-medium ${
+                    isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-700'
+                  }`}>
+                    security@rnrconsulting.com
+                  </a>
+                  <span className={`text-sm ${isDarkMode ? 'text-slate-500' : 'text-slate-400'} hidden sm:block`}>|</span>
+                  <a href="tel:+1234567890" className={`text-sm font-medium ${
+                    isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-700'
+                  }`}>
+                    +1 (234) 567-8900
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

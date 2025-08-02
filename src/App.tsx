@@ -43,10 +43,14 @@ function App() {
           <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
-              <div className={`p-2 rounded-xl shadow-lg transition-colors duration-300 ${
-                isDarkMode ? 'bg-slate-700' : 'bg-white'
+              <div className={`rounded-xl shadow-lg transition-colors duration-300 ${
+                isDarkMode ? '' : 'p-2 bg-white'
               }`}>
-                <img src="./rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
+                <img 
+                  src={isDarkMode ? "./rnrlogo_for_darkmode.png" : "./rnrlogo.png"} 
+                  alt="RNR Consulting" 
+                  className={isDarkMode ? "h-12 w-12" : "h-8 w-8"} 
+                />
               </div>
               <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${
                 isDarkMode 
@@ -892,22 +896,22 @@ function App() {
                 </p>
               </AnimatedContainer>
               <AnimatedContainer animation="slideUp" delay={400} duration={600}>
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                <div className="flex flex-col gap-3 sm:gap-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
                   <Link 
                     to="/contact"
                     className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg shadow-blue-500/25 animate-glow"
                   >
-                    Start Protection <ChevronRight className="ml-2 h-4 w-4" />
+                    Analyze your External Security Posture <ChevronRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link 
                     to="/about"
-                    className={`backdrop-blur-sm border-2 px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
+                    className={`backdrop-blur-sm border-2 px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center ${
                       isDarkMode 
                         ? 'bg-slate-800/80 border-slate-600 text-blue-400 hover:bg-slate-700/80 hover:border-slate-500' 
                         : 'bg-white/80 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
                     }`}
                   >
-                    Learn More
+                    Begin your initial assessment
                   </Link>
                 </div>
               </AnimatedContainer>
@@ -1275,7 +1279,7 @@ function App() {
                   RNR Consulting
                 </span>
               </div>
-              <p className={`leading-relaxed iceland-regular ${
+              <p className={`leading-relaxed roboto-slab-regular ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 Advanced cybersecurity solutions for modern businesses. Protecting what matters most.

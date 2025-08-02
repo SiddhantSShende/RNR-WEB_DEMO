@@ -99,124 +99,194 @@ const ApplicationSecurityPage3D: React.FC = () => {
   }, []);
 
   const appSecurityServices = {
-    staticAnalysis: [
+    vapt: [
       {
-        title: "Static Application Security Testing (SAST)",
-        description: "Automated source code security analysis and vulnerability detection",
-        icon: Code,
-        features: ["Source code scanning", "Vulnerability identification", "Secure coding recommendations"]
-      },
-      {
-        title: "Code Review & Analysis",
-        description: "Manual code review for complex security vulnerabilities",
-        icon: Eye,
-        features: ["Manual code inspection", "Logic flaw detection", "Security architecture review"]
-      },
-      {
-        title: "Dependency Scanning",
-        description: "Third-party library and dependency vulnerability assessment",
+        title: "Application Vulnerability Assessment",
+        description: "Automated scanning to detect known security vulnerabilities using industry-standard tools",
         icon: Search,
-        features: ["Library vulnerability scan", "Dependency mapping", "Update recommendations"]
-      }
-    ],
-    dynamicAnalysis: [
+        features: [
+          "Automated scanning with Burp Suite, Nessus, OpenVAS",
+          "Misconfiguration detection",
+          "Outdated component identification",
+          "Exposed data discovery",
+          "Severity rating and vulnerability categorization"
+        ]
+      },
       {
-        title: "Dynamic Application Security Testing (DAST)",
-        description: "Runtime application security testing and vulnerability assessment",
+        title: "Application Penetration Testing",
+        description: "Manual exploitation of vulnerabilities by security experts simulating real-world attacks",
+        icon: Shield,
+        features: [
+          "Manual testing by security professionals",
+          "Simulated cyberattacks (ethical hacking)",
+          "Login bypass and privilege escalation testing",
+          "XSS, SQL injection, and CSRF exploitation",
+          "Business logic flaw validation"
+        ]
+      },
+      {
+        title: "Combined VAPT Approach",
+        description: "Comprehensive security assessment combining automated and manual testing methodologies",
         icon: Zap,
-        features: ["Runtime vulnerability scanning", "Black-box testing", "Web application assessment"]
-      },
-      {
-        title: "Interactive Application Security Testing (IAST)",
-        description: "Real-time security testing during application execution",
-        icon: Monitor,
-        features: ["Runtime analysis", "Interactive testing", "Real-time feedback"]
-      },
-      {
-        title: "API Security Testing",
-        description: "Comprehensive API endpoint security assessment",
-        icon: Terminal,
-        features: ["API vulnerability testing", "Authentication bypass", "Data exposure analysis"]
+        features: [
+          "Complete security risk picture",
+          "Vulnerability validation and exploitation",
+          "Technical and business logic flaw identification",
+          "Authentication and session management testing",
+          "API and third-party integration security"
+        ]
       }
     ],
-    penetrationTesting: [
+    sourceCodeReview: [
       {
-        title: "Web Application Penetration Testing",
-        description: "Comprehensive manual penetration testing of web applications",
-        icon: Shield,
-        features: ["OWASP Top 10 testing", "Business logic flaws", "Authentication bypass"]
-      },
-      {
-        title: "Mobile Application Penetration Testing",
-        description: "Security assessment of mobile applications (iOS/Android)",
-        icon: Cpu,
-        features: ["Mobile app vulnerabilities", "Platform-specific issues", "Data storage analysis"]
-      },
-      {
-        title: "Thick Client Application Testing",
-        description: "Desktop and thick client application security assessment",
-        icon: Settings,
-        features: ["Client-side vulnerabilities", "Protocol analysis", "Local storage security"]
-      }
-    ],
-    secureCodeReview: [
-      {
-        title: "Architecture Security Review",
-        description: "Security assessment of application architecture and design",
-        icon: FileCheck,
-        features: ["Design pattern review", "Security architecture", "Threat modeling"]
-      },
-      {
-        title: "Secure Development Lifecycle (SDL)",
-        description: "Implementation of secure development practices and processes",
-        icon: Settings,
-        features: ["SDL implementation", "Security checkpoints", "Developer training"]
-      },
-      {
-        title: "Compliance Code Review",
-        description: "Code review for regulatory compliance requirements",
-        icon: Shield,
-        features: ["Regulatory compliance", "Standard adherence", "Documentation review"]
-      }
-    ],
-    vulnerabilityManagement: [
-      {
-        title: "Vulnerability Assessment & Prioritization",
-        description: "Comprehensive vulnerability identification and risk prioritization",
-        icon: AlertTriangle,
-        features: ["Risk-based prioritization", "CVSS scoring", "Business impact analysis"]
-      },
-      {
-        title: "Remediation Planning",
-        description: "Strategic planning for vulnerability remediation and fixes",
-        icon: Settings,
-        features: ["Remediation roadmap", "Fix prioritization", "Resource planning"]
-      },
-      {
-        title: "Continuous Security Monitoring",
-        description: "Ongoing monitoring and assessment of application security posture",
-        icon: Monitor,
-        features: ["Continuous scanning", "Security metrics", "Trend analysis"]
-      }
-    ],
-    securityTraining: [
-      {
-        title: "Secure Coding Training",
-        description: "Developer training on secure coding practices and techniques",
+        title: "Comprehensive Source Code Analysis",
+        description: "Deep analysis of application codebase to uncover hidden security vulnerabilities and coding flaws",
         icon: Code,
-        features: ["OWASP guidelines", "Language-specific training", "Hands-on workshops"]
+        features: [
+          "Hidden security vulnerability detection",
+          "Coding errors and logic flaw identification",
+          "Security best practices compliance checking",
+          "Line-by-line code examination",
+          "Business and user data exposure prevention"
+        ]
       },
       {
-        title: "Security Awareness Programs",
-        description: "Comprehensive security awareness training for development teams",
+        title: "Automated Code Scanning",
+        description: "Industry-trusted automated tools for comprehensive vulnerability detection",
+        icon: Monitor,
+        features: [
+          "SonarQube implementation",
+          "HCL APP-SCAN integration",
+          "Insecure code pattern detection",
+          "Outdated library identification",
+          "Hardcoded secrets discovery (API keys, passwords)"
+        ]
+      },
+      {
+        title: "Manual Security Review",
+        description: "Expert manual inspection of critical code components that automated tools cannot fully assess",
         icon: Eye,
-        features: ["Security awareness", "Threat landscape", "Best practices"]
+        features: [
+          "Business logic error analysis",
+          "Broken authentication and access control review",
+          "Insecure data processing examination",
+          "Poor session handling identification",
+          "Architecture and framework security assessment"
+        ]
+      }
+    ],
+    thickClientVAPT: [
+      {
+        title: "Desktop Application Security Testing",
+        description: "Specialized security testing for thick client applications that process and store data locally",
+        icon: Cpu,
+        features: [
+          "Client-side processing vulnerability assessment",
+          "Local data storage security analysis",
+          "Network communication security testing",
+          "Desktop application specific threat modeling",
+          "Binary analysis and reverse engineering"
+        ]
       },
       {
-        title: "DevSecOps Implementation",
-        description: "Integration of security practices into DevOps workflows",
+        title: "Local Storage Security Assessment",
+        description: "Detailed examination of how sensitive data is stored, encrypted, and managed on client devices",
         icon: Lock,
-        features: ["Pipeline security", "Automated testing", "Security gates"]
+        features: [
+          "Registry entry security analysis",
+          "File system storage examination",
+          "Data encryption implementation review",
+          "Access control validation",
+          "Sensitive information exposure detection"
+        ]
+      },
+      {
+        title: "Network Communication Analysis",
+        description: "Comprehensive testing of network protocols and data transmission security",
+        icon: Terminal,
+        features: [
+          "Protocol security assessment",
+          "Encryption implementation testing",
+          "Client-server communication analysis",
+          "Man-in-the-middle attack simulation",
+          "Certificate validation testing"
+        ]
+      }
+    ],
+    apiSecurity: [
+      {
+        title: "API Security Assessment",
+        description: "Comprehensive testing and analysis of API endpoints to identify security vulnerabilities",
+        icon: Terminal,
+        features: [
+          "API endpoint vulnerability scanning",
+          "Authentication and authorization testing",
+          "Input validation and injection testing",
+          "Rate limiting and DoS protection assessment",
+          "OWASP API Top 10 compliance verification"
+        ]
+      },
+      {
+        title: "API Documentation & Discovery",
+        description: "Discovery and security analysis of documented and undocumented API endpoints",
+        icon: Search,
+        features: [
+          "Shadow API discovery",
+          "API documentation analysis",
+          "Endpoint enumeration and mapping",
+          "Version control and deprecation assessment",
+          "API gateway security configuration review"
+        ]
+      },
+      {
+        title: "API Threat Modeling",
+        description: "Systematic identification of potential security threats specific to API implementations",
+        icon: AlertTriangle,
+        features: [
+          "API-specific threat identification",
+          "Data flow security analysis",
+          "Trust boundary assessment",
+          "Attack vector modeling",
+          "Risk assessment and prioritization"
+        ]
+      }
+    ],
+    sdlc: [
+      {
+        title: "Secure Software Development Lifecycle",
+        description: "Implementation of security throughout the entire software development process",
+        icon: Settings,
+        features: [
+          "Security requirements integration",
+          "Secure design principles implementation",
+          "Security checkpoints at each phase",
+          "Developer security training programs",
+          "Continuous security validation"
+        ]
+      },
+      {
+        title: "DevSecOps Integration",
+        description: "Embedding security practices into DevOps pipelines for continuous security delivery",
+        icon: Monitor,
+        features: [
+          "CI/CD security integration",
+          "Automated security testing",
+          "Security as code implementation",
+          "Continuous monitoring and feedback",
+          "Security metrics and reporting"
+        ]
+      },
+      {
+        title: "Security Training & Awareness",
+        description: "Comprehensive security education for development teams and stakeholders",
+        icon: Eye,
+        features: [
+          "Secure coding training programs",
+          "Security awareness workshops",
+          "Threat modeling education",
+          "Security tool training",
+          "Best practices documentation"
+        ]
       }
     ]
   };
@@ -312,54 +382,172 @@ const ApplicationSecurityPage3D: React.FC = () => {
             <p className={`text-xl md:text-2xl mb-8 max-w-4xl mx-auto ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              Comprehensive application security testing and secure development solutions to identify 
-              vulnerabilities and strengthen your software applications against cyber threats.
+              Comprehensive security testing for web applications, mobile apps, APIs, and thick client applications. 
+              From VAPT and source code review to secure SDLC implementation - secure your applications from the inside out.
             </p>
+            
+            {/* Key Services Overview */}
+            <div className="grid md:grid-cols-5 gap-4 mt-12 max-w-5xl mx-auto">
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Search className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  VAPT Testing
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Code className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Code Review
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Terminal className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  API Security
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Cpu className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Thick Client
+                </p>
+              </div>
+              <div className={`p-4 rounded-xl backdrop-blur-md border ${
+                isDarkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/70 border-white/50'
+              }`}>
+                <Settings className={`w-8 h-8 mx-auto mb-2 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`} />
+                <p className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Secure SDLC
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Service Sections */}
         <ServiceSection 
-          title="Static Analysis & Code Review"
-          description="Comprehensive static analysis and manual code review services"
-          services={appSecurityServices.staticAnalysis}
+          title="Application VAPT (Vulnerability Assessment & Penetration Testing)"
+          description="Comprehensive vulnerability assessment and penetration testing combining automated scanning with manual exploitation testing"
+          services={appSecurityServices.vapt}
           colorClass={isDarkMode ? "bg-red-600/20" : "bg-red-100"}
         />
 
         <ServiceSection 
-          title="Dynamic & Runtime Analysis"
-          description="Dynamic testing and runtime security analysis solutions"
-          services={appSecurityServices.dynamicAnalysis}
-          colorClass={isDarkMode ? "bg-orange-600/20" : "bg-orange-100"}
-        />
-
-        <ServiceSection 
-          title="Penetration Testing"
-          description="Manual penetration testing across various application types"
-          services={appSecurityServices.penetrationTesting}
-          colorClass={isDarkMode ? "bg-purple-600/20" : "bg-purple-100"}
-        />
-
-        <ServiceSection 
-          title="Secure Code Review & SDL"
-          description="Architecture review and secure development lifecycle implementation"
-          services={appSecurityServices.secureCodeReview}
+          title="Source Code Security Review"
+          description="Deep analysis of application source code using automated tools and expert manual review to identify security vulnerabilities"
+          services={appSecurityServices.sourceCodeReview}
           colorClass={isDarkMode ? "bg-blue-600/20" : "bg-blue-100"}
         />
 
         <ServiceSection 
-          title="Vulnerability Management"
-          description="Comprehensive vulnerability assessment and remediation planning"
-          services={appSecurityServices.vulnerabilityManagement}
+          title="Thick Client Application VAPT"
+          description="Specialized security testing for desktop applications that process and store data locally with unique security challenges"
+          services={appSecurityServices.thickClientVAPT}
+          colorClass={isDarkMode ? "bg-purple-600/20" : "bg-purple-100"}
+        />
+
+        <ServiceSection 
+          title="API Security Assessment"
+          description="Comprehensive testing and analysis of API endpoints to identify vulnerabilities and ensure secure data exchange"
+          services={appSecurityServices.apiSecurity}
           colorClass={isDarkMode ? "bg-green-600/20" : "bg-green-100"}
         />
 
         <ServiceSection 
-          title="Security Training & DevSecOps"
-          description="Developer training and DevSecOps implementation services"
-          services={appSecurityServices.securityTraining}
-          colorClass={isDarkMode ? "bg-indigo-600/20" : "bg-indigo-100"}
+          title="Secure SDLC & DevSecOps"
+          description="Implementation of security throughout the software development lifecycle with DevSecOps integration and training"
+          services={appSecurityServices.sdlc}
+          colorClass={isDarkMode ? "bg-orange-600/20" : "bg-orange-100"}
         />
+
+        {/* Why Application Security Section */}
+        <section className="py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className={`text-4xl font-bold text-center mb-12 ${
+              isDarkMode ? 'text-white' : 'text-slate-900'
+            }`}>
+              Why Application Security is Critical
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-red-600/20' : 'bg-red-100'
+                }`}>
+                  <Shield className={`w-6 h-6 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Prevent Data Breaches
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Identify and fix vulnerabilities before attackers can exploit them to access sensitive data
+                </p>
+              </div>
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
+                }`}>
+                  <Code className={`w-6 h-6 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Improve Code Quality
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Enhance development team skills and implement secure coding practices across the organization
+                </p>
+              </div>
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-green-600/20' : 'bg-green-100'
+                }`}>
+                  <FileCheck className={`w-6 h-6 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Ensure Compliance
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Meet regulatory requirements like ISO 27001, PCI-DSS, GDPR, and industry-specific standards
+                </p>
+              </div>
+              <div className={`rounded-2xl p-6 backdrop-blur-md border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/70 border-white/50'
+              }`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
+                  isDarkMode ? 'bg-purple-600/20' : 'bg-purple-100'
+                }`}>
+                  <Monitor className={`w-6 h-6 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  Build User Trust
+                </h3>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                  Demonstrate commitment to security and protect your organization's reputation and customer confidence
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* CTA Section */}
         <section className="py-16 px-4">
@@ -370,19 +558,58 @@ const ApplicationSecurityPage3D: React.FC = () => {
                 : 'bg-white/70 border-white/50'
             }`}>
               <h2 className={`text-3xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                Ready to Secure Your Applications?
+                Secure Your Applications from the Inside Out
               </h2>
               <p className={`text-lg mb-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-                Let our application security experts help you identify vulnerabilities and implement 
-                secure development practices to protect your software applications.
+                Protect your web applications, mobile apps, APIs, and desktop software with our comprehensive 
+                security testing services. From VAPT and source code review to secure SDLC implementation - 
+                we help you build and maintain secure applications that users can trust.
               </p>
-              <button className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
-                isDarkMode 
-                  ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg hover:shadow-red-900/25' 
-                  : 'bg-red-600 text-white hover:bg-red-700 shadow-lg hover:shadow-red-500/25'
-              }`}>
-                Get Started Today
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg hover:shadow-red-900/25' 
+                    : 'bg-red-600 text-white hover:bg-red-700 shadow-lg hover:shadow-red-500/25'
+                }`}>
+                  Get Application Security Assessment
+                </button>
+                <button className={`px-8 py-4 rounded-xl font-medium border-2 transition-all duration-300 hover:scale-105 ${
+                  isDarkMode 
+                    ? 'border-red-400 text-red-400 hover:bg-red-400 hover:text-slate-900' 
+                    : 'border-red-600 text-red-600 hover:bg-red-600 hover:text-white'
+                }`}>
+                  Schedule Security Consultation
+                </button>
+              </div>
+              
+              {/* Services Quick Access */}
+              <div className="mt-8 pt-8 border-t border-slate-600/30">
+                <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                  Popular Services:
+                </p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    isDarkMode ? 'bg-red-600/20 text-red-400' : 'bg-red-100 text-red-700'
+                  }`}>
+                    Web App VAPT
+                  </span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    isDarkMode ? 'bg-blue-600/20 text-blue-400' : 'bg-blue-100 text-blue-700'
+                  }`}>
+                    Source Code Review
+                  </span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    isDarkMode ? 'bg-green-600/20 text-green-400' : 'bg-green-100 text-green-700'
+                  }`}>
+                    API Security
+                  </span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    isDarkMode ? 'bg-purple-600/20 text-purple-400' : 'bg-purple-100 text-purple-700'
+                  }`}>
+                    Thick Client Testing
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
