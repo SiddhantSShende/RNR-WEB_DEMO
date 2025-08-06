@@ -5,6 +5,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/RNR-WEB_DEMO/',
   plugins: [react()],
+  define: {
+    // For compatibility with process.env.PUBLIC_URL in React Router
+    'process.env.PUBLIC_URL': JSON.stringify('/RNR-WEB_DEMO'),
+  },
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

@@ -2,6 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
+// Router is HashRouter which is optimal for GitHub Pages deployment
+// Alternative: BrowserRouter with basename={process.env.PUBLIC_URL || '/RNR-WEB_DEMO/'}
 import App from './App.tsx';
 import ContactPage3D from './components/ContactPage3D.tsx';
 import CompliancePage3D from './components/CompliancePage3D.tsx';
