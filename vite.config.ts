@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/RNR-WEB_DEMO/', 
+  base: process.env.NODE_ENV === 'production' ? '/RNR-WEB_DEMO/' : '/',
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
@@ -11,6 +11,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: undefined,
