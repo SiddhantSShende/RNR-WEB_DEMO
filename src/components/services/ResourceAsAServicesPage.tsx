@@ -108,72 +108,125 @@ const ResourceAsAServicesPage: React.FC = () => {
     {
       title: "GRC Specialists",
       subtitle: "ISO 27001, RBI, SEBI, CERT-In, etc.",
-      description: "Expert governance, risk, and compliance specialists with deep regulatory knowledge",
+      description: "GRC Specialists are expert professionals who guide your business through governance, risk management, and compliance, ensuring you meet standards like ISO 27001, RBI, SEBI, and CERT-In. At RNR Consulting Pvt. Ltd., our specialists strengthen your security and continuity plans.",
       icon: Shield,
-      services: [
-        "ISO 27001 Lead Auditors and Implementation Specialists",
-        "RBI Cybersecurity Framework and Guidelines Experts",
-        "SEBI IT Governance and Compliance Professionals",
-        "CERT-In Incident Response and Reporting Specialists",
-        "PCI DSS and Payment Security Standards Consultants",
-        "GDPR and Data Privacy Compliance Experts"
+      importance: [
+        "Compliance Gaps: Missing expertise could lead to violations of regulatory compliances, risking fines or audits",
+        "Risk Overlooks: Weak governance can miss threats, like data breaches, costing revenue or trust",
+        "Operational Hiccups: Non-compliant systems can disrupt workflows, frustrating clients",
+        "Reputation Dents: Compliance failures can spark bad press or client doubts, dimming your brand"
+      ],
+      howWeWork: [
+        "Compliance Mapping: RNR specialists align your processes with ISO 27001, RBI, SEBI, and CERT-In standards",
+        "Risk Assessments: We identify vulnerabilities, like weak controls, to strengthen your security",
+        "Policy Development: RNR crafts governance policies to ensure clear, compliant operations",
+        "Audit Support: We prepare your business for audits, ensuring smooth compliance checks",
+        "Ongoing Guidance: RNR provides continuous support to adapt to evolving regulations"
+      ],
+      whyRNR: [
+        "Expert Talent: RNR's specialists are pros in ISO 27001, RBI, SEBI, and CERT-In compliance",
+        "Custom Solutions: We tailor strategies to your industry, from finance to healthcare",
+        "Proactive Support: RNR stays ahead of regulatory changes to keep you compliant",
+        "Future-Ready Expertise: As rules evolve, RNR keeps your business prepared"
       ],
       link: "/services/resource-as-services/grc-specialists"
     },
     {
       title: "Information Security Analysts",
-      description: "Skilled analysts specialized in threat detection, incident response, and security monitoring",
+      description: "Information security analysts monitor and protect your systems from cyber threats, like malware or unauthorized access, ensuring your data and operations stay safe. At RNR Consulting Pvt. Ltd., our analysts keep your defenses tight.",
       icon: Eye,
-      services: [
-        "SOC Analysts for 24/7 Security Operations Center monitoring",
-        "Threat Intelligence Analysts for proactive threat hunting",
-        "Incident Response Specialists for breach containment",
-        "Security Risk Assessment and Vulnerability Analysts",
-        "Digital Forensics Investigators and Evidence Analysts",
-        "Security Awareness Training and Education Specialists"
+      importance: [
+        "Data Breaches: Unmonitored systems can lead to leaks, costing money or client trust",
+        "Compliance Risks: Weak security might violate regulations, risking fines or audits",
+        "Service Disruptions: Cyber incidents can halt operations, frustrating customers",
+        "Reputation Hits: A security lapse can fuel bad press or client doubts, hurting your brand"
+      ],
+      howWeWork: [
+        "Threat Monitoring: RNR analysts watch systems for suspicious activity, like intrusions",
+        "Risk Analysis: We assess vulnerabilities to prioritize and fix weak spots",
+        "Incident Response: RNR responds quickly to threats, minimizing damage and downtime",
+        "Security Hardening: We implement controls, like access restrictions, to boost protection",
+        "Continuous Support: RNR provides ongoing monitoring to keep threats at bay"
+      ],
+      whyRNR: [
+        "Skilled Pros: RNR's analysts are experts in spotting and stopping threats",
+        "Custom Strategies: We tailor monitoring to your industry and systems",
+        "Fast Response: RNR ensures quick action to limit crisis impact",
+        "Future-Ready Defense: As threats evolve, RNR keeps your security sharp"
       ],
       link: "/services/resource-as-services/security-analysts"
     },
     {
       title: "Cybersecurity Engineers",
       subtitle: "SIEM, EDR, Firewall, etc.",
-      description: "Technical cybersecurity engineers with expertise in security infrastructure and tools",
+      description: "Cybersecurity engineers design and manage advanced security tools, like SIEM, EDR, and firewalls, to shield your business from cyber threats. At RNR Consulting Pvt. Ltd., our engineers build robust defenses tailored to your needs.",
       icon: Wrench,
-      services: [
-        "SIEM Engineers for Security Information and Event Management",
-        "EDR/XDR Engineers for Endpoint Detection and Response",
-        "Firewall and Network Security Engineers",
-        "Cloud Security Engineers (AWS, Azure, GCP)",
-        "Security Automation and Orchestration Engineers",
-        "Identity and Access Management (IAM) Engineers"
+      importance: [
+        "System Breaches: Weak defenses can let hackers in, causing data loss or financial hits",
+        "Compliance Risks: Poor security setups might violate regulations, risking fines or audits",
+        "Operational Snags: Cyberattacks can disrupt systems, delaying services and frustrating clients",
+        "Reputation Bumps: A security failure can spark bad press or client distrust, dimming your brand"
+      ],
+      howWeWork: [
+        "Tool Deployment: RNR sets up and manages SIEM, EDR, and firewalls for strong protection",
+        "Threat Detection: We configure systems to spot and stop attacks in real-time",
+        "System Hardening: RNR strengthens your infrastructure against vulnerabilities",
+        "Incident Handling: Our engineers respond fast to minimize crisis impact",
+        "Ongoing Support: RNR provides continuous management to keep tools effective"
+      ],
+      whyRNR: [
+        "Expert Talent: RNR's engineers are pros in SIEM, EDR, and firewall management",
+        "Custom Defenses: We tailor solutions to your industry and tech stack",
+        "Proactive Protection: RNR stays ahead of threats with cutting-edge tools",
+        "Future-Ready Support: As cyber risks evolve, RNR keeps your defenses current"
       ],
       link: "/services/resource-as-services/cybersecurity-engineers"
     },
     {
       title: "VAPT & Application Security Testers",
-      description: "Certified penetration testers and application security assessment professionals",
+      description: "VAPT (Vulnerability Assessment and Penetration Testing) and application security testers probe your systems and apps to find weaknesses before hackers exploit them. At RNR Consulting Pvt. Ltd., our testers simulate attacks to strengthen your defenses.",
       icon: Target,
-      services: [
-        "Certified Ethical Hackers (CEH) and OSCP Professionals",
-        "Web Application Penetration Testing Specialists",
-        "Mobile Application Security Testing Experts",
-        "Network Infrastructure Penetration Testers",
-        "API Security Assessment and Testing Professionals",
-        "Source Code Review and Static Analysis Specialists"
+      importance: [
+        "Security Breaches: Unchecked vulnerabilities can lead to hacks, costing data or revenue",
+        "Compliance Risks: Weak systems might violate regulations, risking fines or audits",
+        "Service Disruptions: Exploited apps can halt operations, frustrating clients",
+        "Loss in Reputation: A hack can fuel bad press or client distrust, hurting your brand"
+      ],
+      howWeWork: [
+        "Vulnerability Scans: RNR identifies weaknesses in networks, apps, or systems",
+        "Penetration Testing: We simulate real-world attacks to test your defenses",
+        "App Security Checks: RNR ensures applications are secure against threats like injections",
+        "Detailed Reports: We provide clear findings and fixes to strengthen your systems"
+      ],
+      whyRNR: [
+        "Skilled Testers: RNR's experts excel in finding and fixing vulnerabilities",
+        "Custom Testing: We tailor tests to your industry and tech stack",
+        "Future-Ready Defense: As threats evolve, RNR keeps your systems secure"
       ],
       link: "/services/resource-as-services/vapt-testers"
     },
     {
       title: "Compliance & Risk Consultants",
-      description: "Expert consultants specializing in regulatory compliance and enterprise risk management",
+      description: "Compliance and risk consultants help your business navigate regulations and manage risks, like data breaches or operational failures, ensuring you stay compliant and crisis-ready. At RNR Consulting Pvt. Ltd., our consultants provide expert guidance to strengthen your continuity and security.",
       icon: FileCheck,
-      services: [
-        "Enterprise Risk Management (ERM) Consultants",
-        "Third-Party Risk Management (TPRM) Specialists",
-        "Business Continuity and Crisis Management Experts",
-        "Operational Risk Assessment and Mitigation Consultants",
-        "Regulatory Compliance and Audit Specialists",
-        "Cyber Risk Quantification and Insurance Advisors"
+      importance: [
+        "Compliance Fumbles: Missing regulatory know-how can lead to fines or audits",
+        "Risk Overlooks: Unmanaged threats can disrupt operations, costing revenue or trust",
+        "Workflow Snags: Non-compliance can delay services, frustrating clients",
+        "Reputation Bumps: Compliance failures can spark bad press or client doubts, dimming your brand"
+      ],
+      howWeWork: [
+        "Risk Assessments: RNR identifies threats, like cyber or operational risks, to prioritize fixes",
+        "Compliance Guidance: We align your processes with regulations for smooth audits",
+        "Policy Development: RNR crafts clear policies to ensure compliant operations",
+        "Training Support: We guide your team on compliance and risk best practices",
+        "Ongoing Advice: RNR provides continuous support to adapt to new risks or rules"
+      ],
+      whyRNR: [
+        "Expert Pros: RNR's consultants are skilled in compliance and risk management",
+        "Custom Strategies: We tailor solutions to your industry, from tech to finance",
+        "Proactive Guidance: RNR stays ahead of risks and regulatory changes",
+        "Future-Ready Support: As challenges evolve, RNR keeps your business prepared"
       ],
       link: "/services/resource-as-services/compliance-consultants"
     }
@@ -216,7 +269,8 @@ const ResourceAsAServicesPage: React.FC = () => {
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
                 Access highly skilled cybersecurity professionals and specialists on-demand to strengthen 
-                your security posture with expert knowledge and proven experience.
+                your security posture. We provide top-notch expertise to keep your business compliant and crisis-ready, 
+                so you stay focused on growth.
               </p>
             </div>
           </div>
@@ -229,79 +283,142 @@ const ResourceAsAServicesPage: React.FC = () => {
               <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
                 isDarkMode ? 'text-white' : 'text-slate-900'
               }`}>
-                Our Professional Resource Categories
+                Resource as a Service Categories
               </h2>
               <p className={`text-xl max-w-3xl mx-auto ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                Highly qualified cybersecurity professionals ready to integrate seamlessly 
-                into your team and deliver immediate value to your security initiatives.
+                Expert professionals ready to strengthen your security posture and ensure compliance. 
+                Discover why these specialists matter, how RNR delivers, and what makes us shine.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="space-y-12">
               {serviceCategories.map((category, index) => {
                 const Icon = category.icon;
                 return (
                   <div
                     key={index}
-                    className={`group relative p-8 rounded-3xl border transition-all duration-500 hover:scale-105 ${
+                    className={`group relative p-8 rounded-3xl border transition-all duration-500 ${
                       isDarkMode
-                        ? 'bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-blue-500/50'
-                        : 'bg-white/70 backdrop-blur-sm border-slate-200 hover:border-blue-300'
+                        ? 'bg-slate-800/50 backdrop-blur-sm border-slate-700/50'
+                        : 'bg-white/70 backdrop-blur-sm border-slate-200'
                     }`}
                   >
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
-                      isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
-                    }`}>
-                      <Icon className={`w-8 h-8 ${
-                        isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                      }`} />
-                    </div>
-                    
-                    <h3 className={`text-2xl font-bold mb-2 ${
-                      isDarkMode ? 'text-white' : 'text-slate-900'
-                    }`}>
-                      {category.title}
-                    </h3>
-                    
-                    {category.subtitle && (
-                      <p className={`text-sm font-medium mb-4 ${
-                        isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                    {/* Header */}
+                    <div className="mb-8">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
+                        isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'
                       }`}>
-                        {category.subtitle}
+                        <Icon className={`w-8 h-8 ${
+                          isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                        }`} />
+                      </div>
+                      
+                      <h3 className={`text-3xl font-bold mb-2 ${
+                        isDarkMode ? 'text-white' : 'text-slate-900'
+                      }`}>
+                        {category.title}
+                      </h3>
+                      
+                      {category.subtitle && (
+                        <p className={`text-lg font-medium mb-4 ${
+                          isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                        }`}>
+                          {category.subtitle}
+                        </p>
+                      )}
+                      
+                      <p className={`text-lg leading-relaxed ${
+                        isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                      }`}>
+                        {category.description}
                       </p>
-                    )}
-                    
-                    <p className={`text-lg mb-6 leading-relaxed ${
-                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                    }`}>
-                      {category.description}
-                    </p>
-                    
-                    <ul className="space-y-3 mb-8">
-                      {category.services.map((service, idx) => (
-                        <li key={idx} className="flex items-start space-x-3">
-                          <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                            isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                          }`} />
-                          <span className={`leading-relaxed ${
-                            isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                          }`}>
-                            {service}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <Link
-                      to="/contact"
-                      className={`inline-flex items-center font-semibold transition-all duration-300 group-hover:translate-x-2 ${
-                        isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                      }`}
-                    >
-                      Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
+                    </div>
+
+                    {/* Content Grid */}
+                    <div className="grid lg:grid-cols-3 gap-8">
+                      {/* Why It Matters */}
+                      <div>
+                        <h4 className={`text-xl font-bold mb-4 ${
+                          isDarkMode ? 'text-red-400' : 'text-red-600'
+                        }`}>
+                          Why It Matters
+                        </h4>
+                        <ul className="space-y-3">
+                          {category.importance.map((point, idx) => (
+                            <li key={idx} className="flex items-start space-x-3">
+                              <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
+                                isDarkMode ? 'bg-red-400' : 'bg-red-600'
+                              }`} />
+                              <span className={`text-sm leading-relaxed ${
+                                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                              }`}>
+                                {point}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* How RNR Gets It Done */}
+                      <div>
+                        <h4 className={`text-xl font-bold mb-4 ${
+                          isDarkMode ? 'text-green-400' : 'text-green-600'
+                        }`}>
+                          How RNR Gets It Done
+                        </h4>
+                        <ul className="space-y-3">
+                          {category.howWeWork.map((point, idx) => (
+                            <li key={idx} className="flex items-start space-x-3">
+                              <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                                isDarkMode ? 'text-green-400' : 'text-green-600'
+                              }`} />
+                              <span className={`text-sm leading-relaxed ${
+                                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                              }`}>
+                                {point}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Why RNR Shines */}
+                      <div>
+                        <h4 className={`text-xl font-bold mb-4 ${
+                          isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                        }`}>
+                          Why RNR Shines
+                        </h4>
+                        <ul className="space-y-3">
+                          {category.whyRNR.map((point, idx) => (
+                            <li key={idx} className="flex items-start space-x-3">
+                              <Award className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                                isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                              }`} />
+                              <span className={`text-sm leading-relaxed ${
+                                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                              }`}>
+                                {point}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Contact Link */}
+                    <div className="mt-8 pt-6 border-t border-slate-200/20">
+                      <Link
+                        to="/contact"
+                        className={`inline-flex items-center font-semibold transition-all duration-300 hover:translate-x-2 ${
+                          isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'
+                        }`}
+                      >
+                        Get These Experts <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </div>
                   </div>
                 );
               })}

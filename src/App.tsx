@@ -253,7 +253,7 @@ function App() {
                         </div>
                       </Link>
 
-                      <Link to="/contact">
+                      <Link to="/services/resource-as-services">
                         <div 
                           className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
                             activeSubMenu === 'raas' 
@@ -471,19 +471,19 @@ function App() {
                           )}
                           {activeSubMenu === 'raas' && (
                             <>
-                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                              <Link to="/services/resource-as-services" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
                                 <div className="font-medium text-sm">Security Specialists</div>
                                 <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Expert consultants on-demand</div>
                               </Link>
-                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                              <Link to="/services/resource-as-services" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
                                 <div className="font-medium text-sm">Project Teams</div>
                                 <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Dedicated security teams</div>
                               </Link>
-                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                              <Link to="/services/resource-as-services" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
                                 <div className="font-medium text-sm">Staff Augmentation</div>
                                 <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Temporary security staff</div>
                               </Link>
-                              <Link to="/contact" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
+                              <Link to="/services/resource-as-services" className={`p-3 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-slate-700/50 text-slate-300' : 'hover:bg-gray-50 text-gray-700'}`}>
                                 <div className="font-medium text-sm">Managed Services</div>
                                 <div className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>Ongoing security management</div>
                               </Link>
