@@ -2,7 +2,6 @@
 // This file demonstrates both approaches mentioned in your request
 
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 
@@ -14,6 +13,7 @@ const HashRouterApp = () => (
     <ThemeProvider>
       <HashRouter>
         <Routes>
+          <Route path="/" element={<div>Home</div>} />
           {/* Your routes here */}
         </Routes>
       </HashRouter>
@@ -27,8 +27,9 @@ import { BrowserRouter } from 'react-router-dom';
 const BrowserRouterApp = () => (
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter basename={process.env.PUBLIC_URL || '/RNR-WEB_DEMO'}>
+      <BrowserRouter basename={'/RNR-WEB_DEMO'}>
         <Routes>
+          <Route path="/" element={<div>Home</div>} />
           {/* Your routes here */}
         </Routes>
       </BrowserRouter>
@@ -46,6 +47,7 @@ const DynamicRouterApp = () => {
         <ThemeProvider>
           <HashRouter>
             <Routes>
+              <Route path="/" element={<div>Home</div>} />
               {/* Your routes here */}
             </Routes>
           </HashRouter>
@@ -57,8 +59,9 @@ const DynamicRouterApp = () => {
   return (
     <StrictMode>
       <ThemeProvider>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename={'/RNR-WEB_DEMO'}>
           <Routes>
+            <Route path="/" element={<div>Home</div>} />
             {/* Your routes here */}
           </Routes>
         </BrowserRouter>
