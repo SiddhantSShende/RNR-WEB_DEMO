@@ -19,6 +19,6 @@ export const RouterConfig = {
   // Alternative configuration (BrowserRouter)  
   alternative: {
     router: 'BrowserRouter',
-    basename: '/RNR-WEB_DEMO'
+    basename: '/RNR-WEB_DEMO/'
   }
 };

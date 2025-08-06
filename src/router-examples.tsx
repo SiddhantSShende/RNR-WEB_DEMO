@@ -27,7 +27,7 @@ import { BrowserRouter } from 'react-router-dom';
 const BrowserRouterApp = () => (
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter basename={'/RNR-WEB_DEMO'}>
+      <BrowserRouter basename={'/RNR-WEB_DEMO/'}>
         <Routes>
           <Route path="/" element={<div>Home</div>} />
           {/* Your routes here */}
@@ -59,7 +59,7 @@ const DynamicRouterApp = () => {
   return (
     <StrictMode>
       <ThemeProvider>
-        <BrowserRouter basename={'/RNR-WEB_DEMO'}>
+        <BrowserRouter basename={'/RNR-WEB_DEMO/'}>
           <Routes>
             <Route path="/" element={<div>Home</div>} />
             {/* Your routes here */}

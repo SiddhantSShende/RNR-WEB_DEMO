@@ -10,7 +10,7 @@
    ```
 
 2. **Set GitHub Pages to deploy from GitHub Actions:**
-   - Go to your repository: https://github.com/SiddhantSShende/RNR-WEB_DEMO
+   - Go to your repository: https://github.com/SiddhantSShende/RNR-WEB_DEMO/
    - Go to Settings → Pages
    - Under "Source", select "GitHub Actions"
    - The workflow will automatically trigger when you push to main
@@ -28,7 +28,7 @@
    ```
 
 3. **Set GitHub Pages to deploy from gh-pages branch:**
-   - Go to your repository: https://github.com/SiddhantSShende/RNR-WEB_DEMO
+   - Go to your repository: https://github.com/SiddhantSShende/RNR-WEB_DEMO/
    - Go to Settings → Pages
    - Under "Source", select "Deploy from a branch"
    - Select "gh-pages" branch

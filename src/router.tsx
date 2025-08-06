@@ -9,7 +9,7 @@ export const AppRouter = ({ children }: { children: React.ReactNode }) => {
     return <HashRouter>{children}</HashRouter>;
   } else {
     // Use BrowserRouter with basename for other deployments
-    const basename = import.meta.env.PROD ? '/RNR-WEB_DEMO' : '';
+    const basename = import.meta.env.PROD ? '/RNR-WEB_DEMO/' : '';
     return <BrowserRouter basename={basename}>{children}</BrowserRouter>;
   }
 };
