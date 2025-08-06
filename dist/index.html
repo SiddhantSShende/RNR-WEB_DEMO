@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <!-- Force deployment update: 2025-08-06 -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./rnrlogo.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./rnrlogo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./rnrlogo.png" />
-    <link rel="shortcut icon" href="./rnrlogo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/RNR-WEB_DEMO/rnrlogo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/RNR-WEB_DEMO/rnrlogo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/RNR-WEB_DEMO/rnrlogo.png" />
+    <link rel="shortcut icon" href="/RNR-WEB_DEMO/rnrlogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <title>RNR Consulting - Advanced Cybersecurity Solutions</title>
     <meta name="description" content="Protect your business with RNR Consulting's advanced cybersecurity solutions. Expert threat detection, data encryption, and 24/7 security monitoring." />
+    <script>
+      // GitHub Pages SPA routing support
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?')
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          )
+        }
+      }(window.location))
+    </script>
     <script type="module" crossorigin src="/RNR-WEB_DEMO/assets/index-B5eQrP8j.js"></script>
     <link rel="stylesheet" crossorigin href="/RNR-WEB_DEMO/assets/index-D4mqyLI6.css">
   </head>
