@@ -88,7 +88,7 @@ function App() {
                 </button>
                 
                 {/* Horizontal Mega Menu */}
-                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-screen max-w-6xl backdrop-blur-md border rounded-xl shadow-lg transition-all duration-300 ${
+                <div className={`fixed top-20 left-1/2 transform -translate-x-1/2 w-screen max-w-6xl backdrop-blur-md border rounded-xl shadow-lg transition-all duration-300 z-50 ${
                   isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                 } ${
                   isDarkMode 
@@ -1269,7 +1269,7 @@ function App() {
                 <div className={`p-2 rounded-xl shadow-lg ${
                   isDarkMode ? 'bg-slate-800' : 'bg-white'
                 }`}>
-                  <img src="./rnrlogo.png" alt="RNR Consulting" className="h-8 w-8" />
+                  <img src={isDarkMode ? "./rnrlogo_for_darkmode.png" : "./rnrlogo.png"} alt="RNR Consulting" className="h-8 w-8" />
                 </div>
                 <span className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
                   isDarkMode 
@@ -1292,18 +1292,36 @@ function App() {
               <ul className={`space-y-2 ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                <li><a href="#" className={`transition-colors ${
+                <li><Link to="/services/grc" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Threat Detection</a></li>
-                <li><a href="#" className={`transition-colors ${
+                }`}>GRC</Link></li>
+                <li><Link to="/services/tprm" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Data Encryption</a></li>
-                <li><a href="#" className={`transition-colors ${
+                }`}>TPRM</Link></li>
+                <li><Link to="/services/bcms" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Security Audits</a></li>
-                <li><a href="#" className={`transition-colors ${
+                }`}>BCMS</Link></li>
+                <li><Link to="/services/application-security" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Incident Response</a></li>
+                }`}>Application Security</Link></li>
+                <li><Link to="/services/cloud-security" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>Cloud Security</Link></li>
+                <li><Link to="/services/mobile-security" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>Mobile Security</Link></li>
+                <li><Link to="/services/training-awareness" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>Training & Awareness</Link></li>
+                <li><Link to="/services/infrastructure-security" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>Infrastructure Security</Link></li>
+                <li><Link to="/services/resource-as-services" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>RaaS</Link></li>
+                <li><Link to="/services/virtual-ciso" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>Virtual CISO</Link></li>
               </ul>
             </div>
             <div>
@@ -1316,6 +1334,9 @@ function App() {
                 <li><Link to="/about" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
                 }`}>About Us</Link></li>
+                <li><Link to="/philosophy" className={`transition-colors ${
+                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
+                }`}>Our Philosophy</Link></li>
                 <li><Link to="/team" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
                 }`}>Our Team</Link></li>
@@ -1324,7 +1345,7 @@ function App() {
                 }`}>Careers</Link></li>
                 <li><Link to="/news" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>News</Link></li>
+                }`}>News & Blogs</Link></li>
               </ul>
             </div>
             <div>
@@ -1334,18 +1355,9 @@ function App() {
               <ul className={`space-y-2 ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                <li><a href="#" className={`transition-colors ${
+                <li><Link to="/contact" className={`transition-colors ${
                   isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Documentation</a></li>
-                <li><a href="#" className={`transition-colors ${
-                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Help Center</a></li>
-                <li><a href="#" className={`transition-colors ${
-                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Contact</a></li>
-                <li><a href="#" className={`transition-colors ${
-                  isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                }`}>Emergency</a></li>
+                }`}>Contact Us</Link></li>
               </ul>
             </div>
           </div>

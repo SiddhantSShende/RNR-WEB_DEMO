@@ -611,21 +611,21 @@ const Navigation: React.FC = () => {
                     ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/30' 
                     : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
                 }`} onClick={() => setIsMobileMenuOpen(false)}>
-                  About Us
+                  About RNR
                 </Link>
                 <Link to="/philosophy" className={`block py-2 px-2 text-sm transition-colors rounded-lg ${
                   isDarkMode 
                     ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/30' 
                     : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
                 }`} onClick={() => setIsMobileMenuOpen(false)}>
-                  Our Philosophy
+                  Philosophy
                 </Link>
                 <Link to="/team" className={`block py-2 px-2 text-sm transition-colors rounded-lg ${
                   isDarkMode 
                     ? 'text-slate-300 hover:text-blue-400 hover:bg-slate-700/30' 
                     : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
                 }`} onClick={() => setIsMobileMenuOpen(false)}>
-                  Our Team
+                  Team
                 </Link>
               </div>
             </div>
