@@ -9,12 +9,12 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist --dotfiles",
+    "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
-    "@react-three/drei": "^10.5.1",
-    "@react-three/fiber": "^9.2.0",
+    "@react-three/drei": "^9.88.13",
+    "@react-three/fiber": "^8.15.12",
     "@types/react-router-dom": "^5.3.3",
     "@types/three": "^0.178.0",
     "lucide-react": "^0.344.0",
