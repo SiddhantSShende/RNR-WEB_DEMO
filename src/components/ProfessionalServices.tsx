@@ -209,20 +209,6 @@ const ProfessionalServices: React.FC = () => {
             <h2 className="text-2xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
               The Value We Provide
             </h2>
-            <div className={`flex items-center justify-center space-x-2 text-xs ${
-              isDarkMode ? 'text-slate-400' : 'text-slate-600'
-            }`}>
-              <span>Keep scrolling to explore our services</span>
-              <div className={`w-1 h-1 rounded-full animate-pulse ${
-                isDarkMode ? 'bg-slate-500' : 'bg-slate-400'
-              }`}></div>
-              <div className={`w-1 h-1 rounded-full animate-pulse ${
-                isDarkMode ? 'bg-slate-500' : 'bg-slate-400'
-              }`} style={{ animationDelay: '0.5s' }}></div>
-              <div className={`w-1 h-1 rounded-full animate-pulse ${
-                isDarkMode ? 'bg-slate-500' : 'bg-slate-400'
-              }`} style={{ animationDelay: '1s' }}></div>
-            </div>
           </div>
 
           <div className="relative w-full h-full pt-32">
