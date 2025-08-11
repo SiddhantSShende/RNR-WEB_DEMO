@@ -1052,19 +1052,10 @@ function App() {
               }`}>
                 Why Choose Us
               </h2>
-              <p className={`text-xl leading-relaxed ${
+              <p className={`text-lg leading-relaxed ${
                 isDarkMode ? 'text-slate-300' : 'text-slate-600'
               }`}>
-                RNR Consulting stands at the forefront of cybersecurity excellence, delivering 
-                comprehensive solutions that protect and empower your business. Our expertise 
-                spans across all domains of information security, ensuring your organization 
-                stays ahead of emerging threats.
-              </p>
-              <p className={`text-lg leading-relaxed ${
-                isDarkMode ? 'text-slate-400' : 'text-slate-600'
-              }`}>
-                With a proven track record of success and a commitment to innovation, we transform 
-                complex security challenges into competitive advantages for your business.
+                RNR Consulting is in the business of cyber security and process improvement. With a humble beginning in the year 2014 we have successfully etched our name as an eccentric solution providing management consulting firm with an exclusive purpose of seamlessly solving our client's business problems.
               </p>
             </AnimatedContainer>
 
@@ -1072,45 +1063,22 @@ function App() {
             <AnimatedContainer animation="slideRight" className="space-y-6">
               <div className="grid gap-6">
                 {[
-                  {
-                    title: "Expert Team",
-                    description: "Certified professionals with extensive industry experience"
-                  },
-                  {
-                    title: "Comprehensive Solutions",
-                    description: "End-to-end security services tailored to your needs"
-                  },
-                  {
-                    title: "Proven Methodology",
-                    description: "Industry-standard frameworks and best practices"
-                  },
-                  {
-                    title: "24/7 Support",
-                    description: "Round-the-clock monitoring and incident response"
-                  },
-                  {
-                    title: "Cost-Effective",
-                    description: "Optimized security investment with maximum ROI"
-                  },
-                  {
-                    title: "Compliance Ready",
-                    description: "Meet regulatory requirements with confidence"
-                  }
+                  "CERT-IN empaneled and government recognized",
+                  "End-to-end cybersecurity and risk solutions", 
+                  "Strong technical expertise with business insight",
+                  "Customized approach for every client",
+                  "Ongoing support beyond just assessments",
+                  "Trusted by clients across multiple industries"
                 ].map((point, index) => (
                   <div key={index} className="flex items-start space-x-4">
                     <div className={`flex-shrink-0 w-3 h-3 rounded-full mt-2 ${
                       isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
                     }`}></div>
                     <div>
-                      <h3 className={`text-lg font-semibold mb-2 ${
-                        isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                      <p className={`text-lg ${
+                        isDarkMode ? 'text-slate-300' : 'text-slate-700'
                       }`}>
-                        {point.title}
-                      </h3>
-                      <p className={`${
-                        isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                      }`}>
-                        {point.description}
+                        {point}
                       </p>
                     </div>
                   </div>
