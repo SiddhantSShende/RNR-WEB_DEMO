@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Lock, Users, Award, Mail, Phone, MapPin, ChevronRight, Star, Search, ChevronDown, Moon, Sun, Menu, X, FileScanIcon, UserCheck, Cloud, Smartphone, GraduationCap, Server, FileSearch, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Shield, Lock, Users, Award, Mail, Phone, MapPin, ChevronRight, Search, ChevronDown, Moon, Sun, Menu, X, FileScanIcon, UserCheck, Cloud, Smartphone, GraduationCap, Server, FileSearch, Twitter, Linkedin, Instagram, ChevronLeft } from 'lucide-react';
 import { useTheme } from './contexts/ThemeContext';
 import ParticleAnimation from './components/ParticleAnimation';
 import AnimatedContainer from './components/AnimatedContainer';
@@ -11,6 +11,11 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const { isDarkMode, toggleTheme } = useTheme();
+  
+  // Testimonials navigation state
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const horizontalScrollRef = useRef<HTMLDivElement>(null);
 
   // Prevent background scroll when dropdown or mobile menu is open
   useEffect(() => {
@@ -25,6 +30,69 @@ function App() {
       document.body.style.overflow = 'unset';
     };
   }, [isServicesOpen, isMobileMenuOpen]);
+
+  // Navigation functions for testimonials
+  const totalTestimonials = 6; // Total number of testimonials
+  
+  const scrollToTestimonial = (direction: 'left' | 'right') => {
+    if (!horizontalScrollRef.current) return;
+    
+    const container = horizontalScrollRef.current;
+    const cardWidth = 320 + 24; // card width + gap
+    const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
+    
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+    
+    // Update current testimonial index
+    if (direction === 'right') {
+      setCurrentTestimonial(prev => (prev + 1) % totalTestimonials);
+    } else {
+      setCurrentTestimonial(prev => (prev - 1 + totalTestimonials) % totalTestimonials);
+    }
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (!horizontalScrollRef.current) return;
+    
+    const container = horizontalScrollRef.current;
+    const cardWidth = 320 + 24; // card width + gap
+    
+    container.scrollTo({
+      left: index * cardWidth,
+      behavior: 'smooth'
+    });
+    
+    setCurrentTestimonial(index);
+  };
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const autoSlideInterval = setInterval(() => {
+      setCurrentTestimonial(prev => {
+        const nextIndex = (prev + 1) % totalTestimonials;
+        // Use scrollToIndex for proper circular scrolling
+        if (horizontalScrollRef.current) {
+          const container = horizontalScrollRef.current;
+          const cardWidth = 320 + 24; // card width + gap
+          
+          container.scrollTo({
+            left: nextIndex * cardWidth,
+            behavior: 'smooth'
+          });
+        }
+        return nextIndex;
+      });
+    }, 3000); // Change every 3 seconds
+
+    return () => {
+      clearInterval(autoSlideInterval);
+    };
+  }, [isPaused, totalTestimonials]);
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
@@ -1090,71 +1158,182 @@ function App() {
       </section>
 
       {/* Client Testimonials Section */}
-      <section className={`py-16 ${
-        isDarkMode ? 'bg-slate-800/50' : 'bg-white/50'
+      <section className={`py-20 ${
+        isDarkMode ? 'bg-slate-800/30' : 'bg-white/60'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedContainer animation="fadeIn" className="text-center mb-12">
-            <h2 className={`text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r bg-clip-text text-transparent ${
+          <AnimatedContainer animation="fadeIn" className="text-center mb-16">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent ${
               isDarkMode 
                 ? 'from-blue-400 to-indigo-300' 
                 : 'from-blue-600 to-indigo-700'
             }`}>
-              Client Testimonials
+              What Our Clients Say
             </h2>
-            <p className={`text-lg max-w-2xl mx-auto ${
+            <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${
               isDarkMode ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              What our clients say about our cybersecurity solutions
+              Hear directly from our satisfied clients about their experience with RNR Consulting's cybersecurity solutions.
             </p>
           </AnimatedContainer>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                text: "We partnered with RNR for VAPT and ITGC assessments. The team was highly professional, prompt, and thorough. We now feel confident in our security posture.",
-                rating: 5
-              },
-              {
-                text: "Their vCISO service gave us the strategic guidance we lacked. RNR helped align our security goals with business objectives effortlessly.",
-                rating: 5
-              },
-              {
-                text: "RNR's team brought both expertise and empathy to the table. They didn't just give us reports, they helped us improve.",
-                rating: 5
-              },
-              {
-                text: "From source code reviews to infrastructure audits, RNR delivered exceptional value. Their team is always available, knowledgeable, and easy to work with.",
-                rating: 5
-              },
-              {
-                text: "The training and awareness sessions by RNR were practical, engaging, and well-structured. Our team is now much more cyber-aware and vigilant.",
-                rating: 5
-              }
-            ].map((testimonial, index) => (
-              <AnimatedContainer 
-                key={index} 
-                animation="slideUp" 
-                delay={index * 100}
-                className={`backdrop-blur-md p-6 rounded-2xl border shadow-lg hover:shadow-xl transition-all duration-300 ${
+
+          {/* Navigation Buttons and Container */}
+          <div className="relative">
+            {/* Left Navigation Button */}
+            <button
+              onClick={() => scrollToTestimonial('left')}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-110 ${
+                isDarkMode 
+                  ? 'bg-slate-800/80 border-slate-600 text-slate-300 hover:bg-slate-700/80 hover:border-blue-500' 
+                  : 'bg-white/80 border-gray-300 text-gray-600 hover:bg-white hover:border-blue-400'
+              }`}
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {/* Right Navigation Button */}
+            <button
+              onClick={() => scrollToTestimonial('right')}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-110 ${
+                isDarkMode 
+                  ? 'bg-slate-800/80 border-slate-600 text-slate-300 hover:bg-slate-700/80 hover:border-blue-500' 
+                  : 'bg-white/80 border-gray-300 text-gray-600 hover:bg-white hover:border-blue-400'
+              }`}
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+            
+            {/* Horizontal Scrolling Container */}
+            <div 
+              className="mx-12"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div 
+                ref={horizontalScrollRef}
+                className="flex overflow-x-auto overflow-y-hidden gap-6 pb-6 no-scrollbar" 
+                style={{
+                  scrollSnapType: 'x mandatory',
+                  WebkitOverflowScrolling: 'touch',
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  scrollBehavior: 'smooth'
+                }}
+              >
+                {[
+                  // Client Testimonials Only
+                  {
+                    type: "testimonial",
+                    text: "We partnered with RNR for VAPT and ITGC assessments. The team was highly professional, prompt, and thorough. We now feel confident in our security posture.",
+                    rating: 5,
+                    client: "Tech Solutions Inc."
+                  },
+                  {
+                    type: "testimonial",
+                    text: "Their vCISO service gave us the strategic guidance we lacked. RNR helped align our security goals with business objectives effortlessly.",
+                    rating: 5,
+                    client: "Financial Corp"
+                  },
+                  {
+                    type: "testimonial",
+                    text: "RNR's team brought both expertise and empathy to the table. They didn't just give us reports, they helped us improve our security posture significantly.",
+                    rating: 5,
+                    client: "Healthcare Systems"
+                  },
+                  {
+                    type: "testimonial",
+                    text: "From source code reviews to infrastructure audits, RNR delivered exceptional value. Their team is always available, knowledgeable, and easy to work with.",
+                    rating: 5,
+                    client: "Software Development LLC"
+                  },
+                  {
+                    type: "testimonial",
+                    text: "The training and awareness sessions by RNR were practical, engaging, and well-structured. Our team is now much more cyber-aware and vigilant.",
+                    rating: 5,
+                    client: "Manufacturing Group"
+                  },
+                  {
+                    type: "testimonial",
+                    text: "Their compliance expertise helped us navigate complex regulations. RNR made what seemed impossible, manageable and achievable.",
+                    rating: 5,
+                    client: "Retail Enterprise"
+                  }
+                ].map((item, index) => (
+                  <div 
+                    key={index} 
+                    className={`flex-shrink-0 w-80 min-w-80 p-8 rounded-2xl backdrop-blur-sm border transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
+                      isDarkMode 
+                        ? 'bg-slate-900/50 border-slate-700 hover:bg-slate-800/70 hover:border-blue-500/50' 
+                        : 'bg-white/80 border-blue-100 hover:bg-white hover:border-blue-300'
+                    }`}
+                    style={{scrollSnapAlign: 'start'}}
+                  >
+                    {/* Testimonial Card */}
+                    <div className="space-y-4 h-full flex flex-col justify-between">
+                      <div>
+                        <div className="flex mb-4">
+                          {[...Array(item.rating)].map((_, i) => (
+                            <span key={i} className="text-yellow-400 text-xl">⭐</span>
+                          ))}
+                        </div>
+                        <p className={`text-lg leading-relaxed mb-4 italic ${
+                          isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                        }`}>
+                          "{item.text}"
+                        </p>
+                      </div>
+                      <div className={`text-right ${
+                        isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                      }`}>
+                        <p className="font-semibold">— {item.client}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Scroll Indicators */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {Array.from({length: 6}, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollToIndex(i)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
+                    currentTestimonial === i
+                      ? isDarkMode 
+                        ? 'bg-blue-400 shadow-lg shadow-blue-400/50' 
+                        : 'bg-blue-600 shadow-lg shadow-blue-600/50'
+                      : isDarkMode 
+                        ? 'bg-slate-600 hover:bg-slate-500' 
+                        : 'bg-slate-300 hover:bg-slate-400'
+                  }`}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                ></button>
+              ))}
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <AnimatedContainer animation="fadeIn" delay={600} className="text-center mt-16">
+            <div className={`inline-flex items-center space-x-4 px-8 py-4 rounded-xl backdrop-blur-sm border ${
+              isDarkMode 
+                ? 'bg-slate-800/50 border-slate-600 text-slate-300' 
+                : 'bg-white/70 border-blue-200 text-slate-700'
+            }`}>
+              <span className="text-lg font-medium">Ready to join our satisfied clients?</span>
+              <Link 
+                to="/contact" 
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
                   isDarkMode 
-                    ? 'bg-slate-800/80 border-slate-700/50' 
-                    : 'bg-white/80 border-blue-100'
+                    ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg hover:shadow-blue-500/25' 
+                    : 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-600/25'
                 }`}
               >
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className={`text-sm leading-relaxed ${
-                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                }`}>
-                  "{testimonial.text}"
-                </p>
-              </AnimatedContainer>
-            ))}
-          </div>
+                Get Started
+              </Link>
+            </div>
+          </AnimatedContainer>
         </div>
       </section>
 
