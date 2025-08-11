@@ -4,7 +4,6 @@ import { Shield, Lock, Users, Award, Mail, Phone, MapPin, ChevronRight, Star, Se
 import { useTheme } from './contexts/ThemeContext';
 import ParticleAnimation from './components/ParticleAnimation';
 import AnimatedContainer from './components/AnimatedContainer';
-import ProfessionalServices from './components/ProfessionalServices';
 
 function App() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -49,7 +48,7 @@ function App() {
                 <img 
                   src={isDarkMode ? "./rnrlogo_for_darkmode.png" : "./rnrlogo.png"} 
                   alt="RNR Consulting" 
-                  className={`transition-all duration-300 ${isDarkMode ? "h-16 w-16" : "h-12 w-12"}`}
+                  className={`transition-all duration-300 ${isDarkMode ? "h-16 w-16" : "h-10 w-10"}`}
                   style={{
                     filter: isDarkMode ? 'brightness(1.1) contrast(1.1)' : 'brightness(1) contrast(1.1)',
                     imageRendering: 'crisp-edges'
@@ -908,9 +907,9 @@ function App() {
                     Analyze your External Security Posture <ChevronRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link 
-                    to="#"
+                    to="#contact"
                     title="Analyse your security posture"
-                    className={`backdrop-blur-sm border-2 px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center ${
+                    className={`backdrop-blur-sm border-2 px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center ${
                       isDarkMode 
                         ? 'bg-slate-800/80 border-slate-600 text-blue-400 hover:bg-slate-700/80 hover:border-slate-500' 
                         : 'bg-white/80 border-blue-200 text-blue-700 hover:bg-white hover:border-blue-300'
@@ -956,7 +955,7 @@ function App() {
             {[
               {
                 icon: <FileScanIcon className="h-8 w-8" />,
-                title: "GRC",
+                title: "Governance, Risk and Compliance (GRC)",
                 description: "Our GRC services help organizations establish a unified approach to managing cybersecurity risks, aligning policies with business objectives, and ensuring compliance with regulatory standards. From identifying potential threats to setting governance frameworks and maintaining audit readiness."
               },
               {
@@ -1038,63 +1037,83 @@ function App() {
         </div>
       </section>
 
-      {/* About Section - Why Choose Us */}
-      <section id="about" className={`py-20 bg-gradient-to-br ${
-        isDarkMode 
-          ? 'from-slate-800 to-slate-900' 
-          : 'from-blue-50 to-indigo-50'
+      {/* Why Choose Us Section */}
+      <section className={`py-20 ${
+        isDarkMode ? 'bg-slate-900/50' : 'bg-blue-50/30'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedContainer animation="fadeIn" className="text-center mb-16">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent ${
-              isDarkMode 
-                ? 'from-blue-400 to-indigo-300' 
-                : 'from-blue-600 to-indigo-700'
-            }`}>
-              Why Choose Us
-            </h2>
-          </AnimatedContainer>
-          
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Left side - Description */}
-            <AnimatedContainer animation="slideLeft" duration={700}>
-              <div className="lg:pr-8">
-                <p className={`text-xl leading-relaxed ${
-                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                }`}>
-                  RNR Consulting is in the business of cyber security and process improvement. With a humble beginning in the year 2014 we have successfully etched our name as an eccentric solution providing management consulting firm with an exclusive purpose of seamlessly solving our client's business problems.
-                </p>
-              </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column - Description */}
+            <AnimatedContainer animation="slideLeft" className="space-y-6">
+              <h2 className={`text-3xl md:text-4xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+                isDarkMode 
+                  ? 'from-blue-400 to-indigo-300' 
+                  : 'from-blue-600 to-indigo-700'
+              }`}>
+                Why Choose Us
+              </h2>
+              <p className={`text-xl leading-relaxed ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}>
+                RNR Consulting stands at the forefront of cybersecurity excellence, delivering 
+                comprehensive solutions that protect and empower your business. Our expertise 
+                spans across all domains of information security, ensuring your organization 
+                stays ahead of emerging threats.
+              </p>
+              <p className={`text-lg leading-relaxed ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+              }`}>
+                With a proven track record of success and a commitment to innovation, we transform 
+                complex security challenges into competitive advantages for your business.
+              </p>
             </AnimatedContainer>
-            
-            {/* Right side - Feature Points */}
-            <AnimatedContainer animation="slideRight" duration={700}>
-              <div className="space-y-6">
+
+            {/* Right Column - Key Points */}
+            <AnimatedContainer animation="slideRight" className="space-y-6">
+              <div className="grid gap-6">
                 {[
-                  "CERT-IN empaneled and government recognized",
-                  "End-to-end cybersecurity and risk solutions",
-                  "Strong technical expertise with business insight",
-                  "Customized approach for every client",
-                  "Ongoing support beyond just assessments",
-                  "Trusted by clients across multiple industries"
-                ].map((feature, index) => (
-                  <AnimatedContainer 
-                    key={index} 
-                    animation="slideUp" 
-                    delay={index * 100}
-                    className="flex items-start space-x-4 group"
-                  >
-                    <div className={`w-3 h-3 rounded-full mt-2 flex-shrink-0 transition-all duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gradient-to-r from-blue-400 to-blue-500 group-hover:from-blue-300 group-hover:to-blue-400' 
-                        : 'bg-gradient-to-r from-blue-500 to-blue-600 group-hover:from-blue-400 group-hover:to-blue-500'
+                  {
+                    title: "Expert Team",
+                    description: "Certified professionals with extensive industry experience"
+                  },
+                  {
+                    title: "Comprehensive Solutions",
+                    description: "End-to-end security services tailored to your needs"
+                  },
+                  {
+                    title: "Proven Methodology",
+                    description: "Industry-standard frameworks and best practices"
+                  },
+                  {
+                    title: "24/7 Support",
+                    description: "Round-the-clock monitoring and incident response"
+                  },
+                  {
+                    title: "Cost-Effective",
+                    description: "Optimized security investment with maximum ROI"
+                  },
+                  {
+                    title: "Compliance Ready",
+                    description: "Meet regulatory requirements with confidence"
+                  }
+                ].map((point, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className={`flex-shrink-0 w-3 h-3 rounded-full mt-2 ${
+                      isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
                     }`}></div>
-                    <span className={`text-lg font-medium leading-relaxed transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'text-slate-300 group-hover:text-white' 
-                        : 'text-slate-700 group-hover:text-slate-900'
-                    }`}>{feature}</span>
-                  </AnimatedContainer>
+                    <div>
+                      <h3 className={`text-lg font-semibold mb-2 ${
+                        isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                      }`}>
+                        {point.title}
+                      </h3>
+                      <p className={`${
+                        isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                      }`}>
+                        {point.description}
+                      </p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </AnimatedContainer>
@@ -1170,9 +1189,6 @@ function App() {
           </div>
         </div>
       </section>
-
-      {/* Our Professional Services Section */}
-      <ProfessionalServices />
 
       {/* Contact Section */}
       <section id="contact" className={`py-16 bg-gradient-to-br ${
@@ -1296,7 +1312,7 @@ function App() {
                   <img 
                     src={isDarkMode ? "./rnrlogo_for_darkmode.png" : "./rnrlogo.png"} 
                     alt="RNR Consulting" 
-                    className="h-12 w-12 object-contain"
+                    className={`object-contain ${isDarkMode ? "h-12 w-12" : "h-10 w-10"}`}
                     style={{ imageRendering: 'crisp-edges' }}
                   />
                 </div>
@@ -1411,9 +1427,9 @@ function App() {
               </h4>
               <div className="flex space-x-6">
                 {[
-                  { icon: Twitter, label: "Twitter", href: "#" },
-                  { icon: Linkedin, label: "LinkedIn", href: "#" },
-                  { icon: Instagram, label: "Instagram", href: "#" }
+                  { icon: Twitter, label: "Twitter", href: "https://x.com/RNR_ltd" },
+                  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/rnrconsulting/posts/?feedView=all" },
+                  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/consultrnr/" }
                 ].map((social, index) => (
                   <a
                     key={index}
